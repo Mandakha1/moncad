@@ -78,10 +78,12 @@ LangString ShowAiText ${LANG_MONGOLIAN} "Claude / ChatGPT-тэй холбох з
 LangString ShowAiText ${LANG_ENGLISH} "Show how to connect Claude / ChatGPT"
 
 Function .onInit
-  ; Pick the installer language from the system (Mongolian on a Mongolian Windows, else English);
-  ; a silent install never asks.
-  IfSilent +2
+  ; Ask for the installer language (Mongolian or English). A silent install never asks: the jump
+  ; goes to a label because MUI_LANGDLL_DISPLAY expands to many instructions (IfSilent +2 would
+  ; skip only the first, and /S would wait on the dialog forever).
+  IfSilent skip_language
   !insertmacro MUI_LANGDLL_DISPLAY
+  skip_language:
 FunctionEnd
 
 Section "!$(SecApp)" SecMain

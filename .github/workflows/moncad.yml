@@ -57,6 +57,7 @@ jobs:
           if (-not ($out -match '"name":"moncad"')) { throw "MCP serverInfo is not MonCad" }
           if (-not ($out -match 'Polyline')) { throw "MCP did not draw the rectangle" }
       - name: Launch the app for a few seconds
+        timeout-minutes: 3
         shell: pwsh
         run: |
           $p = Start-Process -FilePath "target/release/moncad.exe" -ArgumentList "--control","7979" -PassThru
@@ -83,6 +84,7 @@ jobs:
           $sums | Out-File -Encoding ascii dist\SHA256SUMS-windows.txt
           $sums
       - name: Silent install and uninstall
+        timeout-minutes: 5
         shell: pwsh
         run: |
           $setup = Get-ChildItem dist\*-setup.exe | Select-Object -First 1
