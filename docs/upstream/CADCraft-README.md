@@ -1,15 +1,7 @@
-<p align="center">
-  <a href="https://getartcraft.com/">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="docs/brand/artcraft-logo-white.svg">
-      <img alt="ArtCraft" src="docs/brand/artcraft-logo.svg" width="200">
-    </picture>
-  </a>
-</p>
+> This is the upstream CADCraft README at the commit MonCad was forked from (2026-11-15), kept for
+> reference. Its brand logo was removed (ArtCraft marks are not licensed for forks); relative links
+> point at the repository root.
 
-<p align="center">
-  <img src="assets/app-icon/hicolor/256x256/apps/ai.storyteller.cadcraft.png" width="128" height="128" alt="CADCraft icon: a drafting set square and compass arc on a blue grid tile">
-</p>
 
 <h1 align="center">CADCraft</h1>
 

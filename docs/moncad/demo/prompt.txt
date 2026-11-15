@@ -1,0 +1,11 @@
+You are drawing in MonCad (an AutoCAD-style CAD app) through its MCP tools. Units: millimetres (the drawing is metric).
+
+Draw a simple Mongolian apartment floor plan, 9000 x 6000 mm outside, with:
+1. Layers (create with the command line, e.g. `-layer m ХАНА c 7 ХАНА ` style or the execute tool): ХАНА (walls, colour 7), ХААЛГА (doors, colour 3), ЦОНХ (windows, colour 4), ХАЛААЛТ (heating, colour 1), ТЕКСТ (text, colour 2), ХЭМЖЭЭС (dimensions, colour 8).
+2. Walls 250 mm thick: outer rectangle 0,0 to 9000,6000 and inner offset 250 mm; one interior wall at x=5000 (250 thick) splitting it into two rooms.
+3. A 900 mm door opening with a door swing arc in the interior wall and an entrance door in the bottom wall; two windows (1500 mm) on the top wall shown as three parallel lines.
+4. One radiator per room under the windows on layer ХАЛААЛТ (1000 x 100 rectangles) and a heating pipe polyline connecting them.
+5. Room labels in Mongolian with TEXT height 250 on layer ТЕКСТ: «Зочны өрөө 26.8 м²» and «Унтлагын өрөө 18.4 м²» (compute the real inner areas yourself and use them), and a title «Орон сууцны план М1:100» below the plan.
+6. Overall horizontal and vertical linear dimensions on layer ХЭМЖЭЭС.
+
+Work step by step with command_line / execute, check with inspect_drawing, then call render (background "white") to look at it and fix anything wrong. Finally `zoom e` and save the drawing as ./moncad-plan-demo.dxf and also save ./moncad-plan-demo.pdf and ./moncad-plan-demo.png. Reply with a short summary of what you drew and any problems you hit with MonCad.

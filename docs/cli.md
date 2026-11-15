@@ -1,10 +1,10 @@
-# cadcraft-cli
+# moncad-cli
 
-`cadcraft-cli` is headless CADCraft: it reads, converts and exports drawings, runs scripts and
+`moncad-cli` is headless MonCad: it reads, converts and exports drawings, runs scripts and
 commands, prints the command catalog and serves MCP. It follows
 [RFC-0012: Command-line conventions](https://github.com/storytold/craft-contrib/pull/18).
 
-`cadcraft-cli --help` and `cadcraft-cli help <subcommand>` (or `<subcommand> --help`) are the
+`moncad-cli --help` and `moncad-cli help <subcommand>` (or `<subcommand> --help`) are the
 reference for every subcommand, flag and value; this page doesn't repeat them. Examples are in the
 [README](../README.md#drive-it-from-agents-mcp-and-the-cli), MCP setup in [mcp.md](mcp.md),
 scripts and the JSON command forms in [customization.md](customization.md).
@@ -19,7 +19,7 @@ scripts and the JSON command forms in [customization.md](customization.md).
 | Outputs that replace an input | `convert IN OUT` and `run FILE… --save OUT` / `--export OUT` refuse an OUT that is the same file as an input (any spelling or symlink of it): usage error, exit 2, nothing opened or written. `--in-place` allows it. A save a script or `--cmd` runs is the engine's. |
 | Values starting with `-` | Written with `=`: `--window=-10,-10,10,10`, `--export=-plan.png`. |
 | Paths | Read as given, including names that aren't valid Unicode. The engine opens files by text name, so such a name is reported as an error (exit 1) where a drawing is opened; an output takes any name whose extension is ASCII. |
-| Completions and man pages | The Linux packages install them. To generate them yourself: `cargo run -p cadcraft-cli --example man-and-completions -- <out-dir>`. |
+| Completions and man pages | The Linux packages install them. To generate them yourself: `cargo run -p moncad-cli --example man-and-completions -- <out-dir>`. |
 
 ## Environment variables
 
@@ -32,7 +32,7 @@ unset and the flag wins over the variable, except for `CADCRAFT_CONFIG_DIR` (see
 | `CADCRAFT_FONTALT` | `--fontalt` (FONTALT) | `convert`, `run`, `mcp`, `sample` |
 | `CADCRAFT_FONTFALLBACK` | `--fontfallback` (FONTFALLBACK) | `convert`, `run`, `mcp`, `sample` |
 
-The desktop app's are listed by `cadcraft --help`; its one flag fallback is
+The desktop app's are listed by `moncad --help`; its one flag fallback is
 `CADCRAFT_CONTROL_PORT` for `--control`, where a bad value is a usage error that names the
 variable.
 

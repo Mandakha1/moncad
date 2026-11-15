@@ -1,0 +1,109 @@
+# MonCad CI: build, test and package. Windows first (installer + portable zip), then macOS.
+# Runs on pull requests, on pushes to main, by hand, and on version tags (v*), where it attaches
+# the packages to a DRAFT release: a person reviews and publishes it.
+name: MonCad
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Interface catalogs, fonts and language switching
+        run: cargo test --locked -p cadcraft-ui-egui --lib i18n
+      - name: Engine, MCP and CLI
+        run: cargo test --locked -p cadcraft-engine -p cadcraft-mcp -p cadcraft-cli
+      - name: Mongolian strings that fall back to English
+        run: cargo test --locked -p cadcraft-ui-egui --lib -q -- --ignored --exact i18n::tests::translation_gaps --nocapture | sed -n '/^mn:/,/^[a-z-]*:/p'
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Build moncad.exe and moncad-cli.exe
+        env:
+          CADCRAFT_REQUIRE_WINRES: "1"
+        run: cargo build --release --locked -p cadcraft -p cadcraft-cli
+      - name: Smoke test (CLI, MCP drawing session)
+        shell: pwsh
+        run: |
+          $bin = "target/release"
+          & "$bin/moncad-cli.exe" --version
+          & "$bin/moncad.exe" --version
+          $requests = @(
+            '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"ci","version":"0"}}}',
+            '{"jsonrpc":"2.0","method":"notifications/initialized"}',
+            '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"command_line","arguments":{"text":"rectang 0,0 6000,4000"}}}',
+            '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"inspect_drawing","arguments":{}}}'
+          ) -join "`n"
+          $out = $requests | & "$bin/moncad-cli.exe" mcp
+          $out
+          if (-not ($out -match '"name":"moncad"')) { throw "MCP serverInfo is not MonCad" }
+          if (-not ($out -match 'Polyline')) { throw "MCP did not draw the rectangle" }
+      - name: Launch the app for a few seconds
+        shell: pwsh
+        run: |
+          $p = Start-Process -FilePath "target/release/moncad.exe" -ArgumentList "--control","7979" -PassThru
+          Start-Sleep -Seconds 15
+          if ($p.HasExited) { throw "moncad.exe exited early with code $($p.ExitCode)" }
+          Stop-Process -Id $p.Id
+      - name: Installer (NSIS) and portable zip
+        shell: pwsh
+        run: |
+          $version = (Select-String -Path Cargo.toml -Pattern '^version = "(.*)"').Matches[0].Groups[1].Value
+          New-Item -ItemType Directory -Force dist | Out-Null
+          & "C:\Program Files (x86)\NSIS\makensis.exe" -V2 "-DROOT=$PWD" "-DVERSION=$version" "-DBINDIR=$PWD\target\release" "-DOUTFILE=$PWD\dist\moncad-$version-windows-x64-setup.exe" packaging\moncad\windows\moncad.nsi
+          if ($LASTEXITCODE -ne 0) { throw "makensis failed" }
+          $stage = "target\moncad-$version-windows-x64-portable"
+          New-Item -ItemType Directory -Force $stage | Out-Null
+          Copy-Item target\release\moncad.exe, target\release\moncad-cli.exe, LICENSE-APACHE, LICENSE-MIT, NOTICE $stage
+          Copy-Item docs\moncad\INSTALL-mn.md "$stage\README-mn.md"
+          Copy-Item docs\moncad\AI-mn.md "$stage\AI-guide-mn.md"
+          Compress-Archive -Path $stage -DestinationPath "dist\moncad-$version-windows-x64-portable.zip"
+          Get-FileHash dist\* -Algorithm SHA256 | ForEach-Object { "$($_.Hash.ToLower())  $(Split-Path $_.Path -Leaf)" } | Out-File -Encoding ascii dist\SHA256SUMS-windows.txt
+      - name: Silent install and uninstall
+        shell: pwsh
+        run: |
+          $setup = Get-ChildItem dist\*-setup.exe | Select-Object -First 1
+          Start-Process -FilePath $setup.FullName -ArgumentList "/S" -Wait
+          $dir = "$env:LOCALAPPDATA\Programs\MonCad"
+          if (-not (Test-Path "$dir\moncad.exe")) { throw "not installed" }
+          & "$dir\moncad-cli.exe" --version
+          Get-Content "$dir\AI-connect.txt"
+          Start-Process -FilePath "$dir\uninstall.exe" -ArgumentList "/S" -Wait
+      - uses: actions/upload-artifact@v4
+        with:
+          name: moncad-windows-x64
+          path: dist/*
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [test, windows]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: moncad-windows-x64
+          path: dist
+      - name: Draft release (publish by hand after review)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "${GITHUB_REF_NAME}" dist/* --repo "${GITHUB_REPOSITORY}" --draft --title "MonCad ${GITHUB_REF_NAME}" --notes "MonCad ${GITHUB_REF_NAME}. See docs/moncad/INSTALL-mn.md."
