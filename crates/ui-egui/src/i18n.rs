@@ -53,9 +53,11 @@ pub enum Preference {
     Bosnian,
     #[serde(rename = "vi")]
     Vietnamese,
+    #[serde(rename = "mn")]
+    Mongolian,
 }
 impl Preference {
-    pub const ALL: [Self; 21] = [
+    pub const ALL: [Self; 22] = [
         Self::Auto,
         Self::English,
         Self::Greek,
@@ -77,6 +79,7 @@ impl Preference {
         Self::Georgian,
         Self::Bosnian,
         Self::Vietnamese,
+        Self::Mongolian,
     ];
 
     /// Every preference in the order the Interface Language dialog lists them: Auto, then English
@@ -128,6 +131,7 @@ impl Preference {
             Self::Georgian => "ka",
             Self::Bosnian => "bs",
             Self::Vietnamese => "vi",
+            Self::Mongolian => "mn",
         }
     }
 
@@ -167,6 +171,8 @@ impl Preference {
                 }
             }
             Self::Bosnian => "Bosanski",
+            // Mongolian Cyrillic (Ө ө Ү ү included) is covered by egui's bundled Ubuntu-Light and Hack.
+            Self::Mongolian => "Монгол",
             // Its letters need a font egui doesn't bundle ([`crate::theme::vietnamese_font`]).
             Self::Vietnamese => {
                 if crate::theme::shows_vietnamese(CURRENT.with(Cell::get)) {
@@ -209,6 +215,7 @@ impl Preference {
             Self::Georgian => "ka",
             Self::Bosnian => "bs",
             Self::Vietnamese => "vi",
+            Self::Mongolian => "mn",
             Self::Auto => locales.iter().find_map(|s| locale_language(s)).unwrap_or("en"),
         }
     }
@@ -225,7 +232,7 @@ pub struct Language {
     catalog: OnceLock<Catalog<'static>>,
 }
 
-pub static LANGUAGES: [Language; 20] = [
+pub static LANGUAGES: [Language; 21] = [
     Language { code: "en", name: "English", source: "", plural: plural_en, plural_forms: 2, catalog: OnceLock::new() },
     Language { code: "pl", name: "Polski", source: include_str!("i18n/pl.tsv"), plural: plural_pl, plural_forms: 3, catalog: OnceLock::new() },
     // Greek: one for exactly 1; other for zero and all other integer counts.
@@ -285,6 +292,9 @@ pub static LANGUAGES: [Language; 20] = [
     Language {
         code: "vi", name: "Tiếng Việt", source: include_str!("i18n/vi.tsv"), plural: plural_ko, plural_forms: 1, catalog: OnceLock::new()
     },
+    // Mongolian (Cyrillic, MonCad): a noun stays singular after a numeral ("3 давхарга"), so one
+    // form, the Korean rule. egui's bundled faces cover every letter, so no extra font is needed.
+    Language { code: "mn", name: "Монгол", source: include_str!("i18n/mn.tsv"), plural: plural_ko, plural_forms: 1, catalog: OnceLock::new() },
 ];
 
 /// BCP 47 and POSIX locale tags, including `uk-UA`, `uk_UA.UTF-8` and `pt_BR.UTF-8`.

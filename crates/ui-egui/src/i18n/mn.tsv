@@ -1,0 +1,2059 @@
+# MonCad Mongolian (Cyrillic) interface catalog — original translations for MonCad.
+# License: MIT OR Apache-2.0 (the repository LICENSE-MIT and LICENSE-APACHE).
+# Written from CADCraft's English strings with AI assistance (Claude); no proprietary translations were copied.
+# UTF-8: context<TAB>English source<TAB>Mongolian translation.
+# Empty context = ordinary label; menu = top menu heading; @plural = one form with {n} (Mongolian nouns stay singular after a numeral).
+# Command IDs, typed keywords, technology/product names and user data stay unchanged. Glossary: docs/moncad/mn-glossary.md.
+	  Cancel  	  Цуцлах  
+	  OK  	  OK  
+	 or [	 эсвэл [
+	% of all commits	Нийт коммитын %
+	(1, 2, 4, 8, 16, 32, 64, 128, or 256)	(1, 2, 4, 8, 16, 32, 64, 128 эсвэл 256)
+	* Wildcard Match	* Загвараар тохирох
+	*VARIES*	*ЯНЗ БҮР*
+	+  |  Top  |  2D Wireframe	+  |  Дээрээс  |  2D утсан хүрээ
+	+Bin	+Хоёртын
+	+LOC	+Мөр
+	1 Viewport	1 харах цонх
+	2 Points	2 цэг
+	2 Viewports	2 харах цонх
+	2D Solid	2D дүүргэлт
+	2D Wireframe	2D утсан хүрээ
+	3 Points	3 цэг
+	3 Viewports	3 харах цонх
+	3D Face	3D гадаргуу
+	3D Mouse	3D хулгана
+	3D mouse busy, possibly 3DxWare or missing device permissions	3D хулгана завгүй байна: 3DxWare ашиглаж байгаа эсвэл төхөөрөмжийн зөвшөөрөл дутуу байж магадгүй
+	3D mouse connected	3D хулгана холбогдлоо
+	3D mouse disconnected	3D хулгана салгагдлаа
+	3D mouse input could not be started	3D хулганы оролтыг эхлүүлж чадсангүй
+	3D mouse input is unavailable on this platform	Энэ платформ дээр 3D хулганы оролт ажиллахгүй
+	3D Mouse Navigation	3D хулганаар удирдах
+	3D Mouse...	3D хулгана...
+	3D Operations	3D үйлдлүүд
+	3D Polyline	3D полилайн
+	3D Views	3D харагдацууд
+	4 Viewports	4 харах цонх
+	< Less than	< Бага
+	<> Not Equal	<> Тэнцүү биш
+	<Offset>	<Шилжилт>
+	= Equals	= Тэнцүү
+	> Greater than	> Их
+	>> Expression	>> Илэрхийлэл
+	A built-in table: editing it keeps an edited copy in the drawing.	Суулгасан хүснэгт: засварлавал зураг дотор засварласан хуулбар нь хадгалагдана.
+	A drawing opened from a file keeps that file's format.	Файлаас нээсэн зураг тухайн файлын форматаа хадгална.
+	A shortcut you give wins over MonCad's own. Changes apply at once and are kept for next time.	Таны оноосон товчлол MonCad-ийн өөрийн товчлолоос давуу эрхтэй. Өөрчлөлт шууд хэрэгжиж, дараагийн удаа ч хадгалагдана.
+	A variable name starts with a letter and has only letters, digits and _	Хувьсагчийн нэр үсгээр эхэлж, зөвхөн үсэг, цифр болон _ агуулна
+	About	Програмын тухай
+	About MonCad	MonCad-ийн тухай
+	Absolute	Үнэмлэхүй
+	Accessibility	Хүртээмж
+	ACIS File...	ACIS файл...
+	Add	Нэмэх
+	Add Current Scale	Идэвхтэй масштабыг нэмэх
+	Add Leader	Заагч шугам нэмэх
+	Add to Working Set	Ажлын багцад нэмэх
+	Add Vertex	Орой нэмэх
+	Add/Delete Scales...	Масштаб нэмэх/устгах...
+	Add: Pick points	Нэмэх: Цэг заах
+	Add: Select objects	Нэмэх: Объект сонгох
+	Additional angles	Нэмэлт өнцгүүд
+	Additional Tools	Нэмэлт хэрэгслүүд
+	Add…	Нэмэх…
+	Adjust Distance	Зайг тохируулах
+	Alias	Товч нэр
+	Alias file: {file}	Товч нэрийн файл: {file}
+	Alias files (PGP)	Товч нэрийн файлууд (PGP)
+	Aliases are saved in your MonCad profile and survive restarts.	Товч нэрс таны MonCad профайлд хадгалагдах тул програмыг дахин эхлүүлсний дараа ч хэвээр үлдэнэ.
+	Align	Тэгшлэх
+	Align block with object?	Блокийг объекттой тэгшлэх үү?
+	Align Multileaders	Олон заагчийг тэгшлэх
+	Align Text	Текст тэгшлэх
+	Aligned	Зэрэгцүүлсэн
+	All	Бүгд
+	All Annotation Objects	Бүх тэмдэглэгээний объект
+	All files	Бүх файл
+	All Scales	Бүх масштаб
+	All Used Layers	Ашиглагдаж буй бүх давхарга
+	An array that would create more objects than this is refused.	Үүнээс олон объект үүсгэх массивыг хүлээн авахгүй.
+	Analyze Shapes	Дүрс шинжлэх
+	Analyze Usage	Хэрэглээг шинжлэх
+	Angle	Өнцөг
+	Angstroms	Ангстрем
+	Angular	Өнцгийн
+	Animation Effects	Хөдөлгөөнт эффект
+	Animation effects	Хөдөлгөөнт эффект
+	Annotation	Тэмдэглэгээ
+	Annotation scale	Тэмдэглэгээний масштаб
+	Annotation Visibility	Тэмдэглэгээний харагдах байдал
+	Annotative	Тэмдэглэгээний
+	Annotative Object Scale	Тэмдэглэгээний объектын масштаб
+	Annotative Update	Тэмдэглэгээг шинэчлэх
+	Apparent Intersection	Харагдах огтлолцол
+	Append to current selection set	Идэвхтэй сонголтод нэмэх
+	Apply	Хэрэглэх
+	Apply to Layout	Хуудсанд хэрэглэх
+	Apply to:	Хэрэглэх хүрээ:
+	Apply true color	RGB өнгө хэрэглэх
+	Arc	Нум
+	Arc Length	Нумын урт
+	Architectural	Архитектурын
+	Are you sure?	Итгэлтэй байна уу?
+	Area	Талбай
+	Arrange Panel	Самбар байрлуулах
+	Array	Массив
+	Arrow size	Сумны хэмжээ
+	Associate	Холбох
+	Associate the hatch with the new boundary?	Штрихийг шинэ хүрээтэй холбох уу?
+	Associative	Холбоостой
+	Associative dimension priority	Холбоостой хэмжээсийн давуу эрх
+	Astronomical Units	Одон орны нэгж
+	Attach	Хавсаргах
+	Attach DWG...	DWG хавсаргах...
+	Attach...	Хавсаргах...
+	Attribute	Атрибут
+	Attribute Definition	Атрибутын тодорхойлолт
+	Attribute Display	Атрибутын харагдах байдал
+	Attributes	Атрибутууд
+	Audit	Шалгах
+	Auto (system language)	Автомат (системийн хэл)
+	Auto Constrain	Автомат хязгаарлалт
+	AutoConstrain	Автомат хязгаарлалт
+	AutoLISP (LSP)	AutoLISP (LSP)
+	Automatic save every	Автоматаар хадгалах давтамж
+	Automatic save file location	Автомат хадгалалтын файлын байршил
+	Axis, End	Тэнхлэг, төгсгөл
+	B	B
+	Back	Араас
+	Back to MonCad's shortcut	MonCad-ийн товчлолыг сэргээх
+	Backup copies are off, so the current file will be replaced.	Нөөц хуулбар унтраалттай тул одоогийн файлыг дарж бичнэ.
+	Backup copy	Нөөц хуулбар
+	Base	Суурь
+	Base point	Суурь цэг
+	Based on CADCraft by the ArtCraft team and community.	ArtCraft баг ба нийгэмлэгийн бүтээсэн CADCraft дээр суурилсан.
+	Baseline	Суурь шугамаас
+	Batch Publish	Багцаар хэвлэх
+	Batch Publish...	Багцаар хэвлэх...
+	Binary assets added	Нэмэгдсэн хоёртын файлууд
+	Binary assets removed	Хасагдсан хоёртын файлууд
+	Bind	Шингээх
+	Bind...	Шингээх...
+	Black	Хар
+	Blend	Гөлгөр холбох
+	Block	Блок
+	Block Attribute Manager...	Блокийн атрибутын удирдлага...
+	Block Description...	Блокийн тайлбар...
+	Block Editor	Блок засварлагч
+	Block Name	Блокийн нэр
+	Block Reference	Блокийн оруулга
+	Block to create or edit	Үүсгэх эсвэл засах блок
+	Block...	Блок...
+	Blocks	Блокууд
+	Blue	Цэнхэр
+	Bold	Тод
+	Boolean	Булийн үйлдэл
+	Bottom	Доороос
+	Bottom left	Доод зүүн
+	Bottom right	Доод баруун
+	Boundaries	Хүрээнүүд
+	Boundaries picked: {n}	Сонгосон хүрээ: {n}
+	Boundary	Хүрээ
+	Boundary...	Хүрээ...
+	Box	Хайрцаг
+	Break	Тасдах
+	Break At Point	Цэг дээр тасдах
+	Break-line Symbol	Таслалтын шугамын тэмдэг
+	Breakline extension distance	Таслалтын шугамын сунгалтын зай
+	Breakline symbol size	Таслалтын шугамын тэмдгийн хэмжээ
+	Bring Above Objects	Объектуудын дээр гаргах
+	Bring Annotations to Front	Тэмдэглэгээг урд гаргах
+	Bring to Front	Хамгийн урд гаргах
+	Bring to front	Хамгийн урд гаргах
+	Brown	Хүрэн
+	built-in	суулгасан
+	Bulleted list	Тэмдэгтэй жагсаалт
+	ByBlock	ByBlock
+	ByColor	ByColor
+	ByLayer	ByLayer
+	Calculate rectangle dimensions based on	Тэгш өнцөгтийн хэмжээг тооцох үндэслэл
+	Calibrate	Тохируулга хийх
+	Calibrate 3D Mouse	3D хулганы тохируулга хийх
+	Camera	Камер
+	Cancel	Цуцлах
+	Cancel operation	Үйлдлийг цуцлах
+	Cartesian (x, y)	Декартын (x, y)
+	Center	Төв
+	Center Line	Тэнхлэгийн шугам
+	Center Mark	Төвийн тэмдэг
+	Center the plot	Хэвлэлтийг голлуулах
+	Center X	Төв X
+	Center Y	Төв Y
+	Center Z	Төв Z
+	Center, Diameter	Төв, диаметр
+	Center, Radius	Төв, радиус
+	Center, Start, Angle	Төв, эхлэл, өнцөг
+	Center, Start, End	Төв, эхлэл, төгсгөл
+	Center, Start, Length	Төв, эхлэл, урт
+	Centered	Голлуулсан
+	Centimeters	Сантиметр
+	Chamfer	Ташуу огтлох
+	Change	Өөрчлөх
+	Change Properties	Шинж чанар өөрчлөх
+	Change Space	Орон зай солих
+	Change to Current Layer	Идэвхтэй давхаргад шилжүүлэх
+	Changed: {n}	Өөрчилсөн: {n}
+	Changes apply at once and are kept for next time.	Өөрчлөлт шууд хэрэгжиж, дараагийн удаа ч хадгалагдана.
+	Check for Updates…	Шинэчлэл шалгах…
+	Choose mode for selected object conversion	Сонгосон объектыг хөрвүүлэх горимыг сонгоно уу
+	Choose the command the alias starts.	Товч нэрээр эхлүүлэх командыг сонгоно уу.
+	Circle	Тойрог
+	Circumference	Тойргийн урт
+	Clear	Цэвэрлэх
+	Clear Command History	Командын түүхийг цэвэрлэх
+	Clear History	Түүх цэвэрлэх
+	Clear Menu	Цэс цэвэрлэх
+	Clear Recent Files	Сүүлийн файлуудыг цэвэрлэх
+	Clear selection	Сонголтыг цэвэрлэх
+	Click the ruler to add a tab stop, right-click to remove one	Таб зогсоол нэмэхийн тулд хэмжүүр дээр дарж, устгахын тулд баруун товчоор дарна уу
+	Click to set new origin	Шинэ эх цэг тогтоохын тулд дарна уу
+	Clip	Хүрээлж тайрах
+	Clip Viewport	Харах цонхыг хүрээлж тайрах
+	Clip Xref	Гадаад холбоосыг хүрээлж тайрах
+	Clipboard	Түр санах ой
+	Close	Хаах
+	Close All	Бүгдийг хаах
+	Close All Other Drawings	Бусад бүх зургийг хаах
+	Close Array Editing	Массив засварлалтыг хаах
+	Close Block Editor	Блок засварлагчийг хаах
+	Close Comparison	Харьцуулалтыг хаах
+	Closed	Битүү
+	Coincident	Давхцах
+	Collapse Palettes	Самбаруудыг хураах
+	Collapse Tool Sets	Хэрэгслийн багцуудыг хураах
+	Collect	Цуглуулах
+	Collect Multileaders	Олон заагчийг цуглуулах
+	Collinear	Нэг шулуун дээр
+	Color	Өнгө
+	Color 1	Өнгө 1
+	Color 2	Өнгө 2
+	Color 8	Өнгө 8
+	Color 9	Өнгө 9
+	Color Index	Өнгөний индекс
+	Color Selector	Өнгө сонгогч
+	Color-dependent	Өнгөөс хамааралтай
+	Color...	Өнгө...
+	Combine collinear objects that meet end to end	Төгсгөлөөрөө залгагдсан нэг шулуун дээрх объектуудыг нэгтгэх
+	Combine collinear objects that partially overlap	Хэсэгчлэн давхцсан нэг шулуун дээрх объектуудыг нэгтгэх
+	Combine identical rows?	Ижил мөрүүдийг нэгтгэх үү?
+	Combine layer property changes into one undo step?	Давхаргын шинж чанарын өөрчлөлтүүдийг нэг буцаах алхам болгох уу?
+	Combine text into a single MTEXT?	Текстүүдийг нэг MTEXT болгон нэгтгэх үү?
+	Combine zooms and pans into one undo step?	Томруулах, гүйлгэх үйлдлүүдийг нэг буцаах алхам болгох уу?
+	Command	Команд
+	Command Aliases	Командын товч нэрс
+	Command History	Командын түүх
+	Command Line	Командын мөр
+	Command line history	Командын мөрийн түүх
+	Command Line History Lines	Командын мөрийн түүхийн мөрийн тоо
+	Command Mode	Командын горим
+	Command Reference	Командын лавлах
+	Commits	Коммитууд
+	Company	Байгууллага
+	Compare Drawings...	Зураг харьцуулах...
+	Computer-aided design and drafting: an open-source, clean-room CAD application written in pure Rust.	Компьютерийн тусламжтай зураг төсөл, зураг зурах: цэвэр Rust дээр бичигдсэн, бие даан хөгжүүлсэн нээлттэй эхийн CAD програм.
+	Concentric	Нэг төвтэй
+	Conceptual	Концепцийн
+	Cone	Конус
+	Constant?	Тогтмол уу?
+	Constrained Orbit	Хязгаарлалттай тойруулан харах
+	Constraint Bars	Хязгаарлалтын самбарууд
+	Constraint Settings	Хязгаарлалтын тохиргоо
+	Construction Line	Туслах шугам
+	contains authoring elements. Open in Block Editor?	динамик блокийн элемент агуулж байна. Блок засварлагчид нээх үү?
+	Contents	Агуулга
+	Continue	Үргэлжлүүлэх
+	Continuous	Тасралтгүй
+	Contributors	Хувь нэмэр оруулагчид
+	Control Vertices	Удирдах оройнууд
+	Convert	Хөрвүүлэх
+	Convert Lines and Arcs to polylines	Шугам, нумыг полилайн болгох
+	Convert Text to Mtext	Текстийг олон мөрт текст болгох
+	Convert to Arc	Нум болгох
+	Convert to Line	Шугам болгох
+	Coordinate	Координат
+	Coordinates	Координат
+	Copy	Хуулах
+	Copy as JSON	JSON хэлбэрээр хуулах
+	Copy Full File Path	Файлын бүтэн замыг хуулах
+	Copy History	Түүхийг хуулах
+	Copy Layout	Хуудсыг хуулах
+	Copy Nested Objects	Үүрлэсэн объектуудыг хуулах
+	Copy Selection	Сонголтыг хуулах
+	Copy with Base Point	Суурь цэгтэй хуулах
+	Could not check for updates.	Шинэчлэл шалгаж чадсангүй.
+	Count	Тоолох
+	Count List	Тооллын жагсаалт
+	Count Table	Тооллын хүснэгт
+	Create	Үүсгэх
+	Create associative array	Холбоостой массив үүсгэх
+	Create backup copy with each save	Хадгалах бүрт нөөц хуулбар үүсгэх
+	Create Block	Блок үүсгэх
+	Create separate hatches	Тусдаа штрих үүсгэх
+	Creates a user parameter	Хэрэглэгчийн параметр үүсгэнэ
+	Crosshair size	Загалмай курсорын хэмжээ
+	Crossing selection color:	Огтлох сонголтын өнгө:
+	Ctrl+Enter to apply	Ctrl+Enter дарж хэрэглэнэ
+	Ctrl+Enter to finish	Ctrl+Enter дарж дуусгана
+	Current layer	Идэвхтэй давхарга
+	Current Scale Only	Зөвхөн идэвхтэй масштаб
+	Current selection	Идэвхтэй сонголт
+	Current UCS	Идэвхтэй UCS
+	Current:	Идэвхтэй:
+	Current: {color}	Идэвхтэй: {color}
+	Curved	Муруй
+	Custom	Хэрэглэгчийн
+	Customize	Өөрчлөн тохируулах
+	Cut	Хайчлах
+	Cut with Base Point	Суурь цэгтэй хайчлах
+	Cyan	Цайвар цэнхэр
+	Cylinder	Цилиндр
+	Dark	Бараан
+	Dashdot	Зураас цэгтэй
+	Dashed	Тасархай
+	Data Extraction...	Өгөгдөл гаргаж авах...
+	Data Link...	Өгөгдлийн холбоос...
+	Decameters	Декаметр
+	Decimal	Аравтын
+	Decimal Degrees	Аравтын градус
+	Decimeters	Дециметр
+	Default	Үндсэн
+	Default Mode	Үндсэн горим
+	Default Save Format	Үндсэн хадгалах формат
+	Default Save Version	Үндсэн хадгалах хувилбар
+	Default save version	Үндсэн хадгалах хувилбар
+	Default to boundary extents	Хүрээний хэмжээг үндсэн болгох
+	Define Attributes	Атрибут тодорхойлох
+	Define Attributes...	Атрибут тодорхойлох...
+	Define each corner of the selection window with a separate click.	Сонголтын цонхны булан бүрийг тусад нь дарж заана.
+	Defined width	Тогтоосон өргөн
+	Deg/Min/Sec	Град/Мин/Сек
+	Degree	Градус
+	Degrees of Freedom	Чөлөөний зэрэг
+	Degrees of freedom: {n}	Чөлөөний зэрэг: {n}
+	Delete	Устгах
+	Delete Column	Багана устгах
+	Delete Constraints	Хязгаарлалт устгах
+	Delete Current Scale	Идэвхтэй масштабыг устгах
+	Delete Dimension Style	Хэмжээсийн хэв маяг устгах
+	Delete Duplicate Objects	Давхардсан объектуудыг устгах
+	Delete Layer	Давхарга устгах
+	Delete Layer State	Давхаргын төлөв устгах
+	Delete Layout	Хуудас устгах
+	Delete old boundary(s)?	Хуучин хүрээг устгах уу?
+	Delete Row	Мөр устгах
+	Delete Text Style	Текстийн хэв маяг устгах
+	Delta X	Дельта X
+	Delta Y	Дельта Y
+	Description	Тайлбар
+	Deselect All	Бүх сонголтыг цуцлах
+	Detach	Салгах
+	Diameter	Диаметр
+	Dim scale overall	Хэмжээсийн ерөнхий масштаб
+	Dim style	Хэмжээсийн хэв маяг
+	Dimension	Хэмжээс
+menu	Dimension	Хэмжээс
+	Dimension Break	Хэмжээс тасдах
+	Dimension Edit	Хэмжээс засах
+	Dimension Objects Only	Зөвхөн хэмжээсүүд
+	Dimension Space	Хэмжээс хоорондын зай
+	Dimension style	Хэмжээсийн хэв маяг
+	Dimension Style Override	Хэмжээсийн хэв маягийг дарж тохируулах
+	Dimension Style...	Хэмжээсийн хэв маяг...
+	Dimension Text Edit	Хэмжээсийн текст засах
+	Dimensional Constraint	Хэмжээсийн хязгаарлалт
+	Dimensional Constraint Parameters	Хэмжээсийн хязгаарлалтын параметрүүд
+	Dimensional Constraints	Хэмжээсийн хязгаарлалтууд
+	Dimensions	Хэмжээсүүд
+	Disassociate Dimensions	Хэмжээсийн холбоосыг салгах
+	Discard	Хаях
+	Discard Changes	Өөрчлөлтийг хаях
+	Display	Дэлгэц
+	Display name	Харагдах нэр
+	Display plot styles	Хэвлэлтийн хэв маягийг харуулах
+	Displayed layers	Харагдаж буй давхаргууд
+	Distance	Зай
+	Divide	Хуваах
+	Do not plot (click: plot)	Хэвлэхгүй (дарвал: хэвлэнэ)
+	Don't Save	Хадгалахгүй
+	Donut	Цагираг
+	Dotted	Цэгэн
+	Double-click to edit the description	Тайлбарыг засах бол давхар товшино уу
+	Down	Доош
+	Drafting	Зураг зурах
+	Drafting mode?	Зураг зурах горим?
+	Drafting Settings	Зураг зурах тохиргоо
+	Drafting Settings...	Зураг зурах тохиргоо...
+	Drag Dynamic Grip	Динамик бариулыг чирэх
+	Draw	Зурах
+menu	Draw	Зурах
+	Draw by hand, or let Claude or ChatGPT draw for you over MCP.	Гараар зурах, эсвэл Claude, ChatGPT-ээр MCP-ээр дамжуулан зуруулах боломжтой.
+	Draw Order	Зурах дараалал
+	Drawing (DWG)	Зураг (DWG)
+	Drawing (DXF)	Зураг (DXF)
+	Drawing as bytes	Зураг байт хэлбэрээр
+	Drawing Exchange Binary...	Зураг солилцооны хоёртын файл...
+	Drawing Limits	Зургийн хязгаар
+	Drawing Recovery Manager...	Зураг сэргээх удирдлага...
+	Drawing Template (DWT)	Зургийн загвар (DWT)
+	Drawing Units	Зургийн нэгж
+	Drawing Utilities	Зургийн хэрэгслүүд
+	Drawings (DWG, DXF)	Зургууд (DWG, DXF)
+	Drawings with no file yet are saved in the default version. 0 minutes turns automatic save off.	Файлгүй зургууд үндсэн хувилбараар хадгалагдана. 0 минут гэвэл автомат хадгалалт унтарна.
+	DView	DView
+	DWG	DWG
+	DWG Compare...	DWG харьцуулах...
+	DWG Reference...	DWG холбоос...
+	DXF	DXF
+	DXF 2010 and earlier keep them. Use Save As to keep them in the drawing.	DXF 2010 болон түүнээс өмнөх хувилбар тэдгээрийг хадгална. Зурагт үлдээхийн тулд «Өөрөөр хадгалах»-ыг ашиглана уу.
+	DXF keeps them. Use Save As to keep them in the drawing.	DXF тэдгээрийг хадгална. Зурагт үлдээхийн тулд «Өөрөөр хадгалах»-ыг ашиглана уу.
+	Dynamic	Динамик
+	Dynamic Block Data	Динамик блокийн өгөгдөл
+	Dynamic Block Grips	Динамик блокийн бариулууд
+	Dynamic Block Reference	Динамик блокийн оруулга
+	Dynamic Dimensions	Динамик хэмжээс
+	Dynamic Input	Динамик оруулга
+	Dynamic Input (F12)	Динамик оруулга (F12)
+	E	З
+	Edit	Засах
+	Edit Array	Массив засах
+	Edit attributes one at a time?	Атрибутуудыг нэг нэгээр нь засах уу?
+	Edit Attributes...	Атрибут засах...
+	Edit Block Definition	Блокийн тодорхойлолт засах
+	Edit Command Aliases (PGP)...	Командын товч нэр засах (PGP)...
+	Edit Mode	Засах горим
+	Edit Multileader	Олон заагч засах
+	Edit only attributes visible on screen?	Зөвхөн дэлгэцэд харагдах атрибутуудыг засах уу?
+	Edit path for which xref(s)	Аль гадаад холбоосын замыг засах
+	Edit Reference In-Place	Холбоосыг байранд нь засах
+	Edit Table Cell	Хүснэгтийн нүд засах
+	Edit Text	Текст засах
+	Edit Text...	Текст засах...
+	Edit Xref in Place	Гадаад холбоосыг байранд нь засах
+	Edit…	Засах…
+	Elevation	Өндөршил
+	Ellipse	Эллипс
+	Elliptical Arc	Эллипс нум
+	Enable 3D mouse navigation	3D хулганы удирдлагыг идэвхжүүлэх
+	Enable Dynamic Input (F12)	Динамик оруулгыг идэвхжүүлэх (F12)
+	End angle	Төгсгөлийн өнцөг
+	End Object Isolation	Объект тусгаарлалтыг дуусгах
+	End Width	Төгсгөлийн өргөн
+	End X	Төгсгөл X
+	End Y	Төгсгөл Y
+	Endpoint	Төгсгөл
+	Engineering	Инженерийн
+	Enter	Enter
+	ENTER	ENTER
+	Enter a boundary loop number to remove (starting at 1)	Хасах хүрээний контурын дугаарыг оруулна уу (1-ээс эхэлнэ)
+	Enter a configuration option	Тохиргооны сонголт оруулна уу
+	Enter a default viewport visibility option	Харах цонхны үндсэн харагдах байдлын сонголт оруулна уу
+	Enter a fit data option	Тааруулах өгөгдлийн сонголт оруулна уу
+	Enter a group description	Бүлгийн тайлбар оруулна уу
+	Enter a group name	Бүлгийн нэр оруулна уу
+	Enter a group option	Бүлгийн сонголт оруулна уу
+	Enter a hatch option	Штрихийн сонголт оруулна уу
+	Enter a loaded linetype name	Ачаалсан шугамын төрлийн нэр оруулна уу
+	Enter a name for the new plotter	Шинэ плоттерын нэр оруулна уу
+	Enter a new name for the group	Бүлгийн шинэ нэр оруулна уу
+	Enter a pattern name	Хээний нэр оруулна уу
+	Enter a plotter option	Плоттерын сонголт оруулна уу
+	Enter a plotting preference	Хэвлэх эсэхийг оруулна уу
+	Enter a projection option	Проекцын сонголт оруулна уу
+	Enter a property to turn on or off	Асаах эсвэл унтраах шинж чанарыг оруулна уу
+	Enter a scale factor (nX or nXP)	Масштабын коэффициент оруулна уу (nX эсвэл nXP)
+	Enter a text edit mode option	Текст засах горимын сонголт оруулна уу
+	Enter a vertex editing option	Орой засах сонголт оруулна уу
+	Enter an annotation option	Тэмдэглэлийн сонголт оруулна уу
+	Enter an implied edge extension mode	Төсөөллийн ирмэгийг сунгах горим оруулна уу
+	Enter an option	Сонголт оруулна уу
+	Enter an option [Add/Remove] <Add>	Сонголт оруулна уу [Add/Remove] <Add>
+	Enter an option to change	Өөрчлөх сонголт оруулна уу
+	Enter an UNDO control option	UNDO удирдлагын сонголт оруулна уу
+	Enter angle of xline	Туслах шугамын өнцөг оруулна уу
+	Enter angle of xline (0)	Туслах шугамын өнцөг оруулна уу (0)
+	Enter angle of xline (0) or	Туслах шугамын өнцөг оруулна уу (0) эсвэл
+	Enter area of rectangle in current units	Тэгш өнцөгтийн талбайг идэвхтэй нэгжээр оруулна уу
+	Enter array type	Массивын төрөл оруулна уу
+	Enter attribute prompt	Атрибутын асуулт оруулна уу
+	Enter attribute tag	Атрибутын шошго оруулна уу
+	Enter attribute tag name	Атрибутын шошгоны нэр оруулна уу
+	Enter attribute tag specification	Атрибутын шошгоны шүүлтүүр оруулна уу
+	Enter attribute value	Атрибутын утга оруулна уу
+	Enter attribute value specification	Атрибутын утгын шүүлтүүр оруулна уу
+	Enter attribute visibility setting	Атрибутын харагдах тохиргоо оруулна уу
+	Enter block name	Блокийн нэр оруулна уу
+	Enter block name or select a block reference	Блокийн нэр оруулна уу эсвэл блокийн оруулга сонгоно уу
+	Enter block name or select a block reference [?]	Блокийн нэр оруулна уу эсвэл блокийн оруулга сонгоно уу [?]
+	Enter block name specification	Блокийн нэрийн шүүлтүүр оруулна уу
+	Enter block names to extract	Ялгаж авах блокуудын нэрийг оруулна уу
+	Enter block(s) to list	Жагсаах блокуудыг оруулна уу
+	Enter choice, 1 to 5	Сонголт оруулна уу, 1-ээс 5 хүртэл
+	Enter clipping option	Хайчлалтын сонголт оруулна уу
+	Enter color name or number (1-255)	Өнгөний нэр эсвэл дугаар оруулна уу (1-255)
+	Enter column type	Баганын төрөл оруулна уу
+	Enter constraint type	Хязгаарлалтын төрөл оруулна уу
+	Enter continuity	Тасралтгүй байдлыг оруулна уу
+	Enter decimal places of accuracy (0 to 16)	Нарийвчлалын аравтын орны тоо оруулна уу (0-ээс 16 хүртэл)
+	Enter default attribute value	Атрибутын үндсэн утга оруулна уу
+	Enter degree of spline	Сплайны зэрэг оруулна уу
+	Enter delta angle	Өнцгийн өөрчлөлт оруулна уу
+	Enter delta length	Уртын өөрчлөлт оруулна уу
+	Enter delta length or	Уртын өөрчлөлт оруулна уу эсвэл
+	Enter dimension text	Хэмжээсийн текст оруулна уу
+	Enter dimension text (<> = measurement)	Хэмжээсийн текст оруулна уу (<> = хэмжсэн утга)
+	Enter dimension value or [name=expression]	Хэмжээсийн утга оруулна уу эсвэл [нэр=илэрхийлэл]
+	Enter dimension variable name to override	Дарж тохируулах хэмжээсийн хувьсагчийн нэр оруулна уу
+	Enter distance between rows or specify unit cell (---)	Мөр хоорондын зай оруулна уу эсвэл нэгж нүдийг заана уу (---)
+	Enter file name	Файлын нэр оруулна уу
+	Enter first angle constraint	Эхний өнцгийн хязгаарлалт оруулна уу
+	Enter first line of annotation text or	Тэмдэглэлийн текстийн эхний мөрийг оруулна уу эсвэл
+	Enter first tolerance value	Эхний хүлцлийн утга оруулна уу
+	Enter fit tolerance	Тааруулах хүлцэл оруулна уу
+	Enter Full Screen	Бүтэн дэлгэцэд шилжих
+	Enter fuzz distance	Нэгтгэх хүлцлийн зай оруулна уу
+	Enter geometric characteristic	Геометрийн үзүүлэлт оруулна уу
+	Enter group description	Бүлгийн тайлбар оруулна уу
+	Enter group name	Бүлгийн нэр оруулна уу
+	Enter group name(s) to list	Жагсаах бүлгүүдийн нэрийг оруулна уу
+	Enter inspection rate	Шалгалтын давтамж оруулна уу
+	Enter inspection shape	Шалгалтын хүрээний хэлбэр оруулна уу
+	Enter justification	Тэгшлэлт оруулна уу
+	Enter justification type	Тэгшлэлтийн төрөл оруулна уу
+	Enter knot parameterization	Зангилааны параметрчлэл оруулна уу
+	Enter label (press ENTER for none)	Шошго оруулна уу (шошгогүй бол ENTER дарна уу)
+	Enter layer description	Давхаргын тайлбар оруулна уу
+	Enter layer name	Давхаргын нэр оруулна уу
+	Enter layer name to make current	Идэвхтэй болгох давхаргын нэр оруулна уу
+	Enter layer name(s) to change default viewport visibility	Харах цонхны үндсэн харагдах байдлыг өөрчлөх давхаргуудын нэрийг оруулна уу
+	Enter layer name(s) to list	Жагсаах давхаргуудын нэрийг оруулна уу
+	Enter layer option for offset objects	Зэрэгцээ хуулсан объектын давхаргын сонголт оруулна уу
+	Enter layout name for copy	Хуулбар хуудасны нэр оруулна уу
+	Enter layout name(s) to list	Жагсаах хуудсуудын нэрийг оруулна уу
+	Enter layout option	Хуудасны сонголт оруулна уу
+	Enter layout to make current	Идэвхтэй болгох хуудсыг оруулна уу
+	Enter layout to rename	Нэр өөрчлөх хуудсыг оруулна уу
+	Enter layout to save to template	Загвар болгон хадгалах хуудсыг оруулна уу
+	Enter leader format option	Заагч шугамын форматын сонголт оруулна уу
+	Enter leader text	Заагч шугамын текст оруулна уу
+	Enter line spacing factor or distance	Мөр хоорондын зайн коэффициент эсвэл зай оруулна уу
+	Enter line spacing type	Мөр хоорондын зайн төрөл оруулна уу
+	Enter linetype(s) to load	Ачаалах шугамын төрлүүдийг оруулна уу
+	Enter lineweight (0.0mm - 2.11mm)	Шугамын зузаан оруулна уу (0.0mm - 2.11mm)
+	Enter magnification or height	Томруулах хэмжээ эсвэл өндөр оруулна уу
+	Enter maximum part height	Хэсгийн хамгийн их өндрийг оруулна уу
+	Enter mline editing option	Олон шугам засах сонголт оруулна уу
+	Enter mline scale	Олон шугамын масштаб оруулна уу
+	Enter mline style name or [?]	Олон шугамын хэв маягийн нэр оруулна уу эсвэл [?]
+	Enter mode	Горим оруулна уу
+	Enter name for new layer (becomes the current layer)	Шинэ давхаргын нэр оруулна уу (идэвхтэй давхарга болно)
+	Enter name for new scale	Шинэ масштабын нэр оруулна уу
+	Enter name for new viewport configuration	Харах цонхны шинэ тохиргооны нэр оруулна уу
+	Enter name list for new layer(s)	Шинэ давхаргуудын нэрсийн жагсаалт оруулна уу
+	Enter name of block to insert	Оруулах блокийн нэр оруулна уу
+	Enter name of block to manage	Удирдах блокийн нэр оруулна уу
+	Enter name of block to sync	Синхрончлох блокийн нэр оруулна уу
+	Enter name of breakline symbol block (. for the built-in symbol)	Таслах шугамын тэмдгийн блокийн нэр оруулна уу (суулгасан тэмдэг бол .)
+	Enter name of drawing file to recover	Сэргээх зургийн файлын нэр оруулна уу
+	Enter name of existing block	Байгаа блокийн нэр оруулна уу
+	Enter name of layout to copy	Хуулах хуудасны нэр оруулна уу
+	Enter name of layout to delete	Устгах хуудасны нэр оруулна уу
+	Enter name of linetype file	Шугамын төрлийн файлын нэр оруулна уу
+	Enter name of LISP file to load	Ачаалах LISP файлын нэр оруулна уу
+	Enter name of new layout	Шинэ хуудасны нэр оруулна уу
+	Enter name of output file	Гаралтын файлын нэр оруулна уу
+	Enter name of scale to delete	Устгах масштабын нэр оруулна уу
+	Enter name of script file	Скрипт файлын нэр оруулна уу
+	Enter name of viewport configuration to restore	Сэргээх харах цонхны тохиргооны нэр оруулна уу
+	Enter name(s) of new layers frozen in all viewports	Бүх харах цонхонд хөлдөөсөн шинэ давхаргуудын нэрийг оруулна уу
+	Enter name(s) of viewport configurations to delete	Устгах харах цонхны тохиргоонуудын нэрийг оруулна уу
+	Enter name(s) of viewport configurations to list	Жагсаах харах цонхны тохиргоонуудын нэрийг оруулна уу
+	Enter name(s) to purge	Цэвэрлэх нэрсийг оруулна уу
+	Enter named scale to add	Нэмэх нэртэй масштабыг оруулна уу
+	Enter named scale to delete	Устгах нэртэй масштабыг оруулна уу
+	Enter new attribute value	Атрибутын шинэ утга оруулна уу
+	Enter new color	Шинэ өнгө оруулна уу
+	Enter new default value	Шинэ үндсэн утга оруулна уу
+	Enter new dimension text	Хэмжээсийн шинэ текст оруулна уу
+	Enter new group name	Бүлгийн шинэ нэр оруулна уу
+	Enter new layer name	Давхаргын шинэ нэр оруулна уу
+	Enter new layout name	Хуудасны шинэ нэр оруулна уу
+	Enter new linetype name	Шугамын төрлийн шинэ нэр оруулна уу
+	Enter new linetype scale factor	Шугамын төрлийн шинэ масштабын коэффициент оруулна уу
+	Enter new lineweight	Шугамын шинэ зузаан оруулна уу
+	Enter new order	Шинэ эрэмбэ оруулна уу
+	Enter new prompt	Шинэ асуулт оруулна уу
+	Enter new string	Шинэ тэмдэгт мөр оруулна уу
+	Enter new tag	Шинэ шошго оруулна уу
+	Enter new text	Шинэ текст оруулна уу
+	Enter new text style	Текстийн шинэ хэв маяг оруулна уу
+	Enter new value for CONSTRAINTINFER	CONSTRAINTINFER-ийн шинэ утгыг оруулна уу
+	Enter new value for PICKSTYLE	PICKSTYLE-ийн шинэ утгыг оруулна уу
+	Enter new value for THICKNESS	THICKNESS-ийн шинэ утгыг оруулна уу
+	Enter new value for XCLIPFRAME	XCLIPFRAME-ийн шинэ утгыг оруулна уу
+	Enter next line of annotation text	Тэмдэглэлийн текстийн дараагийн мөрийг оруулна уу
+	Enter next line of text (empty line to finish)	Текстийн дараагийн мөрийг оруулна уу (дуусгах бол хоосон мөр)
+	Enter next point	Дараагийн цэгийг оруулна уу
+	Enter number of actions	Үйлдлийн тоо оруулна уу
+	Enter number of columns	Баганын тоо оруулна уу
+	Enter number of columns (|||)	Баганын тоо оруулна уу (|||)
+	Enter number of data rows	Өгөгдлийн мөрийн тоо оруулна уу
+	Enter number of digits to right of decimal point (0 to 8)	Аравтын таслалаас хойших цифрийн тоо оруулна уу (0-ээс 8 хүртэл)
+	Enter number of fractional places for display of angles (0 to 8)	Өнцгийг харуулах аравтын орны тоо оруулна уу (0-ээс 8 хүртэл)
+	Enter number of items	Элементийн тоо оруулна уу
+	Enter number of items along path	Замын дагуух элементийн тоо оруулна уу
+	Enter number of items in array	Массив дахь элементийн тоо оруулна уу
+	Enter number of rows (---)	Мөрийн тоо оруулна уу (---)
+	Enter number of sides	Талын тоо оруулна уу
+	Enter number of turns	Эргэлтийн тоо оруулна уу
+	Enter object ordering option	Объектын дарааллын сонголт оруулна уу
+	Enter object type to rename	Нэр өөрчлөх объектын төрлийг оруулна уу
+	Enter obliquing angle (press ENTER for none)	Хазайлтын өнцөг оруулна уу (хазайлтгүй бол ENTER дарна уу)
+	Enter old group name	Бүлгийн хуучин нэр оруулна уу
+	Enter old layer name	Давхаргын хуучин нэр оруулна уу
+	Enter option	Сонголт оруулна уу
+	Enter option [Save/Discard reference changes] <Save>	Сонголт оруулна уу [Save/Discard reference changes] <Save>
+	Enter percentage length	Уртыг хувиар оруулна уу
+	Enter properties to match (SELECTSIMILARMODE bit code)	Тааруулах шинж чанаруудыг оруулна уу (SELECTSIMILARMODE битийн код)
+	Enter property to change	Өөрчлөх шинж чанарыг оруулна уу
+	Enter rectangle length	Тэгш өнцөгтийн урт оруулна уу
+	Enter rectangle width	Тэгш өнцөгтийн өргөн оруулна уу
+	Enter scale factor	Масштабын коэффициент оруулна уу
+	Enter scale ratio (paper units:drawing units)	Масштабын харьцаа оруулна уу (цаасны нэгж:зургийн нэгж)
+	Enter second angle constraint	Хоёр дахь өнцгийн хязгаарлалт оруулна уу
+	Enter second tolerance value	Хоёр дахь хүлцлийн утга оруулна уу
+	Enter spline creation method	Сплайн үүсгэх аргыг оруулна уу
+	Enter string to change	Өөрчлөх тэмдэгт мөрийг оруулна уу
+	Enter style name	Хэв маягийн нэр оруулна уу
+	Enter symbol type to bind	Шингээх тэмдгийн төрлийг оруулна уу
+	Enter target layer name	Зорилтот давхаргын нэр оруулна уу
+	Enter template file name	Загвар файлын нэр оруулна уу
+	Enter text	Текст оруулна уу
+	Enter text (use \P for new paragraphs)	Текст оруулна уу (шинэ догол мөрөнд \P ашиглана)
+	Enter the distance between rows or specify unit cell (---)	Мөр хоорондын зай оруулна уу эсвэл нэгж нүдийг заана уу (---)
+	Enter the drawing to compare with (an open drawing's name or a file path)	Харьцуулах зургийг оруулна уу (нээлттэй зургийн нэр эсвэл файлын зам)
+	Enter the maximum points for leader line	Заагч шугамын цэгийн дээд тоог оруулна уу
+	Enter the name of the block to replace	Солих блокийн нэрийг оруулна уу
+	Enter the number of columns	Баганын тоог оруулна уу
+	Enter the number of columns (|||)	Баганын тоог оруулна уу (|||)
+	Enter the number of items in the array	Массив дахь элементийн тоог оруулна уу
+	Enter the number of levels	Түвшний тоог оруулна уу
+	Enter the number of operations to undo	Буцаах үйлдлийн тоог оруулна уу
+	Enter the number of rows	Мөрийн тоог оруулна уу
+	Enter the number of rows (---)	Мөрийн тоог оруулна уу (---)
+	Enter the number of segments	Хэрчмийн тоог оруулна уу
+	Enter the output	Гаралтын форматыг оруулна уу
+	Enter the paper name	Цаасны нэрийг оруулна уу
+	Enter the paper width,height in mm	Цаасны өргөн,өндрийг мм-ээр оруулна уу
+	Enter the plotter to add a paper size to	Цаасны хэмжээ нэмэх плоттерыг оруулна уу
+	Enter the plotter to delete	Устгах плоттерыг оруулна уу
+	Enter the type of array	Массивын төрлийг оруулна уу
+	Enter tolerance location	Хүлцлийн байрлалыг оруулна уу
+	Enter Top, Zero or Bottom.	Top, Zero эсвэл Bottom оруулна уу.
+	Enter transparency value	Тунгалаг байдлын утга оруулна уу
+	Enter transparency value (0-90)	Тунгалаг байдлын утга оруулна уу (0-90)
+	Enter trim method	Тайрах аргыг оруулна уу
+	Enter Trim mode option	Тайрах горимын сонголт оруулна уу
+	Enter twist direction of helix	Спиралийн мушгилтын чиглэлийг оруулна уу
+	Enter type of dimension editing	Хэмжээс засах төрлийг оруулна уу
+	Enter type of unused objects to purge	Цэвэрлэх ашиглагдаагүй объектын төрлийг оруулна уу
+	Enter type of value modification	Утга өөрчлөх төрлийг оруулна уу
+	Enter UNDO Auto mode	UNDO Auto горимыг оруулна уу
+	Enter value	Утга оруулна уу
+	Enter variable name	Хувьсагчийн нэр оруулна уу
+	Enter view name to restore	Сэргээх харагдацын нэр оруулна уу
+	Enter view name to save	Хадгалах харагдацын нэр оруулна уу
+	Enter view name(s) to delete	Устгах харагдацуудын нэрийг оруулна уу
+	Enter view name(s) to list	Жагсаах харагдацуудын нэрийг оруулна уу
+	Enter viewport arrangement	Харах цонхны байршлыг оруулна уу
+	Enter viewport configuration name	Харах цонхны тохиргооны нэр оруулна уу
+	Enter what to pick	Юуг сонгохоо оруулна уу
+	Enter X scale factor, specify opposite corner	X масштабын коэффициент оруулна уу, эсрэг буланг заана уу
+	Enter xref(s) to list	Жагсаах гадаад холбоосуудыг оруулна уу
+	Enter Y scale factor	Y масштабын коэффициент оруулна уу
+	Entire drawing	Бүх зураг
+	Equal	Тэнцүү
+	Erase	Устгах
+	Erase polyline?	Полилайныг устгах уу?
+	Erase source object after offsetting?	Зэрэгцээ хуулсны дараа эх объектыг устгах уу?
+	Erase source objects?	Эх объектуудыг устгах уу?
+	error	алдаа
+	Evaluate	Тооцоолох
+	Evaluate LISP	LISP гүйцэтгэх
+	Exclude from new selection set	Шинэ сонголтоос хасах
+	Exclude:	Хасах:
+	Explode	Задлах
+	Explode Attributes to Text	Атрибутыг текст болгон задлах
+	Explode Block	Блок задлах
+	Export	Экспортлох
+	Export Comparison	Харьцуулалтыг экспортлох
+	Export Layout to Model...	Хуудсыг модель руу экспортлох...
+	Export Table	Хүснэгт экспортлох
+	Export to PDF...	PDF руу экспортлох...
+	Export...	Экспортлох...
+	Express Tools	Express хэрэгсэл
+	Expression	Илэрхийлэл
+	Extend	Сунгах
+	Extension	Үргэлжлэл
+	Extents	Бүгдийг харуулах
+	External Reference	Гадаад холбоос
+	External References	Гадаад холбоосууд
+	Extrude	Шахаж өргөх
+	Face	Талс
+	Feet	Фут
+	Field...	Талбар...
+	File	Файл
+	File Tab	Файлын таб
+	Fillet	Булан дугуйлах
+	Filter	Шүүлтүүр
+	Filters	Шүүлтүүрүүд
+	Find All	Бүгдийг хайх
+	Find and Replace	Хайж солих
+	Find what:	Хайх зүйл:
+	Find...	Хайх...
+	First	Эхний
+	First commit	Эхний коммит
+	First corner	Эхний булан
+	First point of mid	Дундын эхний цэг
+	First tracking point	Мөрдөлтийн эхний цэг
+	Fit	Тааруулах
+	Fit Points	Дайрах цэгүүд
+	Fit to paper	Цаасанд багтаах
+	Fix	Бэхлэх
+	Fix any errors detected?	Илэрсэн алдааг засах уу?
+	Flatten Objects	Объектуудыг хавтгайлах
+	Font	Фонт
+	Format	Формат
+	Fractional	Бутархай
+	Free Orbit	Чөлөөт тойруулан харах
+	Freehand	Гараар
+	Freeze	Хөлдөөх
+	Freeze in new viewports	Шинэ харах цонхонд хөлдөөх
+	Freeze Layer	Давхарга хөлдөөх
+	Freeze/Thaw	Хөлдөөх/Гэсгээх
+	Freeze/Thaw in all viewports	Бүх харах цонхонд хөлдөөх/гэсгээх
+	Freeze/Thaw in the current viewport	Идэвхтэй харах цонхонд хөлдөөх/гэсгээх
+	From	Цэгээс
+	From Template...	Загвар файлаас...
+	Front	Урдаас
+	General	Ерөнхий
+	Geometric Center	Геометрийн төв
+	Geometric Constraint	Геометрийн хязгаарлалт
+	Geometric Constraints	Геометрийн хязгаарлалтууд
+	Geometry	Геометр
+	Get from the Drawing	Зургаас авах
+	Get from the drawing or [Point/Distance/Angle/Intersection]	Зургаас авах эсвэл [Point/Distance/Angle/Intersection]
+	Get Variable	Хувьсагч авах
+	Get View	Харагдац авах
+	Gigameters	Гигаметр
+	Global	Нийтээр
+	Global width	Нийтлэг өргөн
+	Grab bag	Жагсаалт
+	Gradient	Градиент
+	Gradient...	Градиент...
+	Grads	Градиан
+	Gray	Саарал
+	Grayscale	Саарал өнгийн
+	Green	Ногоон
+	Grey	Саарал
+	Grid	Тор
+	Grid (F7)	Тор (F7)
+	Grid Display	Тор харуулах
+	Grid On (F7)	Тор асаах (F7)
+	Grid snap	Торын барилт
+	Grid spacing	Торын алхам
+	Grip Edit	Бариулаар засах
+	Grip Mirror	Бариулаар толин тусгал
+	Grip Option	Бариулын сонголт
+	Grip Rotate	Бариулаар эргүүлэх
+	Grip Scale	Бариулаар масштаблах
+	Grip size	Бариулын хэмжээ
+	Grip Stretch	Бариулаар сунгаж татах
+	Grips	Бариулууд
+	Group	Бүлэглэх
+	Group Edit	Бүлэг засах
+	Group Options	Бүлгийн тохиргоо
+	Group Selection	Бүлгээр сонгох
+	Groups	Бүлгүүд
+	Guide crosshairs along cloud path	Курсорыг үүлний замаар хөтлөнө үү
+	Hatch	Штрих
+	Hatch and Gradient	Штрих ба градиент
+	Hatch Edit	Штрих засах
+	Hatch origin	Штрихийн эх цэг
+	Hatch Pattern	Штрихийн хээ
+	Hatch Patterns	Штрихийн хээнүүд
+	Hatch Pick	Штрих сонгох
+	Hatch...	Штрих...
+	Hatches	Штрихүүд
+	Hectometers	Гектометр
+	Height	Өндөр
+	Height:	Өндөр:
+	Height: {height}	Өндөр: {height}
+	Helix	Спираль
+	Help	Тусламж
+	Hemispherical	Хагас бөмбөрцөг
+	Hidden	Далд шугамтай
+	Hide	Нуух
+	Hide All	Бүгдийг нуух
+	Hide All Constraint Bars	Хязгаарлалтын бүх мөрийг нуух
+	Hide All Dynamic Dimensions	Бүх динамик хэмжээсийг нуух
+	Hide Layer List	Давхаргын жагсаалтыг нуух
+	Hide MonCad	MonCad-ыг нуух
+	Hide Objects	Объектуудыг нуух
+	Hide Others	Бусдыг нуух
+	Hide Palette	Самбар нуух
+	Hide Palettes	Самбаруудыг нуух
+	History	Түүх
+	Hold Shift to add to the selection	Сонголтод нэмэхдээ Shift дарж барина уу
+	Home	Анхны байрлал
+	Horizontal	Хэвтээ
+	HorizontalDistance	Хэвтээ зай
+	How to apply:	Хэрэглэх арга:
+	ID Point	Цэгийн координат
+	Ignore	Үл тоох
+	Imperial (inches)	Англи систем (инч)
+	Implied Loops	Далд битүү хүрээ
+	Import	Импортлох
+	Import and replace	Импортлоод солих
+	Import...	Импортлох...
+	Import: there is no file dialog here; run ALIASEDIT with the file's contents using its text parameter.	Импорт: энд файл сонгох цонх байхгүй; ALIASEDIT-ийг text параметрт файлын агуулгыг өгч ажиллуулна уу.
+	Importing a file replaces your {n} aliases, and any changes not applied yet.	Файл импортлоход таны {n} товч нэр болон хэрэглээгүй өөрчлөлт солигдоно.
+	Import…	Импортлох…
+	In	Томруулах
+	In-window Menu Bar	Цонхон доторх цэсийн мөр
+	Inches	Инч
+	Include in new selection set	Шинэ сонголтод оруулах
+	Increment angle	Өнцгийн алхам
+	Index Color	Индекс өнгө
+	Index color: {index}	Индекс өнгө: {index}
+	Indicate dimension point to add	Нэмэх хэмжээсийн цэгийг заана уу
+	Indicate dimension point to remove	Хасах хэмжээсийн цэгийг заана уу
+	Indicate selection area	Сонгох талбайг заана уу
+	Infer Constraints	Хязгаарлалт автоматаар үүсгэх
+	Inquiry	Лавлагаа
+	Insert	Оруулах
+	Insert Block	Блок оруулах
+	Insert Column	Багана оруулах
+	Insert Row	Мөр оруулах
+	Insert tab	Таб тэмдэгт оруулах
+	Insert Table Formula	Хүснэгтийн томьёо оруулах
+	Insert this block	Энэ блокийг оруулах
+	Insertion	Оруулах цэг
+	Insertion point	Оруулах цэг
+	Insertion scale	Оруулах масштаб
+	Insertion X	Оруулах цэг X
+	Insertion Y	Оруулах цэг Y
+	Insertion Z	Оруулах цэг Z
+	Inspect Constraints	Хязгаарлалтуудыг хянан үзэх
+	Inspect Drawing	Зургийг хянан үзэх
+	Inspection	Хяналтын хэмжээс
+	Interface Language	Интерфейсийн хэл
+	Interface language	Интерфейсийн хэл
+	Interface scale	Интерфейсийн масштаб
+	Interface Theme	Интерфейсийн загвар
+	Interface theme	Интерфейсийн загвар
+	Internal error; press Enter to end the command	Дотоод алдаа; командыг дуусгахын тулд Enter дарна уу
+	Intersect	Огтлолцол
+	Intersection	Огтлолцол
+	Inverted	Урвуу
+	Invisible?	Үл харагдах уу?
+	Island	Арал
+	Island detection	Арал илрүүлэх
+	Island detection style	Арал илрүүлэх хэв маяг
+	Isolate	Тусгаарлах
+	Isolate Layer	Давхарга тусгаарлах
+	Isolate Objects	Объектуудыг тусгаарлах
+	Isometric Drafting	Изометр зураглал
+	Isometric Plane	Изометр хавтгай
+	Isometric plane?	Изометр хавтгай?
+	Isometric snap	Изометр барилт
+	Italic	Налуу
+	Jogged	Хугарсан
+	Jogged Linear	Хугарсан шугаман
+	Join	Нэгтгэх
+	Join the ArtCraft Discord…	ArtCraft Discord-д нэгдэх…
+	Join us on Discord	Discord дээр бидэнтэй нэгдээрэй
+	Justify	Хоёр талд тэгшлэх
+	Keep an editable copy of this table in the drawing	Энэ хүснэгтийн засварлах боломжтой хуулбарыг зурагт хадгалах
+	Keep associative objects	Холбоот объектуудыг үлдээх
+	Keep my aliases	Миний товч нэрсийг үлдээх
+	Keep the system cursor visible over the drawing area	Зургийн талбай дээр системийн курсорыг харуулсаар байх
+	Keyboard Shortcuts	Гарын товчлолууд
+	Keyboard Shortcuts...	Гарын товчлолууд...
+	Kilometers	Километр
+	Landscape	Хэвтээ
+	Language	Хэл
+	Largest array	Массивын дээд хэмжээ
+	Last	Сүүлийн
+	Last commit	Сүүлийн коммит
+	Layer	Давхарга
+	Layer contains objects (double-click to make current)	Давхаргад объект байна (идэвхтэй болгох бол хоёр товшино уу)
+	Layer Delete	Давхарга устгах
+	Layer filters	Давхаргын шүүлтүүр
+	Layer is empty (double-click to make current)	Давхарга хоосон (идэвхтэй болгох бол хоёр товшино уу)
+	Layer Match	Давхарга ижилсүүлэх
+	Layer Merge	Давхарга нэгтгэх
+	Layer Off	Давхарга унтраах
+	Layer Properties	Давхаргын шинж чанар
+	Layer Properties Manager	Давхаргын шинж чанарын удирдлага
+	Layer Properties Manager — current viewport	Давхаргын шинж чанарын удирдлага — идэвхтэй харах цонх
+	Layer State	Давхаргын төлөв
+	Layer States Manager...	Давхаргын төлвийн удирдлага...
+	Layer Tools	Давхаргын хэрэгсэл
+	Layers	Давхаргууд
+	Layers displayed: {shown} of {total}.   Current layer: {layer}	Харуулсан давхарга: {shown} / {total}.   Идэвхтэй давхарга: {layer}
+	Layers Palette	Давхаргын самбар
+	Layout	Хуудас
+	Layout from Template...	Загвар файлаас хуудас...
+	Layout list	Хуудасны жагсаалт
+	Layout paper	Хуудасны цаас
+	Layout {name}: {table}	Хуудас {name}: {table}
+	Layouts	Хуудаснууд
+	Leader	Заагч шугам
+	Leaders Only	Зөвхөн заагч шугам
+	Left	Зүүнээс
+	Left device button: zoom extents. Right device button: calibrate.	Төхөөрөмжийн зүүн товч: бүгдийг харуулах. Төхөөрөмжийн баруун товч: тохируулах.
+	Length	Урт
+	Length X	Урт X
+	Length Y	Урт Y
+	Lengthen	Уртасгах
+	Light	Цайвар
+	Light Glyphs	Гэрлийн тэмдэг
+	Light Years	Гэрлийн жил
+	Lights	Гэрлүүд
+	Limits	Хязгаар
+	Line	Шугам
+	Line delta	Мөрийн зөрүү
+	Line type	Шугамын төрөл
+	Line weight	Шугамын зузаан
+	Linear	Шугаман
+	Lines +/−	Мөр +/−
+	Lines added	Нэмсэн мөр
+	Lines deleted	Устгасан мөр
+	Lines of Command History	Командын түүхийн мөрийн тоо
+	Linetype	Шугамын төрөл
+	Linetype Manager	Шугамын төрлийн удирдлага
+	Linetype Scale	Шугамын төрлийн масштаб
+	Linetype scale	Шугамын төрлийн масштаб
+	Linetype...	Шугамын төрөл...
+	Lineweight	Шугамын зузаан
+	Lineweight Display	Шугамын зузааныг харуулах
+	Lineweight...	Шугамын зузаан...
+	List	Жагсаалт
+	List Blocks	Блокийн жагсаалт
+	List Dimension Styles	Хэмжээсийн хэв маягийн жагсаалт
+	List Groups	Бүлгийн жагсаалт
+	List Layer States	Давхаргын төлвийн жагсаалт
+	List Layouts	Хуудасны жагсаалт
+	List System Variables	Системийн хувьсагчийн жагсаалт
+	List Text Styles	Текстийн хэв маягийн жагсаалт
+	Load all	Бүгдийг ачаалах
+	Load Application...	Програм ачаалах...
+	Load...	Ачаалах...
+	Loaded	Ачаалсан
+	Loaded linetypes	Ачаалсан шугамын төрлүүд
+	Lock	Түгжих
+	Lock Layer	Давхарга түгжих
+	Lock the view of viewports?	Харах цонхнуудын харагдацыг түгжих үү?
+	Lock viewport	Харах цонхыг түгжих
+	Lock/Unlock	Түгжих/Түгжээ тайлах
+	Loft	Огтлолоор үүсгэх
+	Longer click duration:	Удаан даралтын хугацаа:
+	Ltscale	Шугамын төрлийн масштаб
+	LwPolyline	LW полилайн
+	Magenta	Ягаан
+	Major line every	Үндсэн шугамын давтамж
+	Make Current	Идэвхтэй болгох
+	Make it a block of this drawing, keeping its layer names	Давхаргын нэрийг хэвээр үлдээж, энэ зургийн блок болгох
+	Make it a block of this drawing; its layers become NAME$0$LAYER	Энэ зургийн блок болгох; давхаргууд нь NAME$0$LAYER болно
+	Make Object's Layer Current	Объектын давхаргыг идэвхтэй болгох
+	Make...	Үүсгэх...
+	Markup Import...	Тэмдэглэгээ импортлох...
+	Match case	Том жижиг үсгийг ялгах
+	Match Layer	Давхарга ижилсүүлэх
+	Match Properties	Шинж чанар хуулах
+	Materials Browser	Материалын хөтөч
+	Measure	Хэмжих
+	Measure angles clockwise?	Өнцгийг цагийн зүүний дагуу хэмжих үү?
+	Measure Distance	Зай хэмжих
+	Measure Geometry	Геометр хэмжих
+	Merge Cells	Нүд нэгтгэх
+	Merged PRs	Нэгтгэсэн PR
+	Meters	Метр
+	Metric (millimetres)	Метрийн систем (миллиметр)
+	Microinches	Микроинч
+	Microns	Микрон
+	Mid Between 2 Points	2 цэгийн дунд
+	Midpoint	Дунд цэг
+	Miles	Миль
+	Millimeters	Миллиметр
+	milliseconds	миллисекунд
+	Mils	Мил
+	min	мин
+	Mirror	Толин тусгал
+	MIT OR Apache-2.0. Not affiliated with Autodesk, Inc.	MIT OR Apache-2.0. Autodesk, Inc. компанитай холбоогүй.
+	MODEL	МОДЕЛЬ
+	Model	Модель
+	Model background	Моделийн дэвсгэр
+	Model Space	Модель орон зай
+	Model Space (in viewport)	Модель орон зай (харах цонхонд)
+	Modeling	Загварчлал
+	Models	Моделиуд
+	Modify	Өөрчлөх
+menu	Modify	Өөрчлөх
+	MonCad	MonCad
+	MonCad Help	MonCad тусламж
+	MonCad is up to date.	Танд MonCad-ийн хамгийн сүүлийн хувилбар байна.
+	MonCad keeps these preferences, object snap modes and drafting toggles for your user account and restores them when it starts.	MonCad эдгээр тохиргоо, объектын барилтын горим болон зурах туслах сэлгүүрүүдийг таны хэрэглэгчийн бүртгэлд хадгалж, эхлэх үед сэргээнэ.
+	MonCad Website…	MonCad вэбсайт…
+	More than {n} aliases.	Товч нэр хэт олон (дээд хязгаар {n}).
+	More toolbar commands	Хэрэгслийн мөрийн бусад команд
+	Move	Зөөх
+	Move sideways to pan; push/pull or twist to zoom.	Хажуу тийш хөдөлгөж гүйлгэнэ; түлхэж/татаж эсвэл мушгиж томруулна.
+	Move/Copy/Rotate	Зөөх/Хуулах/Эргүүлэх
+	MText	Олон мөрт текст
+	Multileader	Олон заагч
+	Multileader style	Олон заагчийн хэв маяг
+	Multileader Style...	Олон заагчийн хэв маяг...
+	Multiline	Олон шугам
+	Multiline Style...	Олон шугамын хэв маяг...
+	Multiline Text	Олон мөрт текст
+	Multiline text	Олон мөрт текст
+	Multiline Text...	Олон мөрт текст...
+	Multiline...	Олон шугам...
+	Multiple	Олон төрөл
+	Multiple Insert	Олноор оруулах
+	Multiple Point	Олон цэг
+	My	Миний
+	My properties: not available yet	Миний шинж чанар: одоогоор боломжгүй
+	N	Х
+	Name	Нэр
+	Name (A–Z)	Нэр (А–Я)
+	Named	Нэрлэсэн
+	Named UCS	Нэрлэсэн UCS
+	Named Viewports...	Нэрлэсэн харах цонхнууд...
+	Named Views...	Нэрлэсэн харагдацууд...
+	Nanometers	Нанометр
+	NE Isometric	Зүүн хойд изометр
+	Nearest	Хамгийн ойр
+	Needs Ctrl, Alt or a function key	Ctrl, Alt эсвэл функц товч шаардлагатай
+	New	Шинэ
+	New (metric)	Шинэ (метрийн)
+	New and the first drawing at startup use these units unless a default template is set (QNEWTEMPLATE).	Үндсэн загвар (QNEWTEMPLATE) тохируулаагүй бол Шинэ команд болон програм эхлэхэд үүсэх анхны зураг эдгээр нэгжийг ашиглана.
+	New block	Шинэ блок
+	New color	Шинэ өнгө
+	New CTB	Шинэ CTB
+	New Distant Light	Шинэ алсын гэрэл
+	New Drawing	Шинэ зураг
+	New Drawing (⌘N)	Шинэ зураг (⌘N)
+	New Drawing...	Шинэ зураг...
+	New from Template...	Загвараас шинээр...
+	New Layer	Шинэ давхарга
+	New Layout	Шинэ хуудас
+	New layout	Шинэ хуудас
+	New Point Light	Шинэ цэгэн гэрэл
+	New Sheet Set...	Шинэ хуудасны багц...
+	New Spotlight	Шинэ чиглэлт гэрэл
+	New state name	Шинэ төлвийн нэр
+	New STB	Шинэ STB
+	New style	Шинэ хэв маяг
+	New UCS	Шинэ UCS
+	New Viewports...	Шинэ харах цонхнууд...
+	New VP Freeze	Шинэ харах цонхонд хөлдөөх
+	Next Change	Дараагийн өөрчлөлт
+	Next point (Press ENTER to end tracking)	Дараагийн цэг (мөрдөлтийг дуусгахын тулд ENTER дарна уу)
+	No	Үгүй
+	No alias file loaded. REINIT replaces these aliases with a file's.	Товч нэрийн файл ачаалаагүй байна. REINIT эдгээр товч нэрийг файлынхаар солино.
+	No blocks defined in this drawing.	Энэ зурагт тодорхойлсон блок алга.
+	No contributor data was built into this copy.	Энэ хувилбарт хувь нэмэр оруулагчдын мэдээлэл ороогүй байна.
+	No external references are attached.	Гадаад холбоос хавсаргаагүй байна.
+	No mark: undo everything?	Тэмдэг алга: бүгдийг буцаах уу?
+	No model credits were built into this copy.	Энэ хувилбарт ашигласан моделийн мэдээлэл ороогүй байна.
+	No objects selected and no command running:	Объект сонгоогүй, идэвхтэй команд алга:
+	No plot style tables.	Хэвлэлтийн хэв маягийн хүснэгт алга.
+	No saved layer states	Хадгалсан давхаргын төлөв алга
+	No selection	Юу ч сонгоогүй
+	No supported 3D mouse found	Дэмжигдэх 3D хулгана олдсонгүй
+	Node	Зангилаа
+	None	Байхгүй
+	Normal	Энгийн
+	Not a number or distance: {text}	Тоо эсвэл зай биш: {text}
+	Not available	Боломжгүй
+	Not available yet	Одоогоор боломжгүй
+	Not Found	Олдсонгүй
+	Not loaded	Ачаалаагүй
+	Nothing found	Юу ч олдсонгүй
+	Number of objects to move	Зөөх объектын тоо
+	Numbered list	Дугаарласан жагсаалт
+	NW Isometric	Баруун хойд изометр
+	Object	Объект
+	Object grouping	Объект бүлэглэх
+	Object Properties	Объектын шинж чанар
+	Object selected is not a polyline. Do you want to turn it into one?	Сонгосон объект полилайн биш байна. Полилайн болгох уу?
+	Object selection limit for display of grips	Бариул харуулах объектын тооны хязгаар
+	Object Snap	Объектын барилт
+	Object Snap (F3)	Объектын барилт (F3)
+	Object snap aperture	Объектын барилтын онилох хүрээ
+	Object snap marker size	Объектын барилтын тэмдгийн хэмжээ
+	Object Snap On (F3)	Объектын барилтыг асаах (F3)
+	Object Snap Settings	Объектын барилтын тохиргоо
+	Object Snap Tracking	Объектын барилтын мөрдөлт
+	Object Snap Tracking (F11)	Объектын барилтын мөрдөлт (F11)
+	Object Snap Tracking Settings	Объектын барилтын мөрдөлтийн тохиргоо
+	Object type	Объектын төрөл
+	Object type:	Объектын төрөл:
+	objects	объект
+	Objects on locked layers	Түгжээтэй давхарга дээрх объектууд
+	Objects selected and no command running:	Объект сонгосон, идэвхтэй команд алга:
+	Oblique	Налуу
+	Off	Унтраалттай
+	Offset	Зэрэгцээ хуулах
+	OK	OK
+	On	Асаалттай
+	On/Off	Асаах/Унтраах
+	One of the Crafting Apps by the ArtCraft team and community.	ArtCraft баг болон хамт олны бүтээсэн Crafting Apps-ын нэг.
+	Only in this drawing: {n}	Зөвхөн энэ зурагт: {n}
+	Only in {name}: {n}	Зөвхөн {name} дотор: {n}
+	Oops	Устгасныг сэргээх
+	Open	Нээх
+	Open (⌘O)	Нээх (⌘O)
+	Open a drawing first.	Эхлээд зураг нээнэ үү.
+	Open and Save	Нээх ба хадгалах
+	Open in Block Editor	Блок засварлагчид нээх
+	Open Recent	Сүүлд нээсэн
+	Open Sample Drawing	Жишээ зураг нээх
+	Open sample drawing	Жишээ зураг нээх
+	Open Sheet Set...	Хуудасны багц нээх...
+	Open Xref	Гадаад холбоос нээх
+	Open...	Нээх...
+	Operator:	Оператор:
+	Opposite corner	Эсрэг булан
+	Optimize segments within polylines	Полилайн доторх хэрчмүүдийг оновчлох
+	Options	Тохиргоо
+	Options...	Тохиргоо...
+	Orange	Улбар шар
+	Orbit	Тойруулан харах
+	Ordinate	Координатын
+	Orientation	Чиглэл
+	Origin	Эх цэг
+	Origin: {x}, {y}	Эх цэг: {x}, {y}
+	Ortho	Орто
+	Ortho (F8)	Орто (F8)
+	Ortho Mode	Орто горим
+	Ortho Mode (F8)	Орто горим (F8)
+	Osnap Settings...	Объектын барилтын тохиргоо...
+	Out	Жижигрүүлэх
+	Outer	Гадна
+	Over-constrained	Хэт хязгаарлагдсан
+	Overlay	Давхарлах
+	Overline	Дээд зураас
+	Override	Тусгайлан тохируулах
+	overrides built-in	суулгагдсаныг орлоно
+	Package Drawing...	Зургийг багцлах...
+	Page Setup Manager	Хуудасны тохиргооны удирдлага
+	Page Setup Manager...	Хуудасны тохиргооны удирдлага...
+	Pan	Гүйлгэх
+	Pan Down	Доош гүйлгэх
+	Pan Left	Зүүн тийш гүйлгэх
+	Pan Right	Баруун тийш гүйлгэх
+	Pan sensitivity	Гүйлгэлтийн мэдрэмж
+	Pan Up	Дээш гүйлгэх
+	PAPER	ЦААС
+	Paper size	Цаасны хэмжээ
+	Paper Space	Цаасан орон зай
+	Parallel	Параллель
+	Parameters Manager	Параметрийн удирдлага
+	Parametric	Параметрт
+	Parsecs	Парсек
+	Paste	Буулгах
+	Paste as Block	Блок болгож буулгах
+	Paste to Command Line	Командын мөрөнд буулгах
+	Paste to Original Coordinates	Анхны координатад буулгах
+	Path Array	Замын массив
+	Pattern	Хээ
+	PDF Underlay...	PDF дэвсгэр...
+	Percent	Хувь
+	Perimeter	Периметр
+	Perpendicular	Перпендикуляр
+	Phantom	Хоёр цэгт штрих-пунктир
+	Pick a table cell	Хүснэгтийн нүдийг сонгоно уу
+	Pick an internal point for the new boundary	Шинэ хүрээний дотоод цэгийг заана уу
+	Pick internal point	Дотоод цэгийг заана уу
+	Pickbox size	Сонгох курсорын хэмжээ
+	Pink	Ягаан
+	Plan View	Төлөвлөгөөний харагдац
+	Plot	Хэвлэх
+	Plot (click: do not plot)	Хэвлэнэ (дарвал: хэвлэхгүй)
+	Plot area	Хэвлэх талбай
+	Plot object lineweights	Объектын шугамын зузааныг хэвлэх
+	Plot offset	Хэвлэлтийн шилжилт
+	Plot Preview	Хэвлэлтийг урьдчилан харах
+	Plot Settings	Хэвлэлтийн тохиргоо
+	Plot style	Хэвлэлтийн хэв маяг
+	Plot style attached to	Хэвлэлтийн хэв маяг хавсаргасан
+	Plot Style Manager	Хэвлэлтийн хэв маягийн удирдлага
+	Plot Style Manager...	Хэвлэлтийн хэв маягийн удирдлага...
+	Plot style table	Хэвлэлтийн хэв маягийн хүснэгт
+	Plot Style...	Хэвлэлтийн хэв маяг...
+	Plot Styles...	Хэвлэлтийн хэв маягууд...
+	Plot table type	Хэвлэлтийн хүснэгтийн төрөл
+	Plot transparency	Тунгалаг байдлыг хэвлэх
+	Plot Window	Хэвлэх цонх
+	Plotter Manager	Плоттерын удирдлага
+	Plotter Manager...	Плоттерын удирдлага...
+	Plus/minus	Нэмэх/хасах
+	Point	Цэг
+	Point Filters	Цэгийн шүүлтүүр
+	Point Style...	Цэгийн хэв маяг...
+	Polar	Туйлын мөрдөлт
+	Polar (distance < angle)	Туйлын (зай < өнцөг)
+	Polar angle measurement	Туйлын өнцгийн хэмжилт
+	Polar Array	Тойрог массив
+	Polar distance	Туйлын зай
+	Polar Tracking	Туйлын мөрдөлт
+	Polar Tracking (F10)	Туйлын мөрдөлт (F10)
+	Polar Tracking On (F10)	Туйлын мөрдөлтийг асаах (F10)
+	Polar Tracking Settings	Туйлын мөрдөлтийн тохиргоо
+	Polar: {distance} < {angle}°	Туйлын: {distance} < {angle}°
+	PolarSnap	Туйлын барилт
+	Polygon	Олон өнцөгт
+	Polygonal	Олон өнцөгт
+	Polygonal Viewport	Олон өнцөгт харах цонх
+	Polyline	Полилайн
+	Polyline Edit	Полилайн засах
+	Portrait	Босоо
+	Position	Байрлал
+	Position X	Байрлал X
+	Position Y	Байрлал Y
+	Position Z	Байрлал Z
+	Precision	Нарийвчлал
+	Preferences	Тохиргоо
+	Press the keys	Товчнуудыг дарна уу
+	Preview	Урьдчилан харах
+	Previous	Өмнөх
+	Previous Change	Өмнөх өөрчлөлт
+	Previous Layer	Өмнөх давхарга
+	Primitives	Үндсэн биетүүд
+	Print	Хэвлэх
+	Print...	Хэвлэх...
+	Printer/plotter	Принтер/плоттер
+	Profiles	Профайлууд
+	Properties	Шинж чанар
+	Properties Inspector	Шинж чанарын хянагч
+	Properties Palette	Шинж чанарын самбар
+	Properties:	Шинж чанар:
+	Proxy	Прокси объект
+	PRs	PR
+	Purge	Цэвэрлэх
+	Purple	Нил ягаан
+	Pyramid	Пирамид
+	Quadrant	Квадрант
+	Query Entities	Объектуудыг лавлах
+	Query Texts	Текстүүдийг лавлах
+	Quick	Хурдан
+	Quick Dimension	Хурдан хэмжээс
+	Quick Properties	Хурдан шинж чанар
+	Quick Select	Хурдан сонголт
+	Quick Select Properties	Хурдан сонголтын шинж чанар
+	Quick Select...	Хурдан сонголт...
+	QuickCalc	Хурдан тооцоолуур
+	QuickCalc Pick	Хурдан тооцоолуурт заах
+	Quit MonCad	MonCad-аас гарах
+	Radians	Радиан
+	Radius	Радиус
+	Raster Image	Растер зураг
+	Raster Image Reference...	Растер зургийн холбоос...
+	Raster Images	Растер зургууд
+	Ray	Цацраг
+	Read-only	Зөвхөн унших
+	Real name	Жинхэнэ нэр
+	Realistic	Бодит
+	Realtime	Бодит хугацаанд
+	Reassociate Dimensions	Хэмжээсүүдийг дахин холбох
+	Recalculate Table Formulas	Хүснэгтийн томьёог дахин тооцоолох
+	Recent	Сүүлийн
+	Recent Commands	Сүүлийн командууд
+	Recent Input	Сүүлийн оруулга
+	Recover...	Сэргээх...
+	Rectangle	Тэгш өнцөгт
+	Rectangular	Тэгш өнцөгт
+	Rectangular Array	Тэгш өнцөгт массив
+	Rectangular snap	Тэгш өнцөгт барилт
+	Red	Улаан
+	Red, Green, Blue	Улаан, Ногоон, Цэнхэр
+	Red,Green,Blue	Улаан,Ногоон,Цэнхэр
+	Redo	Дахин хийх
+	Redo (⇧⌘Z)	Дахин хийх (⇧⌘Z)
+	Redraw	Дахин зурах
+	Reference Manager	Холбоосын удирдлага
+	Reference Name	Холбоосын нэр
+	References: {n}	Холбоос: {n}
+	Refresh	Шинэчлэх
+	Regen	Дахин үүсгэх
+	Regen All	Бүгдийг дахин үүсгэх
+	Region	Муж
+	Region/Mass Properties	Муж/массын шинж чанар
+	Reinitialize	Дахин эхлүүлэх
+	Relative	Харьцангуй
+	Relative to last segment	Сүүлийн хэрчимтэй харьцангуй
+	Release the 3D mouse to calibrate its resting position	Тайван байрлалыг тохируулахын тулд 3D хулганыг суллана уу
+	Reload	Дахин ачаалах
+	Reload All	Бүгдийг дахин ачаалах
+	Remove	Арилгах
+	Remove Leader	Заагч шугам арилгах
+	Remove objects	Объектуудыг хасах
+	Remove the viewport override	Харах цонхны тусгай тохиргоог арилгах
+	Remove Vertex	Орой арилгах
+	Rename	Нэр өөрчлөх
+	Rename Dimension Style	Хэмжээсийн хэв маягийн нэр өөрчлөх
+	Rename Layer	Давхаргын нэр өөрчлөх
+	Rename Layer State	Давхаргын төлвийн нэр өөрчлөх
+	Rename Layout	Хуудасны нэр өөрчлөх
+	Rename Text Style	Текстийн хэв маягийн нэр өөрчлөх
+	Rename...	Нэр өөрчлөх...
+	Render	Рендер
+	Repeat last command	Сүүлийн командыг давтах
+	Repeat {command}	{command} давтах
+	Replace	Солих
+	Replace All	Бүгдийг солих
+	Replace Block...	Блок солих...
+	Replace with:	Юугаар солих:
+	Replacement text	Солих текст
+	Replaces the shortcut of {commands}	Дараах командын товчлолыг орлоно: {commands}
+	Requires a point (x,y, @dx,dy or @d<a).	Цэг шаардлагатай (x,y, @dx,dy эсвэл @d<a).
+	Reset	Анхны байдалд
+	Reset keeps the interface language.	Анхны байдалд оруулахад интерфейсийн хэл өөрчлөгдөхгүй.
+	Reset Palettes	Самбаруудыг анхны байдалд оруулах
+	Reset Panel Layout	Самбарын байршлыг анхны байдалд оруулах
+	Reset the scale list to the defaults?	Масштабын жагсаалтыг анхны байдалд оруулах уу?
+	Reset to Defaults	Үндсэн тохиргоонд буцаах
+	Restore	Сэргээх
+	Restore Layer State	Давхаргын төлөв сэргээх
+	Results	Үр дүн
+	Reverse	Чиглэл урвуулах
+	Reverse the order	Дарааллыг урвуулах
+	Reverse zoom direction	Томруулах чиглэлийг урвуулах
+	Revision Cloud	Засварын үүл
+	Revolve	Эргүүлж үүсгэх
+	Right	Баруунаас
+	Right-Click Customization	Хулганы баруун товчны тохиргоо
+	Right-Click Customization...	Хулганы баруун товчны тохиргоо...
+	Rotate	Эргүүлэх
+	Rotate arrayed items?	Массивын элементүүдийг эргүүлэх үү?
+	Rotate arrayed objects?	Массивын объектуудыг эргүүлэх үү?
+	Rotation	Эргэлт
+	Rotation angle	Эргэлтийн өнцөг
+	Run ALIASEDIT with the file's contents using its text parameter.	Файлын агуулгыг text параметрт өгч ALIASEDIT ажиллуулна уу.
+	Run Script...	Скрипт ажиллуулах...
+	S	Ө
+	Sample output	Жишээ үр дүн
+	Save	Хадгалах
+	Save (⌘S)	Хадгалах (⌘S)
+	Save alias	Товч нэр хадгалах
+	Save Anyway	Ямартай ч хадгалах
+	Save As	Өөрөөр хадгалах
+	Save As...	Өөрөөр хадгалах...
+	Save Block	Блок хадгалах
+	Save Block As	Блокийг өөрөөр хадгалах
+	Save cancelled: {path} was not changed.	Хадгалалт цуцлагдлаа: {path} өөрчлөгдөөгүй.
+	Save Changes	Өөрчлөлтийг хадгалах
+	Save changes to array?	Массивын өөрчлөлтийг хадгалах уу?
+	Save changes to block "{name}"?	«{name}» блокийн өөрчлөлтийг хадгалах уу?
+	Save changes to {name}?	{name} дахь өөрчлөлтийг хадгалах уу?
+	Save layer settings with views?	Давхаргын тохиргоог харагдацтай хамт хадгалах уу?
+	Save Layer State	Давхаргын төлөв хадгалах
+	Save Layout as Template	Хуудсыг загвар болгон хадгалах
+	Save new drawings as	Шинэ зургийг хадгалах формат
+	Save Reference Edits	Холбоосын засварыг хадгалах
+	Save State	Төлөв хадгалах
+	Saved Path	Хадгалсан зам
+	Saving {name} will remove content	{name} хадгалахад зарим агуулга устана
+	Scale	Масштаб
+	Scale factor	Масштабын коэффициент
+	Scale List...	Масштабын жагсаалт...
+	Scale objects based on alignment points?	Объектуудыг тэгшлэх цэгүүдээр масштаблах уу?
+	Scientific	Шинжлэх ухааны
+	Screen magnifiers, screen readers and recorders follow the system cursor.	Дэлгэцийн томруулагч, дэлгэц уншигч, бичлэг хийх программууд системийн курсорыг дагана.
+	Screening	Өнгөний эрчим
+	SE Isometric	Зүүн өмнөд изометр
+	Search for layer	Давхарга хайх
+	Search for parameter	Параметр хайх
+	Search for pattern	Хээ хайх
+	Searches the current space.	Идэвхтэй орон зайд хайна.
+	Second and next points:	Хоёр дахь болон дараагийн цэгүүд:
+	Second point of mid	Дунд цэгийн хоёр дахь цэг
+	Select	Сонгох
+	Select 2D polyline	2D полилайн сонгоно уу
+	Select a 2D polyline.	2D полилайн сонгоно уу.
+	Select a block	Блок сонгоно уу
+	Select a block reference	Блокийн оруулга сонгоно уу
+	Select a block reference.	Блокийн оруулга сонгоно уу.
+	Select a circle or arc.	Тойрог эсвэл нум сонгоно уу.
+	Select a closed polyline	Битүү полилайн сонгоно уу
+	Select a closed polyline, circle, ellipse or closed spline.	Битүү полилайн, тойрог, эллипс эсвэл битүү сплайн сонгоно уу.
+	Select a closed polyline.	Битүү полилайн сонгоно уу.
+	Select a content type	Агуулгын төрөл сонгоно уу
+	Select a curve as the path.	Зам болгох муруй сонгоно уу.
+	Select a dimension constraint type	Хэмжээсийн хязгаарлалтын төрөл сонгоно уу
+	Select a leader type	Заагч шугамын төрөл сонгоно уу
+	Select a line object	Шугам сонгоно уу
+	Select a line object.	Шугам сонгоно уу.
+	Select a line or an arc.	Шугам эсвэл нум сонгоно уу.
+	Select a line or polyline segment	Шугам эсвэл полилайны хэрчим сонгоно уу
+	Select a line, arc or open polyline.	Шугам, нум эсвэл задгай полилайн сонгоно уу.
+	Select a line, arc, circle, polyline, ellipse or spline as the path.	Зам болгох шугам, нум, тойрог, полилайн, эллипс эсвэл сплайн сонгоно уу.
+	Select a line, circle, arc or polyline segment.	Шугам, тойрог, нум эсвэл полилайны хэрчим сонгоно уу.
+	Select a line.	Шугам сонгоно уу.
+	Select a multileader	Олон заагч сонгоно уу
+	Select a polyline.	Полилайн сонгоно уу.
+	Select a table	Хүснэгт сонгоно уу
+	Select a text, mtext, attribute definition or dimension.	Текст, олон мөрт текст, атрибутын тодорхойлолт эсвэл хэмжээс сонгоно уу.
+	Select a viewport	Харах цонх сонгоно уу
+	Select All	Бүгдийг сонгох
+	Select an annotation object	Тэмдэглэгээний объект сонгоно уу
+	Select an annotation object or	Тэмдэглэгээний объект сонгоно уу эсвэл
+	Select an arc or circle	Нум эсвэл тойрог сонгоно уу
+	Select an arc.	Нум сонгоно уу.
+	Select an item in array to replace	Солих массивын элементийг сонгоно уу
+	Select an object	Объект сонгоно уу
+	Select an object to change	Өөрчлөх объект сонгоно уу
+	Select an object to change or	Өөрчлөх объект сонгоно уу эсвэл
+	Select an object to copy	Хуулах объект сонгоно уу
+	Select an object to measure	Хэмжих объект сонгоно уу
+	Select an object to measure or	Хэмжих объект сонгоно уу эсвэл
+	Select an object.	Объект сонгоно уу.
+	Select an open curve.	Задгай муруй сонгоно уу.
+	Select an open line, arc, polyline, ellipse arc or spline.	Задгай шугам, нум, полилайн, эллипс нум эсвэл сплайн сонгоно уу.
+	Select annotative objects	Тэмдэглэгээний объектуудыг сонгоно уу
+	Select arc or circle	Нум эсвэл тойрог сонгоно уу
+	Select arc or polyline arc segment	Нум эсвэл полилайны нуман хэрчим сонгоно уу
+	Select arc style	Нумын хэв маяг сонгоно уу
+	Select arc, circle, line	Нум, тойрог, шугам сонгоно уу
+	Select array	Массив сонгоно уу
+	Select at least two objects to join.	Нэгтгэх дор хаяж хоёр объект сонгоно уу.
+	Select attributes	Атрибутуудыг сонгоно уу
+	Select base dimension	Суурь хэмжээсийг сонгоно уу
+	Select base point of replacement objects	Орлуулах объектуудын суурь цэгийг сонгоно уу
+	Select block reference	Блокийн оруулга сонгоно уу
+	Select boundaries to remove	Хасах хүрээнүүдийг сонгоно уу
+	Select boundary objects (Enter finds them)	Хүрээний объектуудыг сонгоно уу (Enter дарвал автоматаар олно)
+	Select circle or arc to add center mark	Төвийн тэмдэг нэмэх тойрог эсвэл нум сонгоно уу
+	Select clipping object	Хайчлах хүрээний объект сонгоно уу
+	Select closed boundary objects to add	Нэмэх битүү хүрээний объектуудыг сонгоно уу
+	Select closed objects (regions, closed polylines, circles).	Битүү объектуудыг сонгоно уу (муж, битүү полилайн, тойрог).
+	Select Color	Өнгө сонгох
+	Select destination object(s)	Зорилтот объект(ууд)-ыг сонгоно уу
+	Select dimension	Хэмжээс сонгоно уу
+	Select dimension to add jog	Хугарал нэмэх хэмжээс сонгоно уу
+	Select dimension to add/remove break	Тасалдал нэмэх/хасах хэмжээс сонгоно уу
+	Select dimensions to space	Зай тэгшлэх хэмжээсүүдийг сонгоно уу
+	Select first line	Эхний шугамыг сонгоно уу
+	Select first line or arc	Эхний шугам эсвэл нумыг сонгоно уу
+	Select first mline	Эхний олон шугамыг сонгоно уу
+	Select first object	Эхний объектыг сонгоно уу
+	Select first object or	Эхний объектыг сонгоно уу эсвэл
+	Select first point	Эхний цэгийг сонгоно уу
+	Select geometry to dimension	Хэмжээс тавих геометрийг сонгоно уу
+	Select grip to edit array	Массивыг засах бариулыг сонгоно уу
+	Select group	Бүлэг сонгоно уу
+	Select hatch object	Штрих сонгоно уу
+	Select item in array	Массивын элемент сонгоно уу
+	Select jog to remove	Хасах хугарлыг сонгоно уу
+	Select mline	Олон шугам сонгоно уу
+	Select multileader to align to or [Options]	Тэгшлэх суурь олон заагчийг сонгоно уу эсвэл [Options]
+	Select nested objects to copy	Хуулах доторх объектуудыг сонгоно уу
+	Select nested objects to copy or	Хуулах доторх объектуудыг сонгоно уу эсвэл
+	Select new datum point	Шинэ тулгуур цэгийг сонгоно уу
+	Select object	Объект сонгоно уу
+	Select object on target layer	Зорилтот давхарга дээрх объектыг сонгоно уу
+	Select object to break dimension	Хэмжээсийг тасдах объектыг сонгоно уу
+	Select object to clip viewport	Харах цонхыг хайчлах объектыг сонгоно уу
+	Select object to count or [List/Spaces]	Тоолох объект сонгоно уу эсвэл [List/Spaces]
+	Select object to dimension	Хэмжээс тавих объект сонгоно уу
+	Select object to divide	Хуваах объект сонгоно уу
+	Select object to extend or shift-select to trim	Сунгах объект сонгоно уу, эсвэл Shift дарж сонговол тайрна
+	Select object to measure	Хэмжих объект сонгоно уу
+	Select object to offset	Зэрэгцээ хуулах объект сонгоно уу
+	Select object to trim or shift-select to extend	Тайрах объект сонгоно уу, эсвэл Shift дарж сонговол сунгана
+	Select Objects	Объект сонгох
+	Select objects	Объектуудыг сонгоно уу
+	Select objects (crossing window first corner)	Объектуудыг сонгоно уу (огтлох хүрээний эхний булан)
+	Select objects first, then choose a command	Эхлээд объект, дараа нь команд сонгох
+	Select objects or	Объектуудыг сонгоно уу эсвэл
+	Select objects to add to the group	Бүлэгт нэмэх объектуудыг сонгоно уу
+	Select objects to array.	Массив болгох объектуудыг сонгоно уу.
+	Select objects to erase or	Устгах объектуудыг сонгоно уу эсвэл
+	Select objects to remove from the group	Бүлгээс хасах объектуудыг сонгоно уу
+	Select objects to stretch by crossing-window or crossing-polygon...	Сунгаж татах объектуудыг огтлох хүрээ эсвэл огтлох олон өнцөгтөөр сонгоно уу...
+	Select objects:	Объектуудыг сонгоно уу:
+	Select one polyline (Multiple is available through the JSON form).	Нэг полилайн сонгоно уу (Multiple-г JSON маягтаар ашиглаж болно).
+	Select path curve	Замын муруйг сонгоно уу
+	Select point or object	Цэг эсвэл объект сонгоно уу
+	Select polyline	Полилайн сонгоно уу
+	Select polyline or	Полилайн сонгоно уу эсвэл
+	Select reference objects	Жишиг объектуудыг сонгоно уу
+	Select replacement objects	Орлуулах объектуудыг сонгоно уу
+	Select second line	Хоёр дахь шугамыг сонгоно уу
+	Select second line or shift-select to apply corner	Хоёр дахь шугамыг сонгоно уу, эсвэл Shift дарж сонговол булан үүсгэнэ
+	Select second mline	Хоёр дахь олон шугамыг сонгоно уу
+	Select second object	Хоёр дахь объектыг сонгоно уу
+	Select second object or shift-select to apply corner	Хоёр дахь объектыг сонгоно уу, эсвэл Shift дарж сонговол булан үүсгэнэ
+	Select second point	Хоёр дахь цэгийг сонгоно уу
+	Select Similar	Ижил төстэйг сонгох
+	Select source object	Эх объектыг сонгоно уу
+	Select spline	Сплайн сонгоно уу
+	Select symmetry line	Тэгш хэмийн тэнхлэгийг сонгоно уу
+	Select two points	Хоёр цэг сонгоно уу
+	Select using two clicks only	Зөвхөн хоёр товшилтоор сонгох
+	Select viewport to clip	Хайчлах харах цонхыг сонгоно уу
+	Select viewports	Харах цонхнуудыг сонгоно уу
+	Selection	Сонголт
+	Selection Area Effect	Сонголтын талбайн эффект
+	Selection area opacity:	Сонголтын талбайн тунгалаг бус байдал:
+	Selection Cycling	Ээлжлэн сонгох
+	Selection effect color	Сонголтын эффектийн өнгө
+	Selection modes	Сонголтын горимууд
+	Selection preview	Сонголтын урьдчилсан харагдац
+	Selection Preview Filter	Сонголтын урьдчилсан харагдацын шүүлтүүр
+	Send Hatches to Back	Штрихүүдийг ард шилжүүлэх
+	Send to Back	Хамгийн ард шилжүүлэх
+	Send Under Objects	Объектуудын доор шилжүүлэх
+	Services	Үйлчилгээ
+	Set Current	Идэвхтэй болгох
+	Set Current Dimension Style	Хэмжээсийн хэв маягийг идэвхтэй болгох
+	Set Current Text Style	Текстийн хэв маягийг идэвхтэй болгох
+	Set Current Viewport	Харах цонхыг идэвхтэй болгох
+	Set Dynamic Property	Динамик шинж чанар тохируулах
+	Set Layer Properties	Давхаргын шинж чанар тохируулах
+	Set Properties	Шинж чанар тохируулах
+	Set Table Cell	Хүснэгтийн нүд тохируулах
+	Set Table Cell Style	Хүснэгтийн нүдний хэв маяг тохируулах
+	Set Variable	Хувьсагч тохируулах
+	Set View	Харагдац тохируулах
+	Settings	Тохиргоо
+	Settings...	Тохиргоо...
+	Shaded	Сүүдэртэй
+	Shaded with Edges	Ирмэгтэй сүүдэртэй
+	Shades of Gray	Саарал аяс
+	Shape	Хэлбэр
+	Share	Хуваалцах
+	Share...	Хуваалцах...
+	Sheet Books to PDF...	Хуудасны багцыг PDF болгох...
+	Shortcut Menu	Контекст цэс
+	Shortcut Menu: always enabled	Контекст цэс: үргэлж идэвхтэй
+	Shortcut Menu: enabled when command options are present	Контекст цэс: командад сонголт байвал идэвхтэй
+	Show	Харуулах
+	Show All	Бүгдийг харуулах
+	Show All Constraint Bars	Хязгаарлалтын бүх самбарыг харуулах
+	Show All Dynamic Dimensions	Бүх динамик хэмжээсийг харуулах
+	Show and hide the tools of this category	Энэ ангиллын хэрэгслүүдийг харуулах, нуух
+	Show Annotative Objects	Тэмдэглэгээний объектуудыг харуулах
+	Show command prompting near the crosshairs	Командын асуулгыг курсорын загалмайн дэргэд харуулах
+	Show grips	Бариулуудыг харуулах
+	Show in Tool Sets	Хэрэгслийн багцад харуулах
+	Show Layer List	Давхаргын жагсаалт харуулах
+	Show Quick Properties for selected objects	Сонгосон объектын шуурхай шинж чанарыг харуулах
+	Show System Cursor	Системийн курсор харуулах
+	Show/Hide Lineweight	Шугамын зузааныг харуулах/нуух
+	Show/Hide Transparency	Тунгалаг байдлыг харуулах/нуух
+	Single Line Text	Нэг мөрт текст
+	Single Point	Нэг цэг
+	Single...	Ганц...
+	Sketchy	Ноорог
+	Smooth	Гөлгөр
+	Snap	Барилт
+	Snap and Grid	Барилт ба тор
+	Snap Mode	Барилтын горим
+	Snap Mode (F9)	Барилтын горим (F9)
+	Snap On (F9)	Барилт асаах (F9)
+	Snap Overrides	Түр зуурын барилт
+	Snap type	Барилтын төрөл
+	Snap X spacing	Барилтын X алхам
+	Snap, grid, polar tracking and Dynamic Input:	Барилт, тор, туйлын мөрдөлт ба динамик оруулга:
+	Solid	Цул бие
+	Solid Editing	Цул бие засах
+	Sort	Эрэмбэлэх
+	Sort text top-down?	Текстийг дээрээс доош эрэмбэлэх үү?
+	Specified origin	Заасан эх цэг
+	Specify a fit tolerance	Тааруулалтын хүлцэл заана уу
+	Specify a point	Цэг заана уу
+	Specify a point on the spline <exit>	Сплайн дээрх цэгийг заана уу <exit>
+	Specify a precision	Нарийвчлал заана уу
+	Specify a scale for the hatch pattern	Штрихийн хээний масштабыг заана уу
+	Specify a second extension line origin	Хоёр дахь гаргах шугамын эхийг заана уу
+	Specify an angle for the hatch pattern	Штрихийн хээний өнцгийг заана уу
+	Specify angle end point	Өнцгийн төгсгөлийн цэгийг заана уу
+	Specify angle for dimension text	Хэмжээсийн текстийн өнцгийг заана уу
+	Specify angle of dimension line	Хэмжээсийн шугамын өнцгийг заана уу
+	Specify angle of dimension text	Хэмжээсийн текстийн өнцгийг заана уу
+	Specify angle start point	Өнцгийн эхлэх цэгийг заана уу
+	Specify angle vertex	Өнцгийн оройг заана уу
+	Specify angle vertex point	Өнцгийн оройн цэгийг заана уу
+	Specify arc length dimension location	Нумын уртын хэмжээсийн байрлалыг заана уу
+	Specify axis endpoint of ellipse	Эллипсийн тэнхлэгийн төгсгөлийн цэгийг заана уу
+	Specify base diameter	Суурийн диаметрийг заана уу
+	Specify base point	Суурь цэгийг заана уу
+	Specify base point of objects	Объектуудын суурь цэгийг заана уу
+	Specify base point or	Суурь цэгийг заана уу эсвэл
+	Specify base point or displacement (drag with the middle mouse button for realtime pan)	Суурь цэг эсвэл шилжилтийг заана уу (шууд гүйлгэхийн тулд хулганы дунд товчоор чирнэ үү)
+	Specify base radius	Суурийн радиусыг заана уу
+	Specify base radius or	Суурийн радиусыг заана уу эсвэл
+	Specify block attachment	Блокийн холболтыг заана уу
+	Specify center location override	Төвийн шинэ байрлалыг заана уу
+	Specify center of donut	Цагирагийн төвийг заана уу
+	Specify center of ellipse	Эллипсийн төвийг заана уу
+	Specify center of isocircle	Изометр тойргийн төвийг заана уу
+	Specify center of polygon	Олон өнцөгтийн төвийг заана уу
+	Specify center of view box	Харагдацын хүрээний төвийг заана уу
+	Specify center point	Төв цэгийг заана уу
+	Specify center point for circle	Тойргийн төв цэгийг заана уу
+	Specify center point of arc	Нумын төв цэгийг заана уу
+	Specify center point of array	Массивын төв цэгийг заана уу
+	Specify center point of base	Суурийн төв цэгийг заана уу
+	Specify chamfer angle from the first line	Эхний шугамаас ташуу огтлолын өнцгийг заана уу
+	Specify chamfer length on the first line	Эхний шугам дээрх ташуу огтлолын уртыг заана уу
+	Specify change point	Өөрчлөх цэгийг заана уу
+	Specify clipping boundary or select invert option	Хайчлах хүрээг заана уу эсвэл урвуулах сонголтыг сонгоно уу
+	Specify collected multileader location or [Vertical/Horizontal/Wrap]	Цуглуулсан олон заагчийн байрлалыг заана уу эсвэл [Vertical/Horizontal/Wrap]
+	Specify column height	Баганын өндрийг заана уу
+	Specify column width	Баганын өргөнийг заана уу
+	Specify control point	Удирдах цэгийг заана уу
+	Specify control point <exit>	Удирдах цэгийг заана уу <exit>
+	Specify corner of viewport	Харах цонхны буланг заана уу
+	Specify corner of window, enter a scale factor (nX or nXP)	Цонхны буланг заана уу, масштабын коэффициент оруулна уу (nX эсвэл nXP)
+	Specify diameter	Диаметр заана уу
+	Specify diameter of circle	Тойргийн диаметрийг заана уу
+	Specify diameter of isocircle	Изометр тойргийн диаметрийг заана уу
+	Specify dimension arc line location	Хэмжээсийн нумын байрлалыг заана уу
+	Specify dimension line location	Хэмжээсийн шугамын байрлалыг заана уу
+	Specify dimension line position	Хэмжээсийн шугамын байрлалыг заана уу
+	Specify direction	Чиглэл заана уу
+	Specify direction (first point)	Чиглэл заана уу (эхний цэг)
+	Specify direction (second point)	Чиглэл заана уу (хоёр дахь цэг)
+	Specify direction of chord for arc	Нумын хөвчийн чиглэлийг заана уу
+	Specify direction of vertex tangent	Оройн шүргэгчийн чиглэлийг заана уу
+	Specify displacement	Шилжилт заана уу
+	Specify displacement base point	Шилжилтийн суурь цэгийг заана уу
+	Specify distance between columns (|||)	Багана хоорондын зайг заана уу (|||)
+	Specify distance between turns	Ороолт хоорондын зайг заана уу
+	Specify distance to other axis	Нөгөө тэнхлэг хүртэлх зайг заана уу
+	Specify end angle	Төгсгөлийн өнцгийг заана уу
+	Specify end point of arc	Нумын төгсгөлийн цэгийг заана уу
+	Specify end point of arc (hold Ctrl to switch direction)	Нумын төгсгөлийн цэгийг заана уу (Ctrl дарж байвал чиглэл солигдоно)
+	Specify end tangent	Төгсгөлийн шүргэгчийг заана уу
+	Specify ending width	Төгсгөлийн өргөнийг заана уу
+	Specify ending width for next segment	Дараагийн хэрчмийн төгсгөлийн өргөнийг заана уу
+	Specify endpoint of arc	Нумын төгсгөлийн цэгийг заана уу
+	Specify endpoint of axis	Тэнхлэгийн төгсгөлийн цэгийг заана уу
+	Specify endpoint of line	Шугамын төгсгөлийн цэгийг заана уу
+	Specify endpoint of the arc	Нумын төгсгөлийн цэгийг заана уу
+	Specify existing fit point <exit>	Байгаа тааруулах цэгийг заана уу <exit>
+	Specify feature location	Элементийн байрлалыг заана уу
+	Specify fillet radius	Дугуйлалтын радиусыг заана уу
+	Specify fillet radius for rectangles	Тэгш өнцөгтийн дугуйлалтын радиусыг заана уу
+	Specify first angle endpoint	Өнцгийн эхний төгсгөлийн цэгийг заана уу
+	Specify first break point	Тасдах эхний цэгийг заана уу
+	Specify first chamfer distance	Ташуу огтлолын эхний зайг заана уу
+	Specify first chamfer distance for rectangles	Тэгш өнцөгтийн ташуу огтлолын эхний зайг заана уу
+	Specify first constraint point	Хязгаарлалтын эхний цэгийг заана уу
+	Specify first corner	Эхний буланг заана уу
+	Specify first corner of the unit cell	Нэгж нүдний эхний буланг заана уу
+	Specify first corner point	Эхний булангийн цэгийг заана уу
+	Specify first destination point	Эхний очих цэгийг заана уу
+	Specify first end point of circle's diameter	Тойргийн диаметрийн эхний төгсгөлийн цэгийг заана уу
+	Specify first endpoint of edge	Ирмэгийн эхний төгсгөлийн цэгийг заана уу
+	Specify first extension line origin	Эхний гаргах шугамын эхийг заана уу
+	Specify first fence point	Хашлага шугамын эхний цэгийг заана уу
+	Specify first point	Эхний цэгийг заана уу
+	Specify first point for arc length dimension	Нумын уртын хэмжээсийн эхний цэгийг заана уу
+	Specify first point for breakline	Таслах шугамын эхний цэгийг заана уу
+	Specify first point of mirror line	Толин тусгалын тэнхлэгийн эхний цэгийг заана уу
+	Specify first point on circle	Тойрог дээрх эхний цэгийг заана уу
+	Specify first point on circle: _tan to	Тойрог дээрх эхний цэгийг заана уу: _tan шүргэгч
+	Specify first point or [Options]	Эхний цэгийг заана уу эсвэл [Options]
+	Specify first source point	Эхний эх цэгийг заана уу
+	Specify fit point	Тааруулах цэгийг заана уу
+	Specify fourth point or	Дөрөв дэх цэгийг заана уу эсвэл
+	Specify gutter width	Багана хоорондын завсрын өргөнийг заана уу
+	Specify height	Өндөр заана уу
+	Specify helix height	Спиралийн өндрийг заана уу
+	Specify helix height or	Спиралийн өндрийг заана уу эсвэл
+	Specify included angle	Төв өнцгийг заана уу
+	Specify included angle for arc	Нумын төв өнцгийг заана уу
+	Specify insertion base point	Оруулах суурь цэгийг заана уу
+	Specify insertion point	Оруулах цэгийг заана уу
+	Specify insertion point of the table	Хүснэгтийн оруулах цэгийг заана уу
+	Specify inside diameter of donut	Цагирагийн дотоод диаметрийг заана уу
+	Specify jog location	Хугарлын байрлалыг заана уу
+	Specify jog location (or press ENTER)	Хугарлын байрлалыг заана уу (эсвэл ENTER дарна уу)
+	Specify leader arrowhead location	Заагч шугамын сумны байрлалыг заана уу
+	Specify leader arrowhead location or [Remove leaders]	Заагч шугамын сумны байрлалыг заана уу эсвэл [Remove leaders]
+	Specify leader endpoint	Заагч шугамын төгсгөлийн цэгийг заана уу
+	Specify leader landing location	Заагч шугамын хэвтээ хэсгийн байрлалыг заана уу
+	Specify leader start point	Заагч шугамын эхлэх цэгийг заана уу
+	Specify leaders to remove	Хасах заагч шугамуудыг заана уу
+	Specify leaders to remove or [Add leaders]	Хасах заагч шугамуудыг заана уу эсвэл [Add leaders]
+	Specify length for rectangles	Тэгш өнцөгтийн уртыг заана уу
+	Specify length of chord	Хөвчийн уртыг заана уу
+	Specify length of line	Шугамын уртыг заана уу
+	Specify length of segment	Хэрчмийн уртыг заана уу
+	Specify line width for rectangles	Тэгш өнцөгтийн шугамын өргөнийг заана уу
+	Specify linetype name	Шугамын төрлийн нэрийг заана уу
+	Specify location for break symbol	Таслах тэмдгийн байрлалыг заана уу
+	Specify location for new vertex	Шинэ оройн байрлалыг заана уу
+	Specify location of the text	Текстийн байрлалыг заана уу
+	Specify minimum length of arc	Нумын хамгийн бага уртыг заана уу
+	Specify new angle	Шинэ өнцгийг заана уу
+	Specify new block insertion point	Блокийн шинэ оруулах цэгийг заана уу
+	Specify new block rotation angle	Блокийн шинэ эргүүлэх өнцгийг заана уу
+	Specify new circle radius	Тойргийн шинэ радиусыг заана уу
+	Specify new elevation	Шинэ өндөршлийг заана уу
+	Specify new end point	Шинэ төгсгөлийн цэгийг заана уу
+	Specify new fit point <exit>	Шинэ тааруулах цэгийг заана уу <гарах>
+	Specify new height	Шинэ өндөр заана уу
+	Specify new length	Шинэ урт заана уу
+	Specify new linetype scale	Шугамын төрлийн шинэ масштаб заана уу
+	Specify new location	Шинэ байрлалыг заана уу
+	Specify new location for dimension text	Хэмжээсийн текстийн шинэ байрлалыг заана уу
+	Specify new location for marked vertex	Тэмдэглэсэн оройн шинэ байрлалыг заана уу
+	Specify new point on spline <exit>	Сплайн дээрх шинэ цэгийг заана уу <гарах>
+	Specify new rotation angle	Эргүүлэх шинэ өнцөг заана уу
+	Specify new text insertion point	Текстийн шинэ оруулах цэгийг заана уу
+	Specify new thickness	Шинэ зузаан заана уу
+	Specify new width for all segments	Бүх хэрчмийн шинэ өргөн заана уу
+	Specify next fence point	Хашаа шугамын дараагийн цэгийг заана уу
+	Specify next point	Дараагийн цэгийг заана уу
+	Specify number of columns	Баганын тоо заана уу
+	Specify offset distance	Зэрэгцээ хуулах зай заана уу
+	Specify offset distance or	Зэрэгцээ хуулах зай заана уу эсвэл
+	Specify opposite corner	Эсрэг буланг заана уу
+	Specify opposite corner point	Эсрэг булангийн цэгийг заана уу
+	Specify other corner	Нөгөө буланг заана уу
+	Specify other corner point	Нөгөө булангийн цэгийг заана уу
+	Specify other endpoint of axis	Тэнхлэгийн нөгөө төгсгөлийн цэгийг заана уу
+	Specify outside diameter of donut	Цагирагийн гадна диаметр заана уу
+	Specify point	Цэг заана уу
+	Specify point on object for first tangent of circle	Тойргийн эхний шүргэлтийн объект дээр цэг заана уу
+	Specify point on object for second tangent of circle	Тойргийн хоёр дахь шүргэлтийн объект дээр цэг заана уу
+	Specify point on side to offset	Зэрэгцээ хуулах тал дээр цэг заана уу
+	Specify quadrant	Квадрантыг заана уу
+	Specify radius	Радиус заана уу
+	Specify radius of arc	Нумын радиус заана уу
+	Specify radius of circle	Тойргийн радиус заана уу
+	Specify radius of isocircle	Изотойргийн радиус заана уу
+	Specify reference angle	Жишиг өнцөг заана уу
+	Specify reference length	Жишиг урт заана уу
+	Specify rotation angle	Эргүүлэх өнцөг заана уу
+	Specify rotation angle of text	Текстийн эргэлтийн өнцөг заана уу
+	Specify rotation angle or	Эргүүлэх өнцөг заана уу эсвэл
+	Specify rotation around major axis	Их тэнхлэгийг тойрох эргэлт заана уу
+	Specify scale factor	Масштабын коэффициент заана уу
+	Specify scale factor for XYZ axes	XYZ тэнхлэгийн масштабын коэффициент заана уу
+	Specify second angle endpoint	Өнцгийн хоёр дахь төгсгөлийн цэгийг заана уу
+	Specify second break point	Тасдах хоёр дахь цэгийг заана уу
+	Specify second chamfer distance for rectangles	Тэгш өнцөгтийн ташуу огтлолын хоёр дахь зай заана уу
+	Specify second constraint point	Хязгаарлалтын хоёр дахь цэгийг заана уу
+	Specify second destination point	Хоёр дахь очих цэгийг заана уу
+	Specify second end point of circle's diameter	Тойргийн диаметрийн хоёр дахь төгсгөлийн цэгийг заана уу
+	Specify second endpoint of edge	Ирмэгийн хоёр дахь төгсгөлийн цэгийг заана уу
+	Specify second extension line origin	Хоёр дахь гаргах шугамын эхлэлийг заана уу
+	Specify second point	Хоёр дахь цэгийг заана уу
+	Specify second point for arc length dimension	Нумын уртын хэмжээсийн хоёр дахь цэгийг заана уу
+	Specify second point for breakline	Таслах шугамын хоёр дахь цэгийг заана уу
+	Specify second point of arc	Нумын хоёр дахь цэгийг заана уу
+	Specify second point of mirror line	Толин тусгалын шугамын хоёр дахь цэгийг заана уу
+	Specify second point on arc	Нум дээрх хоёр дахь цэгийг заана уу
+	Specify second point on circle	Тойрог дээрх хоёр дахь цэгийг заана уу
+	Specify second point on circle: _tan to	Тойрог дээрх хоёр дахь цэгийг заана уу: _tan шүргэгч
+	Specify second point or <use first point as displacement>	Хоёр дахь цэгийг заана уу эсвэл <эхний цэгийг шилжилт болгон ашиглах>
+	Specify second source point	Хоёр дахь эх цэгийг заана уу
+	Specify side to offset	Зэрэгцээ хуулах талыг заана уу
+	Specify size of view box	Харах хүрээний хэмжээг заана уу
+	Specify spacing	Хоорондын зай заана уу
+	Specify start angle	Эхлэх өнцөг заана уу
+	Specify start point	Эхлэх цэгийг заана уу
+	Specify start point of arc	Нумын эхлэх цэгийг заана уу
+	Specify start point of polyline	Полилайны эхлэх цэгийг заана уу
+	Specify start point of text	Текстийн эхлэх цэгийг заана уу
+	Specify start tangent	Эхлэлийн шүргэгчийг заана уу
+	Specify starting width	Эхлэх өргөн заана уу
+	Specify starting width for next segment	Дараагийн хэрчмийн эхлэх өргөн заана уу
+	Specify tangent direction for the start point of arc	Нумын эхлэх цэг дэх шүргэгчийн чиглэлийг заана уу
+	Specify temporary OTRACK point	OTRACK-ийн түр цэгийг заана уу
+	Specify text height	Текстийн өндөр заана уу
+	Specify the angle between items	Элементүүдийн хоорондох өнцөг заана уу
+	Specify the angle to fill (+=ccw, -=cw)	Дүүргэх өнцөг заана уу (+=цагийн зүүний эсрэг, -=цагийн зүүний дагуу)
+	Specify the distance between columns (|||)	Баганын хоорондох зай заана уу (|||)
+	Specify the elevation for rectangles	Тэгш өнцөгтийн өндөршил заана уу
+	Specify the incrementing elevation between rows	Мөр хоорондын өндөршлийн өсөлт заана уу
+	Specify the new angle	Шинэ өнцөг заана уу
+	Specify the pattern origin	Хээний эх цэгийг заана уу
+	Specify the reference angle	Жишиг өнцөг заана уу
+	Specify the tangent direction for the start point of arc	Нумын эхлэх цэг дэх шүргэгчийн чиглэлийг заана уу
+	Specify thickness for rectangles	Тэгш өнцөгтийн зузаан заана уу
+	Specify third point	Гурав дахь цэгийг заана уу
+	Specify third point on circle	Тойрог дээрх гурав дахь цэгийг заана уу
+	Specify third point on circle: _tan to	Тойрог дээрх гурав дахь цэгийг заана уу: _tan шүргэгч
+	Specify third source point or <continue>	Гурав дахь эх цэгийг заана уу эсвэл <үргэлжлүүлэх>
+	Specify through point	Дайрах цэгийг заана уу
+	Specify tolerance	Хүлцэл заана уу
+	Specify top diameter	Дээд диаметр заана уу
+	Specify top radius	Дээд радиус заана уу
+	Specify top radius or	Дээд радиус заана уу эсвэл
+	Specify total angle	Нийт өнцөг заана уу
+	Specify total length	Нийт урт заана уу
+	Specify total length or	Нийт урт заана уу эсвэл
+	Specify total width	Нийт өргөн заана уу
+	Specify view twist angle	Харагдацыг мушгих өнцөг заана уу
+	Specify width	Өргөн заана уу
+	Specify width for rectangles	Тэгш өнцөгтийн өргөн заана уу
+	Specify X scale factor	X масштабын коэффициент заана уу
+	Specify Z scale factor or	Z масштабын коэффициент заана уу эсвэл
+	Specify zoom scale factor	Томруулах масштабын коэффициент заана уу
+	Spelling	Зөв бичих дүрэм
+	Sphere	Бөмбөрцөг
+	Spherical	Бөмбөрцөг хэлбэрийн
+	Spline	Сплайн
+	Spline Edit	Сплайн засах
+	Stack (type 1/2 then select)	Бутархай (1/2 гэж бичээд сонгоно уу)
+	Standard	Стандарт
+	Start	Эхлэл
+	Start angle	Эхлэх өнцөг
+	Start Width	Эхлэх өргөн
+	Start X	Эхлэл X
+	Start Y	Эхлэл Y
+	Start, Center, Angle	Эхлэл, төв, өнцөг
+	Start, Center, End	Эхлэл, төв, төгсгөл
+	Start, Center, Length	Эхлэл, төв, урт
+	Start, End, Angle	Эхлэл, төгсгөл, өнцөг
+	Start, End, Direction	Эхлэл, төгсгөл, чиглэл
+	Start, End, Radius	Эхлэл, төгсгөл, радиус
+	Status	Төлөв
+	Status Bar	Төлөвийн мөр
+	Stretch	Сунгаж татах
+	Stretch Vertex	Оройг сунгаж татах
+	Style: Standard	Хэв маяг: Standard
+	Subtract	Хасах
+	Surveyor's Units	Геодезийн нэгж
+	SVG drawings (SVG, SVGZ)	SVG зураг (SVG, SVGZ)
+	SW Isometric	Баруун өмнөд изометр
+	Sweep	Замаар үүсгэх
+	Switch between model space in a viewport and paper space	Харах цонх дахь модель орон зай ба цаасан орон зайн хооронд шилжих
+	Switch Drawing	Зураг солих
+	Switch Layout	Хуудас солих
+	Swivel	Камер эргүүлэх
+	Symmetric	Тэгш хэмтэй
+	Synchronize Attributes	Атрибутуудыг синхрончлох
+	Synchronize Multiple-scale Positions	Олон масштабын байрлалыг синхрончлох
+	Table	Хүснэгт
+	Table Breaks	Хүснэгт хуваах
+	Table Cell Style	Хүснэгтийн нүдний хэв маяг
+	Table style	Хүснэгтийн хэв маяг
+	Table Style...	Хүснэгтийн хэв маяг...
+	Table...	Хүснэгт...
+	Tables	Хүснэгтүүд
+	Tan, Tan, Radius	Шүргэгч, шүргэгч, радиус
+	Tan, Tan, Tan	Шүргэгч, шүргэгч, шүргэгч
+	Tangent	Шүргэгч
+	Temporary track point	Түр мөрдөх цэг
+	Text	Текст
+	Text color	Текстийн өнгө
+	Text Editor	Текст засварлагч
+	Text Height	Текстийн өндөр
+	Text height	Текстийн өндөр
+	Text Objects Only	Зөвхөн текст объект
+	Text override	Орлуулах текст
+	Text style	Текстийн хэв маяг
+	Text Style...	Текстийн хэв маяг...
+	Text to find	Хайх текст
+	Thaw All Layers	Бүх давхаргыг гэсгээх
+	Thaw Layer	Давхарга гэсгээх
+	The aperture is how near the cursor must come to a point for an object snap to find it.	Апертур нь объектын барилт цэгийг олохын тулд курсор тухайн цэгт хэр ойртох ёстойг тодорхойлно.
+	The current file doesn't look whole, so {name} stays as it is and the current file will be replaced.	Одоогийн файл бүрэн бус харагдаж байгаа тул {name} хэвээр үлдэж, одоогийн файл солигдоно.
+	The current file is kept as {name} until the next save.	Дараагийн хадгалалт хүртэл одоогийн файл {name} нэрээр хадгалагдана.
+	The drawing changed. Close the window and open it again.	Зураг өөрчлөгдсөн. Цонхыг хаагаад дахин нээнэ үү.
+	There is nothing here yet.	Энд одоогоор юу ч алга.
+	Thickness	Зузаан
+	This drawing	Энэ зураг
+	This format can't keep these objects yet: {objects}.	Энэ формат дараах объектуудыг одоохондоо хадгалж чадахгүй: {objects}.
+	Time	Цаг хугацаа
+	Time-sensitive right-click: a quick click is Enter, holding opens the menu	Хугацаанаас хамаарах баруун товшилт: богино товшилт нь Enter, удаан дарвал цэс нээгдэнэ
+	To	Зорилтот нэгж
+	To get started, create or open a drawing.	Эхлэхийн тулд зураг шинээр үүсгэх эсвэл нээнэ үү.
+	Toggle PICKADD (off: each pick replaces the selection)	PICKADD асаах/унтраах (унтраалттай: сонгох бүр өмнөх сонголтыг солино)
+	Toggle PICKADD (on: picks add to the selection)	PICKADD асаах/унтраах (асаалттай: сонгосон бүхэн сонголтод нэмэгдэнэ)
+	Tolerance...	Хүлцэл...
+	Tool Bar	Хэрэгслийн мөр
+	Tool Sets	Хэрэгслийн багц
+	Tools	Хэрэгсэл
+	TOP	ДЭЭД
+	Top left	Зүүн дээд
+	Top right	Баруун дээд
+	Torus	Тороид
+	Trace	Өргөн шугам
+	Track orthogonally only	Зөвхөн ортогональ мөрдөх
+	Track using all polar angle settings	Туйлын өнцгийн бүх тохиргоогоор мөрдөх
+	Transparency	Тунгалаг байдал
+	Trim	Тайрах
+	True Color	RGB өнгө
+	Turn All Layers On	Бүх давхаргыг асаах
+	Turn Off Layer	Давхарга унтраах
+	Turn On Layer	Давхарга асаах
+	Turn on time-sensitive right-click	Хугацаанаас хамаарах баруун товшилтыг асаах
+	Turn Quick Properties off (QPMODE)	Шуурхай шинж чанарыг унтраах (QPMODE)
+	Turned off, a right-click while a command runs always opens the shortcut menu.	Унтраалттай үед команд ажиллаж байхад баруун товшилт үргэлж контекст цэс нээнэ.
+	Turned off, a right-click while a command runs does what Right-Click Customization sets for Command mode.	Унтраалттай үед команд ажиллаж байхад баруун товшилт нь «Баруун товшилтын тохиргоо»-ны Команд горимд заасан үйлдлийг хийнэ.
+	Type	Төрөл
+	Type a command	Команд бичнэ үү
+	Type an alias name.	Товч нэр бичнэ үү.
+	Type of boundary object	Хүрээний объектын төрөл
+	Type something to find	Хайх зүйлээ бичнэ үү
+	Type text; Enter starts a new paragraph	Текст бичнэ үү; Enter шинэ догол мөр эхлүүлнэ
+	UCS Icon	UCS тэмдэг
+	Underline	Доогуур зураас
+	Undo	Буцаах
+	Undo (⌘Z)	Буцаах (⌘Z)
+	Undo Group of commands	Командын бүлгийг буцаах
+	Ungroup	Бүлгийг задлах
+	Union	Нэгтгэх
+	Unisolate Layer	Давхаргын тусгаарлалтыг цуцлах
+	Unitless	Нэгжгүй
+	Units	Нэгж
+	Units Conversion	Нэгж хувиргах
+	Units of new drawings	Шинэ зургийн нэгж
+	Units to scale inserted content	Оруулсан агуулгыг масштаблах нэгж
+	Units...	Нэгж...
+	Unload	Ачааллаас гаргах
+	Unloaded	Ачаалагдаагүй
+	Unlock Layer	Давхаргын түгжээ тайлах
+	Unlock viewport	Харах цонхны түгжээ тайлах
+	Unmerge Cells	Нүдийг салгах
+	Unreferenced	Ашиглагдаагүй
+	Unresolved	Шийдэгдээгүй
+	Unsaved changes	Хадгалаагүй өөрчлөлт
+	Unsaved Layer State	Хадгалаагүй давхаргын төлөв
+	Up	Дээш
+	Update	Шинэчлэх
+	Update Data Links	Өгөгдлийн холбоосыг шинэчлэх
+	Update Fields	Талбаруудыг шинэчлэх
+	US Survey Feet	АНУ-ын геодезийн фут
+	US Survey Inch	АНУ-ын геодезийн инч
+	US Survey Mile	АНУ-ын геодезийн миль
+	US Survey Yard	АНУ-ын геодезийн ярд
+	Use current origin	Одоогийн эх цэгийг ашиглах
+	Use for this layout	Энэ хуудсанд ашиглах
+	Use landing	Хэвтээ тавиур ашиглах уу
+	Use object linetype	Объектын шугамын төрлийг ашиглах
+	Use object lineweight	Объектын шугамын зузааныг ашиглах
+	Use System Setting	Системийн тохиргоогоор
+	User	Хэрэглэгч
+	User Parameters	Хэрэглэгчийн параметрүүд
+	User Preferences	Хэрэглэгчийн тохиргоо
+	Username	Хэрэглэгчийн нэр
+	Value	Утга
+	Value:	Утга:
+	Variables	Хувьсагчууд
+	Verify each name to be purged?	Цэвэрлэх нэр бүрийг баталгаажуулах уу?
+	Version	Хувилбар
+	Version 2000	2000 хувилбар
+	Version 2004	2004 хувилбар
+	Version 2007	2007 хувилбар
+	Version 2010	2010 хувилбар
+	Version 2013	2013 хувилбар
+	Version 2018	2018 хувилбар
+	Version {version}	Хувилбар {version}
+	Vertical	Босоо
+	VerticalDistance	БосооЗай
+	View	Харагдац
+menu	View	Харах
+	ViewCube	Харах куб
+	Viewpoint	Харах цэг
+	Viewport	Харах цонх
+	Viewport is locked	Харах цонх түгжээтэй
+	Viewport Layer Freeze	Харах цонхонд давхарга хөлдөөх
+	Viewport Properties	Харах цонхны шинж чанар
+	Viewport scale	Харах цонхны масштаб
+	Viewport {id}	Харах цонх {id}
+	Viewports	Харах цонхнууд
+	Visual Effect Settings	Харааны эффектийн тохиргоо
+	Visual Effect Settings...	Харааны эффектийн тохиргоо...
+	Visual Styles	Харагдацын хэв маягууд
+	Volume	Эзлэхүүн
+	VP Color	ХЦ өнгө
+	VP Freeze	ХЦ хөлдөөх
+	W	Б
+	WCS	WCS
+	When a command is active	Команд идэвхтэй үед
+	When no command is active	Команд идэвхгүй үед
+	Where should the data go?	Өгөгдлийг хаана гаргах вэ?
+	While a command runs, a quick click is Enter and a longer click opens the shortcut menu.	Команд ажиллаж байхад богино товшилт нь Enter, удаан товшилт контекст цэс нээнэ.
+	While a command runs:	Команд ажиллаж байхад:
+	White	Цагаан
+	Whole words	Бүтэн үг
+	Width	Өргөн
+	Width factor	Өргөний коэффициент
+	Window	Цонх
+	Window <	Цонх <
+	Window selection color:	Цонхоор сонгох өнгө:
+	Wipeout	Далдлагч
+	Wireframe	Утсан хүрээ
+	Word-wrap text?	Текстийг автоматаар мөр шилжүүлэх үү?
+	Working Set	Ажлын багц
+	Workspace	Ажлын орчин
+	Workspace Switching	Ажлын орчин солих
+	World	Ертөнцийн
+	World UCS	Ертөнцийн UCS
+	Write Block	Блокийг файлд бичих
+	X	X
+	X coordinate	X координат
+	X offset (mm)	X шилжилт (мм)
+	X-Ray	Рентген
+	Xline	Туслах шугам
+	Xref	Гадаад холбоос
+	Xref and Block In-place Editing	Гадаад холбоос ба блокийг байранд нь засах
+	Xref Clip Frame	Гадаад холбоосын тайрах хүрээ
+	Xrefs	Гадаад холбоосууд
+	Y	Y
+	Y coordinate	Y координат
+	Y offset (mm)	Y шилжилт (мм)
+	Yards	Ярд
+	Yellow	Шар
+	Yes	Тийм
+	Your changes will be lost if you don't save them.	Хадгалахгүй бол өөрчлөлтүүд алга болно.
+	Z coordinate	Z координат
+	Zoom	Томруулах
+	Zoom All	Бүх хязгаарыг харуулах
+	Zoom Dynamic	Динамик томруулах
+	Zoom Extents	Бүгдийг харуулах
+	Zoom In	Томруулах
+	Zoom Object	Объектыг томруулж харуулах
+	Zoom Out	Жижигрүүлэх
+	Zoom Previous	Өмнөх харагдац
+	Zoom Realtime	Бодит хугацаанд томруулах
+	Zoom sensitivity	Томруулах мэдрэмж
+	Zoom Window	Цонхоор томруулах
+	{alias} is already defined; select it and use Edit.	{alias} аль хэдийн тодорхойлогдсон; үүнийг сонгоод «Засах»-ыг ашиглана уу.
+	{command} is an unknown command.	Үл мэдэгдэх команд: {command}.
+	{contributors} · {commits}	{contributors} · {commits}
+	{count} more types	Өөр {count} төрөл
+	{kind} (constraint {id})	{kind} (хязгаарлалт {id})
+	{kind} constraint {name} = {expression}  (double-click to edit)	{kind} хязгаарлалт {name} = {expression}  (засахын тулд давхар товшино уу)
+	{name}: {distance} < {angle}°	{name}: {distance} < {angle}°
+	{n} commit	{n} коммит
+@plural	{n} commit	{n} коммит
+	{n} contributor	{n} хувь нэмэр оруулагч
+@plural	{n} contributor	{n} хувь нэмэр оруулагч
+	{n} more warnings; see the command line.	Өөр {n} анхааруулга байна; командын мөрийг харна уу.
+	ƒx  New User Parameter	ƒx  Хэрэглэгчийн шинэ параметр
+	ΔLOC	ΔМӨР
+	−Bin	−Бинар
+	−LOC	−МӨР
+	⌘↩ to finish	⌘↩ дуусгах

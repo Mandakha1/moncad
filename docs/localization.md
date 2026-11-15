@@ -1,7 +1,7 @@
 # Interface languages
 
 Choose **Edit → Interface Language** and select **Auto (system language)**, **English**,
-**Українська**, **Português (Brasil)**, **Deutsch**, **Español**, **Čeština** (Czech), **Русский**, **Français**, **简体中文**, **Italiano**, **한국어** (Korean), **Svenska** (Swedish), **العربية** (Arabic), **Magyar** (Hungarian), **Türkçe** (Turkish), **Ελληνικά** (Greek), **Bosanski** (Bosnian), **ქართული** (Georgian), or **Tiếng Việt** (Vietnamese).
+**Українська**, **Português (Brasil)**, **Deutsch**, **Español**, **Čeština** (Czech), **Русский**, **Français**, **简体中文**, **Italiano**, **한국어** (Korean), **Svenska** (Swedish), **العربية** (Arabic), **Magyar** (Hungarian), **Türkçe** (Turkish), **Ελληνικά** (Greek), **Bosanski** (Bosnian), **ქართული** (Georgian), **Tiếng Việt** (Vietnamese), or **Монгол** (Mongolian, MonCad).
 The interface updates without restarting, including the native macOS menus.
 The choice is saved with the other interface preferences (`cadcraft.prefs`, beside the theme):
 eframe storage on the desktop, browser local storage on the web. Installations without a saved
@@ -22,7 +22,7 @@ Automation can select the language through the existing control channel:
 ```
 
 The `ui.set` method also accepts `{"interfaceLanguage":"cs"}`. Supported values are `auto`,
-`en`, `uk`, `pt-BR`, `de`, `es`, `cs`, `ru`, `fr`, `zh`, `it`, `ko`, `sv`, `ar`, `hu`, `tr`, `bs`, `el`, `ka`, and `vi`; invalid values are rejected without changing the current
+`en`, `uk`, `pt-BR`, `de`, `es`, `cs`, `ru`, `fr`, `zh`, `it`, `ko`, `sv`, `ar`, `hu`, `tr`, `bs`, `el`, `ka`, `vi`, and `mn`; invalid values are rejected without changing the current
 selection. Resetting palettes keeps the language choice.
 
 ## Translation coverage
@@ -143,6 +143,25 @@ Georgian (`Geor`) face, which loads in every interface language when a build emb
 then shows **ქართული**. A build without that face keeps the saved `ka` choice but shows the interface
 in English, names the language **Georgian** in the picker, and the language command reports that a
 Georgian font is needed.
+
+## Mongolian (`mn`) interface — MonCad
+
+Mongolian (Cyrillic) has **2,053 rows**: every key of the union of the other catalogs, four contextual
+menu headings (**Харах** for the View menu, **Харагдац** for a named view; **Зурах**, **Хэмжээс**,
+**Өөрчлөх**) and two single-form count templates, since a Mongolian noun stays singular after a
+numeral ("3 давхарга"). `cargo xtask i18n` reports nothing missing. Prompts read "… заана уу" for
+Specify, "… оруулна уу" for Enter and "… сонгоно уу" for Select; clickable keywords keep the
+spelling the engine accepts. Terminology is in [moncad/mn-glossary.md](moncad/mn-glossary.md)
+(Давхарга, Штрих, Булан дугуйлах, Ташуу огтлох, Зэрэгцээ хуулах, Объектын барилт, Харах цонх).
+The translation is original, AI-assisted (Claude Code) work written from the English strings;
+native proofreading by Mongolian engineers is the next step.
+
+egui's bundled Ubuntu-Light and Hack faces cover every Mongolian letter, including **Ө ө Ү ү**
+(U+04E8/04E9/04AE/04AF), so Mongolian needs no extra font and works in the web build too.
+`mn-MN` and `mn_MN.UTF-8` locale tags select it automatically.
+
+Commands typed with the Mongolian Cyrillic keyboard layout (ФЦУЖЭН…) are read by key position,
+like the Greek layout: «лшиу» runs LINE, «ёшжёлу» CIRCLE, «елйнуж» -LAYER (`keyboard::latin_keys`).
 
 ## Adding translations
 

@@ -1,10 +1,14 @@
-//! Words typed on a Greek keyboard layout.
+//! Words typed on a Greek or Mongolian (Cyrillic) keyboard layout.
 //!
 //! With the Greek layout active, the keys that type LINE produce ΛΙΝΕ. Command names, aliases and
 //! prompt keywords are Latin, so a Greek speaker would have to switch layouts for every command.
 //! [`latin_keys`] reads a word as the Latin keys that produced it (the layout puts each Greek
 //! letter on the key of the Latin letter it sounds like): the command line then accepts ΛΙΝΕ and
 //! ΣΤΡΕΤΨΗ as LINE and STRETCH. Accents (the layout's dead key) are ignored.
+//!
+//! MonCad: the standard Mongolian Cyrillic layout (ФЦУЖЭН…) is read the same way, by key position:
+//! the keys of LINE type «лшиу», of CIRCLE «ёшжёлу», so a Mongolian engineer who forgot to switch
+//! layouts still starts the command.
 
 /// The Latin key a Greek letter is typed on (lower case, accents removed).
 fn key_of(c: char) -> Option<char> {
@@ -52,6 +56,72 @@ fn is_greek_letter(c: char) -> bool {
 /// decomposed text, is ignored like the accent of a precomposed letter, but only straight after
 /// the Greek letter it accents and once each: anywhere else the word is not Greek-layout typing.
 pub fn latin_keys(word: &str) -> Option<String> {
+    greek_keys(word).or_else(|| mongolian_keys(word))
+}
+
+/// The Latin key a letter of the Mongolian Cyrillic layout is typed on (lower case). The layout is
+/// positional, not phonetic: Q types ф, A types й, Z types я; е and щ sit on the - and = keys.
+fn mongolian_key_of(c: char) -> Option<char> {
+    Some(match c {
+        'ф' => 'q',
+        'ц' => 'w',
+        'у' => 'e',
+        'ж' => 'r',
+        'э' => 't',
+        'н' => 'y',
+        'г' => 'u',
+        'ш' => 'i',
+        'ү' => 'o',
+        'з' => 'p',
+        'к' => '[',
+        'ъ' => ']',
+        'й' => 'a',
+        'ы' => 's',
+        'б' => 'd',
+        'ө' => 'f',
+        'а' => 'g',
+        'х' => 'h',
+        'р' => 'j',
+        'о' => 'k',
+        'л' => 'l',
+        'д' => ';',
+        'п' => '\'',
+        'я' => 'z',
+        'ч' => 'x',
+        'ё' => 'c',
+        'с' => 'v',
+        'м' => 'b',
+        'и' => 'n',
+        'т' => 'm',
+        'ь' => ',',
+        'в' => '.',
+        'ю' => '/',
+        'е' => '-',
+        'щ' => '=',
+        _ => return None,
+    })
+}
+
+/// `word` read as the Latin keys of the Mongolian Cyrillic layout, lower case: `Some` only when the
+/// word has a Cyrillic letter and every character is a letter that layout types or ASCII (itself,
+/// in lower case). Greek-layout typing is read by [`greek_keys`] first, so the two never mix.
+fn mongolian_keys(word: &str) -> Option<String> {
+    let mut cyrillic = false;
+    let mut out = String::with_capacity(word.len());
+    for c in word.chars() {
+        if c.is_ascii() {
+            out.push(c.to_ascii_lowercase());
+            continue;
+        }
+        let lower = c.to_lowercase().next().unwrap_or(c);
+        out.push(mongolian_key_of(lower)?);
+        cyrillic = true;
+    }
+    cyrillic.then_some(out)
+}
+
+/// [`latin_keys`] for the Greek layout.
+fn greek_keys(word: &str) -> Option<String> {
     let mut greek = false;
     // What the previous Greek letter already carries (tonos, dialytika); `None` when the previous
     // character is not a Greek letter, which leaves a combining mark nothing to accent.
@@ -103,6 +173,21 @@ pub fn same_greek_word_as(word: &str) -> Option<impl Fn(&str) -> bool> {
 #[cfg(test)]
 mod tests {
     use super::{latin_keys, same_greek_word};
+
+    /// MonCad: the Mongolian Cyrillic layout's keys spell the Latin command, in any case; Cyrillic
+    /// letters that layout does not type (Ukrainian і) and mixed scripts are left alone.
+    #[test]
+    fn mongolian_layout_typing_reads_as_the_latin_keys() {
+        assert_eq!(latin_keys("лшиу").as_deref(), Some("line"));
+        assert_eq!(latin_keys("ЛШИУ").as_deref(), Some("line"));
+        assert_eq!(latin_keys("ёшжёлу").as_deref(), Some("circle"));
+        assert_eq!(latin_keys("ыуэ").as_deref(), Some("set"));
+        assert_eq!(latin_keys("елйнуж").as_deref(), Some("-layer"), "е is on the - key");
+        assert_eq!(latin_keys("үөөыуэ").as_deref(), Some("offset"));
+        assert_eq!(latin_keys("line"), None, "Latin input is never touched");
+        assert_eq!(latin_keys("лінія"), None, "a letter the Mongolian layout does not type");
+        assert_eq!(latin_keys("ΛΙΝΕ"), Some("line".into()), "Greek still reads as Greek");
+    }
 
     /// One Greek word compares equal in any case, accent or final sigma; another word, or a Latin
     /// one, does not.
