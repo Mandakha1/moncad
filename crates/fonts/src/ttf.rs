@@ -188,6 +188,12 @@ const ARABIC_FALLBACK: &[&str] = &[
     "dejavusans",
 ];
 const HEBREW_FALLBACK: &[&str] = &["notosanshebrew", "notoserifhebrew", "arial", "tahoma", "segoeui", "dejavusans"];
+/// MonCad: fonts that draw Cyrillic (Mongolian Ө ө Ү ү included) with proportional Latin-style
+/// widths, tried before the general search. Without this the wide-coverage CJK fonts that search
+/// tries first answer for Cyrillic too, and their full-width Cyrillic letters spread a Mongolian
+/// label in the stroke font ("З о ч н ы") to twice its width.
+const CYRILLIC_FALLBACK: &[&str] =
+    &["arial", "segoeui", "dejavusans", "notosans", "liberationsans", "ptsans", "helvetica", "tahoma", "verdana", "calibri"];
 /// Fonts known to cover Thai, with the OpenType mark positioning its stacked vowels and tone
 /// marks need. First the Windows faces Thai drawings are laid out with (Cordia New, Angsana New,
 /// Browallia New: Thai SHX fonts such as `cordia2.shx` copy their design and widths, so text
@@ -240,6 +246,7 @@ fn script_fallback(c: char) -> &'static [&'static str] {
         '\u{0600}'..='\u{08FF}' | '\u{FB50}'..='\u{FDFF}' | '\u{FE70}'..='\u{FEFF}' => ARABIC_FALLBACK,
         '\u{0590}'..='\u{05FF}' | '\u{FB1D}'..='\u{FB4F}' => HEBREW_FALLBACK,
         '\u{0E00}'..='\u{0E7F}' => THAI_FALLBACK,
+        '\u{0400}'..='\u{052F}' => CYRILLIC_FALLBACK,
         _ => &[],
     }
 }
@@ -1476,5 +1483,18 @@ mod scan_tests {
         assert!(dirs.iter().any(|d| d == std::path::Path::new("C:\\Windows\\Fonts")), "{dirs:?}");
         #[cfg(all(unix, not(any(target_os = "macos", target_os = "android", target_env = "ohos"))))]
         assert!(dirs.iter().any(|d| d == std::path::Path::new("/usr/share/fonts")), "{dirs:?}");
+    }
+}
+
+/// MonCad: Cyrillic letters the stroke font lacks come from a proportional font, not a CJK face
+/// with full-width Cyrillic, so «о» is narrower than «Ж» (checked where such a font is installed).
+#[cfg(test)]
+mod cyrillic_fallback_tests {
+    #[test]
+    fn cyrillic_falls_back_to_a_proportional_font() {
+        assert_eq!(super::script_fallback('Ө'), super::CYRILLIC_FALLBACK);
+        assert_eq!(super::script_fallback('ү'), super::CYRILLIC_FALLBACK);
+        let (Some(o), Some(zhe)) = (super::fallback_glyph('о'), super::fallback_glyph('Ж')) else { return };
+        assert!(o.advance / o.cap < zhe.advance / zhe.cap, "о {} vs Ж {}", o.advance / o.cap, zhe.advance / zhe.cap);
     }
 }

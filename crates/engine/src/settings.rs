@@ -23,7 +23,8 @@ pub struct Settings {
     /// ZOOMFACTOR: how far one mouse wheel step zooms (3..=100).
     pub zoomfactor: u32,
     /// MEASUREINIT: the units of a new drawing made without a template (NEW, QNEW and the first
-    /// drawing at startup): `false` (0, the default) imperial, `true` (1) metric.
+    /// drawing at startup): `false` (0) imperial, `true` (1, MonCad's default: Mongolia drafts in
+    /// millimetres with ISO dimension styles) metric.
     pub measureinit: bool,
     /// -VIEW sEttings > Layer snapshot: named views save the layer settings with them.
     pub view_layer_snapshot: bool,
@@ -146,7 +147,7 @@ impl Default for Settings {
             gridunit: Vec2::new(0.5, 0.5),
             gridmajor: 5,
             zoomfactor: 60,
-            measureinit: false,
+            measureinit: true,
             view_layer_snapshot: true,
             dynmode: true,
             dyndigrip: 31,

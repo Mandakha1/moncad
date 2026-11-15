@@ -8,26 +8,27 @@ fn var(s: &mut Session, name: &str) -> serde_json::Value {
     s.execute("getvar", &json!({ "name": name })).unwrap()["value"].clone()
 }
 
+/// MonCad starts metric (millimetres, ISO-25), the way drawings are made in Mongolia.
 #[test]
-fn imperial_by_default() {
+fn metric_by_default() {
     let mut s = Session::empty();
-    assert_eq!(var(&mut s, "MEASUREINIT"), json!(0));
+    assert_eq!(var(&mut s, "MEASUREINIT"), json!(1));
     s.execute("new", &json!({})).unwrap();
-    assert_eq!(var(&mut s, "INSUNITS"), json!(1));
-    assert_eq!(var(&mut s, "MEASUREMENT"), json!(0));
+    assert_eq!(var(&mut s, "INSUNITS"), json!(4));
+    assert_eq!(var(&mut s, "MEASUREMENT"), json!(1));
+    assert_eq!(var(&mut s, "DIMSTYLE"), json!("ISO-25"));
 }
 
 #[test]
 fn new_follows_measureinit() {
     let mut s = Session::empty();
-    s.execute("options", &json!({ "MEASUREINIT": 1 })).unwrap();
+    s.execute("options", &json!({ "MEASUREINIT": 0 })).unwrap();
     s.execute("new", &json!({})).unwrap();
-    assert_eq!(var(&mut s, "INSUNITS"), json!(4));
-    assert_eq!(var(&mut s, "MEASUREMENT"), json!(1));
-    assert_eq!(var(&mut s, "DIMSTYLE"), json!("ISO-25"));
-    // An explicit choice still wins.
-    s.execute("new", &json!({ "metric": false })).unwrap();
     assert_eq!(var(&mut s, "INSUNITS"), json!(1));
+    assert_eq!(var(&mut s, "MEASUREMENT"), json!(0));
+    // An explicit choice still wins.
+    s.execute("new", &json!({ "metric": true })).unwrap();
+    assert_eq!(var(&mut s, "INSUNITS"), json!(4));
 }
 
 #[test]
@@ -36,7 +37,7 @@ fn only_zero_or_one() {
     for bad in [json!(2), json!(-1), json!("metric")] {
         assert!(s.execute("options", &json!({ "MEASUREINIT": bad })).is_err(), "{bad}");
     }
-    assert_eq!(var(&mut s, "MEASUREINIT"), json!(0));
+    assert_eq!(var(&mut s, "MEASUREINIT"), json!(1));
 }
 
 #[test]

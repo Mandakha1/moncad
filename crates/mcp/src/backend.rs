@@ -18,7 +18,7 @@ pub trait Backend {
     fn describe(&self) -> String;
 }
 
-/// A running CADCraft app reached through its loopback control port.
+/// A running MonCad app reached through its loopback control port.
 pub struct Remote {
     addr: String,
     conn: Option<(BufReader<TcpStream>, TcpStream)>,
@@ -53,7 +53,7 @@ fn read_reply_line(reader: &mut impl BufRead, reply: &mut String, max: usize) ->
     if n > max && !reply.ends_with('\n') {
         return Err(std::io::Error::new(
             std::io::ErrorKind::InvalidData,
-            format!("reply from the control port is longer than {max} bytes; is that CADCraft's control server?"),
+            format!("reply from the control port is longer than {max} bytes; is that MonCad's control server?"),
         ));
     }
     Ok(n)
@@ -113,7 +113,7 @@ impl Remote {
         Err(std::io::Error::new(
             std::io::ErrorKind::TimedOut,
             format!(
-                "CADCraft was opened but its control port {} did not answer; if it was already open without the port, quit it and try again",
+                "MonCad was opened but its control port {} did not answer; if it was already open without the port, quit it and try again",
                 self.addr
             ),
         ))
@@ -181,20 +181,35 @@ fn not_open(addr: &str, e: std::io::Error) -> std::io::Error {
     std::io::Error::new(
         e.kind(),
         format!(
-            "CADCraft is not answering at {addr} ({e}). Open CADCraft with its control port (`--control PORT` or CADCRAFT_CONTROL_PORT), then try again"
+            "MonCad is not answering at {addr} ({e}). Open MonCad with its control port (`--control PORT` or CADCRAFT_CONTROL_PORT), then try again"
         ),
     )
 }
 
-/// Open the app with the control port of `addr` (macOS: `open -a CADCraft`).
+/// Open the app with the control port of `addr`: on macOS `open -a MonCad`; otherwise (and when
+/// that fails) the `moncad` binary installed beside this CLI, as the Windows installer, the portable
+/// zip and a `cargo build` all put the two side by side.
 fn launch_app(addr: &str) -> std::io::Result<()> {
     let port = addr.rsplit(':').next().filter(|p| p.parse::<u16>().is_ok()).ok_or_else(|| std::io::Error::other(format!("no port in {addr}")))?;
-    if cfg!(target_os = "macos") {
-        let ok = std::process::Command::new("open").args(["-a", "CADCraft", "--args", "--control", port]).status()?.success();
-        if ok { Ok(()) } else { Err(std::io::Error::other("could not open CADCraft (is it in Applications?)")) }
-    } else {
-        Err(std::io::Error::other(format!("CADCraft is not running; start it with `cadcraft --control {port}`")))
+    if cfg!(target_os = "macos") && std::process::Command::new("open").args(["-a", "MonCad", "--args", "--control", port]).status()?.success() {
+        return Ok(());
     }
+    let app = sibling_app(std::env::current_exe()?);
+    if app.is_file() {
+        std::process::Command::new(&app)
+            .args(["--control", port])
+            .stdin(std::process::Stdio::null())
+            .stdout(std::process::Stdio::null())
+            .stderr(std::process::Stdio::null())
+            .spawn()?;
+        return Ok(());
+    }
+    Err(std::io::Error::other(format!("MonCad is not running and {} was not found; start it with `moncad --control {port}`", app.display())))
+}
+
+/// The desktop app next to the CLI binary `cli` (`moncad.exe` on Windows, `moncad` elsewhere).
+fn sibling_app(cli: std::path::PathBuf) -> std::path::PathBuf {
+    cli.with_file_name(if cfg!(windows) { "moncad.exe" } else { "moncad" })
 }
 
 /// Methods that only read state, so resending them after a lost reply cannot change the drawing twice.
@@ -243,7 +258,7 @@ impl Remote {
                 // A mutation whose reply was lost must never be sent twice.
                 if sent && !is_read_only(method) {
                     return Err(format!(
-                        "CADCraft at {}: {e}; the reply was lost, so `{method}` may or may not have been applied. Inspect the drawing first",
+                        "MonCad at {}: {e}; the reply was lost, so `{method}` may or may not have been applied. Inspect the drawing first",
                         self.addr
                     ));
                 }
@@ -251,7 +266,7 @@ impl Remote {
                 self.sign_and_send(req).map_err(|(e, _)| {
                     self.token = None;
                     self.conn = None;
-                    format!("CADCraft at {}: {e}", self.addr)
+                    format!("MonCad at {}: {e}", self.addr)
                 })?
             }
         };
@@ -289,7 +304,7 @@ impl Backend for Remote {
             }
             // A timeout says whether the request can still have run (#345).
             Err(match v.get("state").and_then(Value::as_str) {
-                Some("not-run") => format!("{e}: CADCraft did not start `{method}` and won't; it is safe to send again"),
+                Some("not-run") => format!("{e}: MonCad did not start `{method}` and won't; it is safe to send again"),
                 Some("may-have-run") => format!("{e}: `{method}` may or may not have been applied. Inspect the drawing first"),
                 _ => e.to_string(),
             })
@@ -299,7 +314,7 @@ impl Backend for Remote {
         true
     }
     fn describe(&self) -> String {
-        format!("connected to CADCraft at {}", self.addr)
+        format!("connected to MonCad at {}", self.addr)
     }
 }
 
@@ -326,8 +341,11 @@ pub struct Headless {
 }
 
 impl Default for Headless {
+    /// MonCad: the headless session starts with a metric drawing (millimetres, ISO-25), like NEW.
     fn default() -> Self {
-        Headless { session: Session::new() }
+        let mut session = Session::empty();
+        session.new_drawing(true);
+        Headless { session }
     }
 }
 
@@ -467,7 +485,7 @@ impl Backend for Headless {
         false
     }
     fn describe(&self) -> String {
-        "headless CADCraft session".into()
+        "headless MonCad session".into()
     }
 }
 
