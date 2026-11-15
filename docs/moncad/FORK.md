@@ -20,7 +20,7 @@ upstream `main` at `7064a685` (2026-11-15, CADCraft 0.21.0-dev, after v0.20.1).
 | Windows installer | Per-user NSIS installer (Mongolian + English), Start menu "MonCad (AI)" entry, `AI-connect.txt` with ready commands | `packaging/moncad/windows/moncad.nsi`, `packaging/moncad/build-windows.sh` |
 | macOS package | `packaging/macos/package.sh` builds `MonCad.app` (with `moncad-cli` inside) and `moncad-<ver>-macos-<arch>.dmg`; bundle id `com.monhydro.moncad`. Not yet: the DMG background still shows the old icon and its Finder layout (`dmg-layout.DS_Store`) points at a volume named CADCraft — regenerate with `packaging/macos/dmg/generate.py` | `packaging/macos/*` |
 | Not yet rebranded | Linux and FreeBSD packages (`packaging/linux`, `packaging/freebsd`), the web build (`apps/cadcraft-web`) | |
-| CI | Upstream workflows (storytold actions, signing secrets) parked in `packaging/upstream-ci/`; MonCad's own `.github/workflows/moncad.yml` | |
+| CI | Upstream workflows (storytold actions, signing secrets) and Dependabot config parked in `packaging/upstream-ci/`; MonCad's own `.github/workflows/moncad.yml` | |
 
 Internal names stay upstream's on purpose: crate names (`cadcraft-*`), package names (`-p cadcraft`),
 `CADCRAFT_*` environment variables, the `cadcraft://` MCP resource URIs, the control-token file name,
