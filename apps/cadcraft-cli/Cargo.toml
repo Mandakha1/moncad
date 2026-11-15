@@ -1,6 +1,6 @@
 [package]
 name = "cadcraft-cli"
-description = "CADCraft command-line tool: info, convert, run scripts, export, commands, MCP server"
+description = "MonCad command-line tool: info, convert, run scripts, export, commands, MCP server"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -11,7 +11,7 @@ name = "cadcraft_cli"
 path = "src/lib.rs"
 
 [[bin]]
-name = "cadcraft-cli"
+name = "moncad-cli"
 path = "src/main.rs"
 
 [lints]

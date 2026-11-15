@@ -1,11 +1,24 @@
+MonCad
+Copyright (c) 2026 the MonCad contributors.
+MonCad is a modified version of CADCraft (https://github.com/storytold/cadcraft), forked on
+2026-11-15 from upstream commit 7064a685. MonCad's own changes (the MonCad name and icon, the
+Mongolian interface catalog, the Mongolian keyboard-layout commands, metric defaults, the
+Windows installer and the documentation in docs/moncad/) are licensed like CADCraft, under the MIT
+License or the Apache License, Version 2.0, at your option (LICENSE-MIT, LICENSE-APACHE).
+MonCad is not affiliated with, sponsored by or endorsed by the ArtCraft Team.
+
+The CADCraft notice follows unchanged except where it named the removed brand files.
+
+------------------------------------------------------------------------
+
 CADCraft
 Copyright (c) 2026 ArtCraft Team and the CADCraft contributors.
 Licensed under the MIT License or the Apache License, Version 2.0, at your option
 (LICENSE-MIT, LICENSE-APACHE).
 
-The ArtCraft name, wordmark and logos in docs/brand/ are trademarks of the ArtCraft Team. They are
-not open source and are not covered by the license above; their terms are in
-docs/brand/LICENSE-brand.txt.
+The ArtCraft name, wordmark and logos are trademarks of the ArtCraft Team. They are not open source
+and are not covered by the license above. MonCad is a modified version of CADCraft, so, as the
+ArtCraft brand terms require of forks, it contains none of those marks and is not an ArtCraft product.
 
 Third-party material
 

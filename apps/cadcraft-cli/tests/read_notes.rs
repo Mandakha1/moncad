@@ -5,7 +5,7 @@
 use std::process::{Command, Output};
 
 fn cli(args: &[&str]) -> Output {
-    Command::new(env!("CARGO_BIN_EXE_cadcraft-cli")).args(args).output().unwrap()
+    Command::new(env!("CARGO_BIN_EXE_moncad-cli")).args(args).output().unwrap()
 }
 
 /// A DWG of 200 lines, and a copy damaged so that the reader skips some of its records (found the

@@ -1,5 +1,5 @@
 //! Writes cadcraft-cli's shell completions ([`clap_complete`]: bash, zsh, fish, elvish,
-//! PowerShell) and man pages ([`clap_mangen`]: `cadcraft-cli.1` and one per subcommand, such as
+//! PowerShell) and man pages ([`clap_mangen`]: `moncad-cli.1` and one per subcommand, such as
 //! `cadcraft-cli-convert.1`) into a directory. The Linux packages ship them
 //! (`packaging/linux/package.sh`):
 //!
@@ -33,7 +33,7 @@ pub(crate) fn generate(dir: &Path) -> std::io::Result<()> {
     std::fs::create_dir_all(dir)?;
     let mut cmd = cadcraft_cli::command();
     for &shell in Shell::value_variants() {
-        clap_complete::generate_to(shell, &mut cmd, "cadcraft-cli", dir)?;
+        clap_complete::generate_to(shell, &mut cmd, "moncad-cli", dir)?;
     }
     // A fresh command: `clap_complete::generate_to` built `cmd`, adding the `help` subcommand,
     // which `clap_mangen` would otherwise give pages of its own (`cadcraft-cli-help-convert.1`).

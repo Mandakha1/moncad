@@ -10,7 +10,7 @@ fn a_real_worker_reads_and_writes_and_its_death_is_an_error_here() {
     let drawing = cadcraft_engine::sample::bracket();
     let in_process = cadcraft_io::write(&drawing, "a.dwg").unwrap();
 
-    dwg_worker::use_worker(env!("CARGO_BIN_EXE_cadcraft-cli").into(), vec![dwg_worker::WORKER_ARG.into()]);
+    dwg_worker::use_worker(env!("CARGO_BIN_EXE_moncad-cli").into(), vec![dwg_worker::WORKER_ARG.into()]);
     let written = cadcraft_io::write(&drawing, "a.dwg").unwrap();
     assert_eq!(written.get(..6), in_process.get(..6), "the same version of file");
     let read = cadcraft_io::read(&written, "a.dwg").unwrap();

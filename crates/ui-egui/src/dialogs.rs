@@ -324,8 +324,8 @@ fn units(app: &mut CadApp, ctx: &egui::Context, open: &mut bool) {
 fn about(ctx: &egui::Context, open: &mut bool) {
     let t = Tokens::get();
     let tab_id = egui::Id::unique("about_tab");
-    egui::Window::new(crate::tl!("About CADCraft"))
-        .id(egui::Id::unique("About CADCraft"))
+    egui::Window::new(crate::tl!("About MonCad"))
+        .id(egui::Id::unique("About MonCad"))
         .open(open)
         .default_size(vec2(820.0, 420.0))
         .collapsible(false)
@@ -344,13 +344,16 @@ fn about(ctx: &egui::Context, open: &mut bool) {
                 1 => crate::credits::contributors_ui(ui),
                 2 => crate::credits::models_ui(ui),
                 _ => {
-                    ui.heading(crate::tl!("CADCraft"));
+                    ui.heading(crate::tl!("MonCad"));
                     ui.label(crate::tf!("Version {version}", version = env!("CARGO_PKG_VERSION")));
                     ui.label(crate::tl!("Computer-aided design and drafting: an open-source, clean-room CAD application written in pure Rust."));
                     ui.add_space(6.0);
-                    ui.label(RichText::new(crate::tl!("One of the Crafting Apps by the ArtCraft team and community.")).color(t.text_dim));
-                    ui.hyperlink_to("getartcraft.com/apps/cadcraft", "https://getartcraft.com/apps/cadcraft");
-                    ui.hyperlink_to(crate::tl!("Join us on Discord"), "https://discord.gg/artcraft");
+                    ui.label(crate::tl!("Draw by hand, or let Claude or ChatGPT draw for you over MCP."));
+                    ui.hyperlink_to(crate::brand::WEBSITE_LABEL, crate::brand::WEBSITE);
+                    ui.add_space(6.0);
+                    // Attribution required by the upstream licence and brand terms: plain text, no ArtCraft marks.
+                    ui.label(RichText::new(crate::tl!("Based on CADCraft by the ArtCraft team and community.")).color(t.text_dim));
+                    ui.hyperlink_to(crate::brand::UPSTREAM_LABEL, crate::brand::UPSTREAM);
                     ui.add_space(6.0);
                     ui.label(RichText::new(crate::tl!("MIT OR Apache-2.0. Not affiliated with Autodesk, Inc.")).small().color(t.text_faint));
                 }

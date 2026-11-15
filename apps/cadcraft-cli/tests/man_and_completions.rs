@@ -19,11 +19,11 @@ fn the_example_writes_the_files_the_packages_install() {
 
     let mut written: Vec<String> = std::fs::read_dir(&dir).unwrap().map(|e| e.unwrap().file_name().into_string().unwrap()).collect();
     written.sort();
-    let completions = ["cadcraft-cli.bash", "_cadcraft-cli", "cadcraft-cli.fish", "cadcraft-cli.elv", "_cadcraft-cli.ps1"];
+    let completions = ["moncad-cli.bash", "_moncad-cli", "moncad-cli.fish", "moncad-cli.elv", "_moncad-cli.ps1"];
     let subcommands = ["info", "convert", "run", "commands", "mcp", "perf", "sample", "roundtrip"];
     let mut expected: Vec<String> = completions.map(String::from).into();
-    expected.push("cadcraft-cli.1".into());
-    expected.extend(subcommands.iter().map(|s| format!("cadcraft-cli-{s}.1")));
+    expected.push("moncad-cli.1".into());
+    expected.extend(subcommands.iter().map(|s| format!("moncad-cli-{s}.1")));
     expected.sort();
     assert_eq!(written, expected);
     std::fs::remove_dir_all(&dir).unwrap();

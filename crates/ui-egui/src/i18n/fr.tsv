@@ -28,7 +28,7 @@
 	= Equals	= Égal à
 	> Greater than	> Supérieur à
 	About	À propos
-	About CADCraft	À propos de CADCraft
+	About MonCad	À propos de MonCad
 	Absolute	Absolu
 	Add Leader	Ajouter un repère
 	Align	Aligner
@@ -84,7 +84,7 @@
 	ByBlock	DuBloc
 	ByColor	Par couleur
 	ByLayer	DuCalque
-	CADCraft Help	Aide de CADCraft
+	MonCad Help	Aide de MonCad
 	Cancel	Annuler
 	Cartesian (x, y)	Cartésien (x, y)
 	Center	Centre
@@ -590,7 +590,7 @@
 	Quick Select Properties	Propriétés de la sélection rapide
 	Quick Select...	Sélection rapide...
 	QuickCalc	Calculatrice rapide
-	Quit CADCraft	Quitter CADCraft
+	Quit MonCad	Quitter MonCad
 	Radius	Rayon
 	Raster Image	Image raster
 	Ray	Rayon
@@ -997,7 +997,7 @@
 @plural	{n} contributor	{n} contributeur|{n} contributeurs
 	Drawing as bytes	Dessin sous forme d'octets
 	Services	Services
-	Hide CADCraft	Masquer CADCraft
+	Hide MonCad	Masquer MonCad
 	Hide Others	Masquer les autres
 	Accessibility	Accessibilité
 	Show System Cursor	Afficher le curseur système
@@ -1012,7 +1012,7 @@
 	Query Texts	Interroger les textes
 	Analyze Shapes	Analyser les formes
 	Check for Updates…	Rechercher des mises à jour…
-	CADCraft is up to date.	CADCraft est à jour.
+	MonCad is up to date.	MonCad est à jour.
 	Could not check for updates.	Impossible de rechercher les mises à jour.
 	Find All	Find All
 	Find what:	Find what:
@@ -1034,8 +1034,8 @@
 	Replaces the shortcut of {commands}	Remplace le raccourci de : {commands}
 	Needs Ctrl, Alt or a function key	Il faut Ctrl, Alt ou une touche de fonction
 	Press the keys	Appuyez sur les touches
-	Back to CADCraft's shortcut	Revenir au raccourci de CADCraft
-	A shortcut you give wins over CADCraft's own. Changes apply at once and are kept for next time.	Un raccourci que vous définissez l'emporte sur celui de CADCraft. Les modifications s'appliquent tout de suite et sont conservées.
+	Back to MonCad's shortcut	Revenir au raccourci de MonCad
+	A shortcut you give wins over MonCad's own. Changes apply at once and are kept for next time.	Un raccourci que vous définissez l'emporte sur celui de MonCad. Les modifications s'appliquent tout de suite et sont conservées.
 
 # ArtCraft feature naming
 	Additional Tools	Outils supplémentaires

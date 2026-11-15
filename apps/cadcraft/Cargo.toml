@@ -1,12 +1,17 @@
 [package]
 name = "cadcraft"
-description = "CADCraft desktop app"
+description = "MonCad desktop app (based on CADCraft)"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
 rust-version = "1.95"
 publish = false
-default-run = "cadcraft"
+default-run = "moncad"
+
+# MonCad: the package keeps its upstream name (easy merges from CADCraft); the binary is `moncad`.
+[[bin]]
+name = "moncad"
+path = "src/main.rs"
 
 [lints]
 workspace = true

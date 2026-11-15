@@ -7,7 +7,7 @@
 use std::process::{Command, Output};
 
 fn run(args: &[&str]) -> Output {
-    Command::new(env!("CARGO_BIN_EXE_cadcraft-cli"))
+    Command::new(env!("CARGO_BIN_EXE_moncad-cli"))
         .args(args)
         .stdout(std::process::Stdio::piped())
         .stderr(std::process::Stdio::piped())

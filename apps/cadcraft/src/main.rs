@@ -1,4 +1,4 @@
-//! CADCraft desktop app.
+//! MonCad desktop app (based on CADCraft).
 //!
 //! Usage: `cadcraft [--control <port>] [--sample] [files…]` (`cadcraft --help` lists the rest; see [`launch_args`])
 //!
@@ -65,7 +65,7 @@ impl App {
         };
         if let Err(error) = result {
             if self.workspace_error.as_ref() != Some(&error) {
-                eprintln!("CADCraft workspace: {error}");
+                eprintln!("MonCad workspace: {error}");
                 self.cad.set_status(format!("Workspace could not be saved: {error}"));
                 self.workspace_error = Some(error);
             }
@@ -227,7 +227,7 @@ fn restores_window() -> bool {
 fn window_options(restoring: bool) -> eframe::NativeOptions {
     eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
-            .with_title("CADCraft")
+            .with_title("MonCad")
             .with_inner_size([1600.0, 1000.0])
             .with_min_inner_size([900.0, 560.0])
             .with_drag_and_drop(true)
@@ -251,7 +251,7 @@ fn window_options(restoring: bool) -> eframe::NativeOptions {
     }
 }
 
-const APP_ID: &str = "ai.storyteller.cadcraft";
+const APP_ID: &str = "com.monhydro.moncad";
 
 /// The key eframe saves the main window state under in its storage.
 const WINDOW_KEY: &str = "window";
@@ -269,7 +269,7 @@ fn app_icon() -> Option<egui::IconData> {
 }
 
 fn version_string() -> String {
-    format!("cadcraft {}", cadcraft_engine::build_version())
+    format!("moncad {}", cadcraft_engine::build_version())
 }
 
 /// Parse CLI options (`--control`, `--sample`, files, `--version`), install logging and I/O hooks, build the services and app, and run eframe.
@@ -285,7 +285,7 @@ fn main() -> eframe::Result {
     #[cfg(not(target_arch = "wasm32"))]
     if let Some(done) = craft_update::self_update::finish(&cadcraft_ui_egui::UPDATE_APP, &std::env::args_os().skip(1).collect::<Vec<_>>()) {
         if let Err(e) = done {
-            eprintln!("CADCraft update helper failed: {e}");
+            eprintln!("MonCad update helper failed: {e}");
             std::process::exit(1);
         }
         return Ok(());
@@ -364,7 +364,7 @@ fn main() -> eframe::Result {
         }));
     }
     eframe::run_native(
-        "CADCraft",
+        "MonCad",
         options,
         Box::new(move |cc| {
             let mut app = CadApp::new(Session::empty(), services());
@@ -380,7 +380,7 @@ fn main() -> eframe::Result {
             }
             app.set_system_cursor_default(vars.system_cursor == Switch::On);
             if let Some(error) = &workspace_error {
-                eprintln!("CADCraft workspace: {error}");
+                eprintln!("MonCad workspace: {error}");
                 app.set_status(error);
             }
             app.system_languages = vars.locale.map(|s| vec![s]).unwrap_or_else(|| sys_locale::get_locales().collect());
@@ -397,7 +397,9 @@ fn main() -> eframe::Result {
             // Autosave files (SAVEFILEPATH) default to `<settings dir>/autosave`.
             if let Some(dir) = &vars.config_dir {
                 app.enable_autosave(&dir.join("autosave"));
-                app.enable_update_check();
+                if cadcraft_ui_egui::brand::UPDATES_AT_START {
+                    app.enable_update_check();
+                }
                 // Startup LISP (acad.lsp, acaddoc.lsp) is read from `<settings>/support`; the
                 // folder is made so it is there to put them in.
                 let support = dir.join("support");

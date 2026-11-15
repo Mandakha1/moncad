@@ -15,8 +15,9 @@ const INVALID_REQUEST: i64 = -32600;
 const METHOD_NOT_FOUND: i64 = -32601;
 const INVALID_PARAMS: i64 = -32602;
 
-const INSTRUCTIONS: &str = "CADCraft is a 2D/3D CAD drafting app (an AutoCAD clone). Coordinates are drawing units, \
-y up. Fastest path: command_line with AutoCAD syntax, e.g. `line 0,0 10,0 10,5 c`, `circle 5,2.5 1`, \
+const INSTRUCTIONS: &str = "MonCad is a 2D/3D CAD drafting app (AutoCAD-style, based on CADCraft). Coordinates are drawing units, \
+y up; new drawings are metric (millimetres, ISO-25 dimensions). Text may be \
+Mongolian Cyrillic (TEXT/MTEXT). Use layers per discipline (e.g. walls, doors, heating-supply, heating-return). Fastest path: command_line with AutoCAD syntax, e.g. `line 0,0 10,0 10,5 c`, `circle 5,2.5 1`, \
 `rectang 0,0 4,3`, `offset 1` then pick, `zoom e`. Or execute with JSON (list_commands shows ids and params). \
 Verify with inspect_drawing / query_entities and look with render.";
 
@@ -104,7 +105,7 @@ impl Server {
                 Ok(json!({
                     "protocolVersion": version,
                     "capabilities": {"tools": {"listChanged": false}, "resources": {"listChanged": false}},
-                    "serverInfo": {"name": "cadcraft", "title": "CADCraft", "version": env!("CARGO_PKG_VERSION")},
+                    "serverInfo": {"name": "moncad", "title": "MonCad", "version": env!("CARGO_PKG_VERSION")},
                     "instructions": format!("{INSTRUCTIONS} Backend: {}.", self.backend.describe()),
                 }))
             }

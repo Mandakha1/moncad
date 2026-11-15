@@ -35,7 +35,7 @@
 	A drawing opened from a file keeps that file's format.	Ένα σχέδιο που ανοίγεται από αρχείο διατηρεί τη μορφή του αρχείου του.
 	A variable name starts with a letter and has only letters, digits and _	Το όνομα μιας μεταβλητής αρχίζει με γράμμα και περιέχει μόνο γράμματα, ψηφία και _
 	About	Πληροφορίες
-	About CADCraft	Πληροφορίες για το CADCraft
+	About MonCad	Πληροφορίες για το MonCad
 	Absolute	Απόλυτο
 	Accessibility	Προσβασιμότητα
 	Add	Προσθήκη
@@ -132,9 +132,9 @@
 	ByBlock	Κατά μπλοκ (ByBlock)
 	ByColor	Κατά χρώμα (ByColor)
 	ByLayer	Κατά επίπεδο (ByLayer)
-	CADCraft	CADCraft
-	CADCraft Help	Βοήθεια CADCraft
-	CADCraft keeps these preferences, object snap modes and drafting toggles for your user account and restores them when it starts.	Το CADCraft αποθηκεύει τις προτιμήσεις, τις λειτουργίες έλξης αντικειμένων και τους διακόπτες σχεδίασης στον λογαριασμό σας και τις επαναφέρει στην εκκίνηση.
+	MonCad	MonCad
+	MonCad Help	Βοήθεια MonCad
+	MonCad keeps these preferences, object snap modes and drafting toggles for your user account and restores them when it starts.	Το MonCad αποθηκεύει τις προτιμήσεις, τις λειτουργίες έλξης αντικειμένων και τους διακόπτες σχεδίασης στον λογαριασμό σας και τις επαναφέρει στην εκκίνηση.
 	Calibrate	Βαθμονόμηση
 	Calibrate 3D Mouse	Βαθμονόμηση ποντικιού 3Δ
 	Cancel	Ακύρωση
@@ -510,7 +510,7 @@
 	Hide All	Απόκρυψη όλων
 	Hide All Constraint Bars	Απόκρυψη όλων των γραμμών περιορισμών
 	Hide All Dynamic Dimensions	Απόκρυψη όλων των δυναμικών διαστάσεων
-	Hide CADCraft	Απόκρυψη CADCraft
+	Hide MonCad	Απόκρυψη MonCad
 	Hide Layer List	Απόκρυψη λίστας επιπέδων
 	Hide Objects	Απόκρυψη αντικειμένων
 	Hide Others	Απόκρυψη άλλων
@@ -855,7 +855,7 @@
 	Quick Select...	Γρήγορη επιλογή...
 	QuickCalc	Γρήγορη αριθμομηχανή (QuickCalc)
 	QuickCalc Pick	Επιλογή στη γρήγορη αριθμομηχανή
-	Quit CADCraft	Έξοδος από το CADCraft
+	Quit MonCad	Έξοδος από το MonCad
 	Radius	Ακτίνα
 	Raster Image	Εικόνα ψηφίδων (Raster Image)
 	Ray	Ημιευθεία (Ray)
@@ -1379,7 +1379,7 @@ menu	Draw	Σχεδίαση
 menu	Modify	Τροποποίηση
 menu	View	Προβολή
 	Check for Updates…	Έλεγχος για ενημερώσεις…
-	CADCraft is up to date.	Το CADCraft είναι ενημερωμένο.
+	MonCad is up to date.	Το MonCad είναι ενημερωμένο.
 	Could not check for updates.	Δεν ήταν δυνατός ο έλεγχος για ενημερώσεις.
 	Find All	Find All
 	Find what:	Find what:

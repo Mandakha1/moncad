@@ -26,7 +26,7 @@
 	= Equals	= Równe
 	> Greater than	> Większe niż
 	About	O programie
-	About CADCraft	O programie CADCraft
+	About MonCad	O programie MonCad
 	Absolute	Bezwzględne
 	Add Leader	Dodaj odnośnik
 	Align	Wyrównaj
@@ -78,7 +78,7 @@
 	ByBlock	ByBlock
 	ByColor	Według koloru
 	ByLayer	ByLayer
-	CADCraft Help	Pomoc CADCraft
+	MonCad Help	Pomoc MonCad
 	Cancel	Anuluj
 	Cartesian (x, y)	Kartezjańskie (x, y)
 	Center	Środek
@@ -533,7 +533,7 @@
 	Quick Select Properties	Właściwości szybkiego zaznaczania
 	Quick Select...	Szybkie zaznaczanie...
 	QuickCalc	Szybki kalkulator
-	Quit CADCraft	Zakończ CADCraft
+	Quit MonCad	Zakończ MonCad
 	Radius	Promień
 	Raster Image	Obraz rastrowy
 	Ray	Półprosta
@@ -928,7 +928,7 @@
 	⌘↩ to finish	⌘↩ — zakończ
 	Drawing as bytes	Rysunek w postaci bajtów
 	Services	Usługi
-	Hide CADCraft	Ukryj CADCraft
+	Hide MonCad	Ukryj MonCad
 	Hide Others	Ukryj pozostałe
 	Accessibility	Dostępność
 	Show System Cursor	Pokaż kursor systemowy
@@ -1284,7 +1284,7 @@
 	Snap type	Typ skoku
 	A drawing opened from a file keeps that file's format.	Rysunek otwarty z pliku zachowuje format tego pliku.
 	An array that would create more objects than this is refused.	Szyk tworzący więcej obiektów niż dopuszczalna liczba zostanie odrzucony.
-	CADCraft keeps these preferences, object snap modes and drafting toggles for your user account and restores them when it starts.	CADCraft zapisuje te preferencje, tryby przyciągania do obiektów i przełączniki rysunkowe na Twoim koncie użytkownika oraz przywraca je przy uruchomieniu.
+	MonCad keeps these preferences, object snap modes and drafting toggles for your user account and restores them when it starts.	MonCad zapisuje te preferencje, tryby przyciągania do obiektów i przełączniki rysunkowe na Twoim koncie użytkownika oraz przywraca je przy uruchomieniu.
 	Changes apply at once and are kept for next time.	Zmiany są stosowane natychmiast i zachowywane na przyszłość.
 	Command line history	Historia wiersza poleceń
 	Copy as JSON	Kopiuj jako JSON
@@ -1476,16 +1476,16 @@ menu	Dimension	Wymiarowanie
 	(1, 2, 4, 8, 16, 32, 64, 128, or 256)	(1, 2, 4, 8, 16, 32, 64, 128 lub 256)
 	<Offset>	<Offset>
 	>> Expression	>> Wyrażenie
-	A shortcut you give wins over CADCraft's own. Changes apply at once and are kept for next time.	Przypisany skrót zastępuje domyślny skrót CADCraft. Zmiany są stosowane od razu i zapamiętywane.
+	A shortcut you give wins over MonCad's own. Changes apply at once and are kept for next time.	Przypisany skrót zastępuje domyślny skrót MonCad. Zmiany są stosowane od razu i zapamiętywane.
 	Add…	Dodaj…
 	Alias	Alias
 	Alias file: {file}	Plik aliasów: {file}
-	Aliases are saved in your CADCraft profile and survive restarts.	Aliasy są zapisywane w profilu CADCraft i zachowywane po ponownym uruchomieniu.
+	Aliases are saved in your MonCad profile and survive restarts.	Aliasy są zapisywane w profilu MonCad i zachowywane po ponownym uruchomieniu.
 	Analyze Shapes	Analizuj kształty
 	Analyze Usage	Analizuj użycie
 	Associate the hatch with the new boundary?	Powiązać kreskowanie z nową obwiednią?
 	Associative dimension priority	Priorytet wymiarowania skojarzonego
-	Back to CADCraft's shortcut	Przywróć domyślny skrót CADCraft
+	Back to MonCad's shortcut	Przywróć domyślny skrót MonCad
 	Backup copies are off, so the current file will be replaced.	Kopie zapasowe są wyłączone, więc bieżący plik zostanie zastąpiony.
 	Backup copy	Kopia zapasowa
 	Block Description...	Opis bloku...
@@ -1493,7 +1493,7 @@ menu	Dimension	Wymiarowanie
 	Breakline extension distance	Długość przedłużenia linii przerwania
 	Breakline symbol size	Rozmiar symbolu linii przerwania
 	Bring to front	Przenieś na wierzch
-	CADCraft is up to date.	CADCraft jest aktualny.
+	MonCad is up to date.	MonCad jest aktualny.
 	Change	Zmień
 	Change Properties	Zmień właściwości
 	Check for Updates…	Sprawdź aktualizacje…

@@ -1,4 +1,4 @@
-//! The desktop app's command line, as clap types: `cadcraft --help` comes from these doc comments
+//! The desktop app's command line, as clap types: `moncad --help` comes from these doc comments
 //! and its Environment section from [`crate::env::VARS`], so the help and the parsers can't disagree. Anything they don't declare is a usage error naming
 //! it (exit status 2), so a typo such as `--sampel` doesn't open the window and then fail to open
 //! the flag as a file; so is a flag without its value, a repeated flag and a bad port, from the
@@ -13,7 +13,7 @@ use clap::{Command, CommandFactory, FromArgMatches, Parser};
 
 /// Opens CADCraft with the given files
 #[derive(Parser)]
-#[command(name = "cadcraft", version = cadcraft_engine::build_version(), after_help = crate::env::help())]
+#[command(name = "moncad", version = cadcraft_engine::build_version(), after_help = crate::env::help())]
 pub(crate) struct LaunchArgs {
     /// Files to open. Put `--` before a name that starts with `-`
     pub(crate) files: Vec<PathBuf>,
@@ -43,7 +43,7 @@ pub(crate) fn parse(mut cmd: Command, args: impl IntoIterator<Item = OsString>) 
             !(options && a.to_str().is_some_and(|s| s.starts_with("-psn_")))
         })
         .collect();
-    let argv = std::iter::once(OsString::from("cadcraft")).chain(args.iter().cloned());
+    let argv = std::iter::once(OsString::from("moncad")).chain(args.iter().cloned());
     let matches = cmd.try_get_matches_from_mut(argv).map_err(|e| name_env_vars(e, &cmd, &args))?;
     LaunchArgs::from_arg_matches(&matches)
 }
