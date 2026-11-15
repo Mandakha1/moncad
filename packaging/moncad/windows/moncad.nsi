@@ -22,8 +22,15 @@ RequestExecutionLevel user
   !define OUTFILE "moncad-${VERSION}-windows-x64-setup.exe"
 !endif
 ; makensis works in the script's folder, so ROOT (the repository) is best passed as an absolute path.
+; Path separator for compile-time paths: makensis on Windows needs "\" in File patterns, makensis on
+; macOS/Linux needs "/".
+!ifdef NSIS_WIN32_MAKENSIS
+  !define SEP "\"
+!else
+  !define SEP "/"
+!endif
 !ifndef ROOT
-  !define ROOT "${__FILEDIR__}/../../.."
+  !define ROOT "${__FILEDIR__}${SEP}..${SEP}..${SEP}.."
 !endif
 !define UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\MonCad"
 
@@ -42,8 +49,8 @@ VIAddVersionKey /LANG=1033 "LegalCopyright" "MonCad, based on CADCraft by the Ar
 !include "MUI2.nsh"
 !include "FileFunc.nsh"
 
-!define MUI_ICON "${ROOT}/assets/app-icon/cadcraft.ico"
-!define MUI_UNICON "${ROOT}/assets/app-icon/cadcraft.ico"
+!define MUI_ICON "${ROOT}${SEP}assets${SEP}app-icon${SEP}cadcraft.ico"
+!define MUI_UNICON "${ROOT}${SEP}assets${SEP}app-icon${SEP}cadcraft.ico"
 !define MUI_ABORTWARNING
 !define MUI_LANGDLL_ALLLANGUAGES
 !define MUI_FINISHPAGE_RUN "$INSTDIR\moncad.exe"
@@ -52,7 +59,7 @@ VIAddVersionKey /LANG=1033 "LegalCopyright" "MonCad, based on CADCraft by the Ar
 !define MUI_FINISHPAGE_SHOWREADME_TEXT "$(ShowAiText)"
 
 !insertmacro MUI_PAGE_WELCOME
-!insertmacro MUI_PAGE_LICENSE "${ROOT}/LICENSE-APACHE"
+!insertmacro MUI_PAGE_LICENSE "${ROOT}${SEP}LICENSE-APACHE"
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_INSTFILES
@@ -80,13 +87,13 @@ FunctionEnd
 Section "!$(SecApp)" SecMain
   SectionIn RO
   SetOutPath "$INSTDIR"
-  File "${BINDIR}/moncad.exe"
-  File "${BINDIR}/moncad-cli.exe"
-  File "${ROOT}/LICENSE-APACHE"
-  File "${ROOT}/LICENSE-MIT"
-  File "${ROOT}/NOTICE"
-  File /oname=README-mn.md "${ROOT}/docs/moncad/INSTALL-mn.md"
-  File /oname=AI-guide-mn.md "${ROOT}/docs/moncad/AI-mn.md"
+  File "${BINDIR}${SEP}moncad.exe"
+  File "${BINDIR}${SEP}moncad-cli.exe"
+  File "${ROOT}${SEP}LICENSE-APACHE"
+  File "${ROOT}${SEP}LICENSE-MIT"
+  File "${ROOT}${SEP}NOTICE"
+  File /oname=README-mn.md "${ROOT}${SEP}docs${SEP}moncad${SEP}INSTALL-mn.md"
+  File /oname=AI-guide-mn.md "${ROOT}${SEP}docs${SEP}moncad${SEP}AI-mn.md"
 
   ; Ready-to-paste commands with this install's real path.
   FileOpen $0 "$INSTDIR\AI-connect.txt" w
