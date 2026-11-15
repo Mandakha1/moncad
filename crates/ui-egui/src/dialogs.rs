@@ -350,6 +350,7 @@ fn about(ctx: &egui::Context, open: &mut bool) {
                     ui.add_space(6.0);
                     ui.label(crate::tl!("Draw by hand, or let Claude or ChatGPT draw for you over MCP."));
                     ui.hyperlink_to(crate::brand::WEBSITE_LABEL, crate::brand::WEBSITE);
+                    ui.hyperlink_to(crate::brand::SOURCE_LABEL, crate::brand::SOURCE);
                     ui.add_space(6.0);
                     // Attribution required by the upstream licence and brand terms: plain text, no ArtCraft marks.
                     ui.label(RichText::new(crate::tl!("Based on CADCraft by the ArtCraft team and community.")).color(t.text_dim));

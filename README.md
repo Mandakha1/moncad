@@ -13,6 +13,7 @@
   <a href="docs/moncad/INSTALL-mn.md">Суулгах</a> ·
   <a href="docs/moncad/AI-mn.md">AI-аар зуруулах</a> ·
   <a href="#english">English</a> ·
+  <a href="https://github.com/Mandakha1/moncad/releases">Татах</a> ·
   <a href="https://cad.monhydro.com">Сургалт</a>
 </p>
 

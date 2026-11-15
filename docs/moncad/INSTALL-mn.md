@@ -5,7 +5,8 @@ MonCad бол AutoCAD-тай төстэй, үнэгүй, нээлттэй эхи
 
 ## Windows (10, 11 — 64 бит)
 
-1. `moncad-<хувилбар>-windows-x64-setup.exe` файлыг татна.
+1. <https://github.com/Mandakha1/moncad/releases> хуудаснаас `moncad-<хувилбар>-windows-x64-setup.exe`
+   файлыг татна.
 2. Давхар товшоод суулгана. Администраторын эрх шаардлагагүй (таны хэрэглэгчийн хавтаст суулгана:
    `%LOCALAPPDATA%\Programs\MonCad`).
    - Windows «SmartScreen» анхааруулга гарвал **More info → Run anyway** дарна (програм одоогоор

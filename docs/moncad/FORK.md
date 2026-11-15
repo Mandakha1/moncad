@@ -11,7 +11,7 @@ upstream `main` at `7064a685` (2026-11-15, CADCraft 0.21.0-dev, after v0.20.1).
 | Brand files | ArtCraft logos (`docs/brand/`) removed — their terms forbid them in forks; plain-text "based on CADCraft" credit in About, NOTICE, README | `NOTICE`, `ATTRIBUTION.md`, `crates/ui-egui/src/dialogs.rs` |
 | Icon | New MonCad icon drawn by `packaging/moncad/make_icon.py`; upstream file names kept so packaging is unchanged | `assets/app-icon/*` |
 | Settings folder | `%APPDATA%\MonCad`, `~/Library/Application Support/MonCad`, `~/.config/moncad` — never shared with an installed CADCraft | `crates/engine/src/settings_dir.rs` |
-| Updates | Only MonCad's own repo (`brand::RELEASE_REPO`); startup check off until it has releases (`brand::UPDATES_AT_START`) — upstream's updater would replace MonCad with CADCraft | `crates/ui-egui/src/{brand,lib}.rs`, `apps/cadcraft/src/main.rs` |
+| Updates | Only MonCad's own repo (`brand::RELEASE_REPO` = `Mandakha1/moncad`); startup check off until it has a published release (`brand::UPDATES_AT_START`) — upstream's updater would replace MonCad with CADCraft | `crates/ui-egui/src/{brand,lib}.rs`, `apps/cadcraft/src/main.rs` |
 | Mongolian UI | `mn` catalog (2,053 rows, nothing missing), registered in `i18n::LANGUAGES` | `crates/ui-egui/src/i18n.rs`, `crates/ui-egui/src/i18n/mn.tsv`, `docs/moncad/mn-glossary.md` |
 | Mongolian keyboard | Commands typed with the Mongolian Cyrillic layout run (`лшиу` = LINE) | `crates/engine/src/keyboard.rs` |
 | Metric | MEASUREINIT defaults to metric (mm, ISO-25); the headless MCP session starts metric | `crates/engine/src/settings.rs`, `crates/mcp/src/backend.rs` |
