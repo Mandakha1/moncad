@@ -20,7 +20,7 @@ jobs:
   test:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
       - name: Interface catalogs, fonts and language switching
@@ -34,7 +34,7 @@ jobs:
   windows:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
       - name: Build moncad.exe and moncad-cli.exe
@@ -89,7 +89,7 @@ jobs:
           & "$dir\moncad-cli.exe" --version
           Get-Content "$dir\AI-connect.txt"
           Start-Process -FilePath "$dir\uninstall.exe" -ArgumentList "/S" -Wait
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: moncad-windows-x64
           path: dist/*
@@ -101,7 +101,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: moncad-windows-x64
           path: dist
