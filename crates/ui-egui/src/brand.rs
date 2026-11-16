@@ -29,9 +29,9 @@ pub const RELEASE_REPO: &str = "Mandakha1/moncad";
 pub const SOURCE: &str = "https://github.com/Mandakha1/moncad";
 pub const SOURCE_LABEL: &str = "github.com/Mandakha1/moncad";
 
-/// Whether to look for a newer MonCad when the app starts. Off until [`RELEASE_REPO`] has its first
-/// published release; Help ▸ Check for Updates works either way.
-pub const UPDATES_AT_START: bool = false;
+/// Whether to look for a newer MonCad when the app starts (on since the first published release,
+/// v0.21.0 "MonCad 2026"); Help ▸ Check for Updates works either way.
+pub const UPDATES_AT_START: bool = true;
 
 #[cfg(test)]
 mod tests {
