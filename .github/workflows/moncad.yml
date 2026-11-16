@@ -77,6 +77,8 @@ jobs:
           if (-not (Test-Path $makensis)) { choco install nsis -y --no-progress; if ($LASTEXITCODE -ne 0) { throw "NSIS install failed" } }
           & $makensis -V2 "-DROOT=$PWD" "-DVERSION=$version" "-DYEAR=$year" "-DBINDIR=$PWD\target\release" "-DOUTFILE=$PWD\dist\moncad-$year-$version-windows-x64-setup.exe" packaging\moncad\windows\moncad.nsi
           if ($LASTEXITCODE -ne 0) { throw "makensis failed" }
+          # A stable name for releases/latest/download/MonCad-<year>-Setup.exe (the download pages link it).
+          Copy-Item "dist\moncad-$year-$version-windows-x64-setup.exe" "dist\MonCad-$year-Setup.exe"
           $stage = "target\moncad-$year-$version-windows-x64-portable"
           New-Item -ItemType Directory -Force $stage | Out-Null
           Copy-Item target\release\moncad.exe, target\release\moncad-cli.exe, LICENSE-APACHE, LICENSE-MIT, NOTICE $stage
@@ -91,7 +93,7 @@ jobs:
         timeout-minutes: 5
         shell: pwsh
         run: |
-          $setup = Get-ChildItem dist\*-setup.exe | Select-Object -First 1
+          $setup = Get-ChildItem dist\moncad-*-setup.exe | Select-Object -First 1
           Start-Process -FilePath $setup.FullName -ArgumentList "/S" -Wait
           $dir = "$env:LOCALAPPDATA\Programs\MonCad"
           if (-not (Test-Path "$dir\moncad.exe")) { throw "not installed" }
