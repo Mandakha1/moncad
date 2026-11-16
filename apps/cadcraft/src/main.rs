@@ -369,6 +369,7 @@ fn main() -> eframe::Result {
         Box::new(move |cc| {
             let mut app = CadApp::new(Session::empty(), services());
             app.news = news();
+            app.account = account();
             // File dialogs are sheets on macOS: a modal loop inside the event handler crashes the
             // app when the dialog is resized (#1527).
             #[cfg(target_os = "macos")]
@@ -517,6 +518,23 @@ mod tests {
 
 /// MonCad's news, courses and offers (`mon_news`): the owner's feed over the updater's HTTPS client
 /// (system certificates, HTTPS only). `MON_NEWS=0` turns it off.
+/// Gmail sign-in and install registration at monhydro.com (owner's decision 2026-11-16: required
+/// once, on the first start; afterwards MonCad works offline).
+fn account() -> Option<cadcraft_ui_egui::mon_account::Account> {
+    use cadcraft_ui_egui::{brand, mon_account};
+    let http = craft_update::http::Http::new("MonCad-account").ok()?;
+    let fetch: mon_account::Fetch = std::sync::Arc::new(move |url: &str| {
+        http.get_bytes(url, 64 * 1024)?.ok_or_else(|| "monhydro.com answered with nothing".to_string())
+    });
+    Some(mon_account::Account::new(mon_account::Config {
+        product: "moncad",
+        app_name: brand::FULL_NAME,
+        version: env!("CARGO_PKG_VERSION"),
+        store_dir: cadcraft_engine::settings_dir::current(),
+        fetch: Some(fetch),
+    }))
+}
+
 fn news() -> Option<cadcraft_ui_egui::mon_news::News> {
     use cadcraft_ui_egui::{brand, mon_news};
     let http = craft_update::http::Http::new("MonCad-news").ok()?;

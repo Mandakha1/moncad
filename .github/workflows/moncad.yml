@@ -15,6 +15,9 @@ permissions:
 
 env:
   CARGO_TERM_COLOR: always
+  # CI launches of the app must not register installs at monhydro.com or read the live news feed.
+  MON_ACCOUNT: "0"
+  MON_NEWS: "0"
 
 jobs:
   test:

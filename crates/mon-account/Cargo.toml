@@ -1,0 +1,19 @@
+[package]
+name = "mon-account"
+description = "Gmail sign-in and install registration for MonCad, Mon3D and MonBIM (monhydro.com accounts)"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+publish = false
+
+[lints]
+workspace = true
+
+[dependencies]
+egui = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+[target.'cfg(windows)'.dependencies]
+# Both apps already lock a winreg 0.55 or 0.56 (safe registry reads; the workspaces forbid unsafe code).
+winreg = ">=0.55, <0.57"

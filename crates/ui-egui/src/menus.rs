@@ -129,6 +129,7 @@ pub const UI_COMMANDS: &[(&str, &str, &[&str], Option<&str>)] = &[
     ("ui.updates.check", "Check for Updates…", &["Help", "Check for Updates…"], None),
     #[cfg(not(target_arch = "wasm32"))]
     ("ui.news", "News and Courses…", &["Help", "News and Courses…"], None),
+    ("ui.account", "Account…", &["Help", "Account…"], None),
     ("ui.dialog.about", "About MonCad", &["Help", "About MonCad"], None),
     ("ui.dialog.commands", "Command Reference", &["Help", "MonCad Help"], Some("F1")),
     ("ui.toggle.history", "Command History", &["Window", "Command History"], Some("F2")),
@@ -544,6 +545,13 @@ fn run_ui_command_inner(app: &mut CadApp, id: &str, params: &Value) -> Option<Re
         "ui.news" => {
             if let Some(news) = app.news.as_mut() {
                 news.open_list();
+            }
+            Ok(Value::Null)
+        }
+        #[cfg(not(target_arch = "wasm32"))]
+        "ui.account" => {
+            if let Some(account) = app.account.as_mut() {
+                account.panel_open = true;
             }
             Ok(Value::Null)
         }

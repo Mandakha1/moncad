@@ -11,6 +11,7 @@ workspace = true
 
 [dependencies]
 mon-news = { path = "../mon-news" }
+mon-account = { path = "../mon-account" }
 craft-ui = { workspace = true }
 cadcraft-geom = { workspace = true }
 cadcraft-color = { workspace = true }

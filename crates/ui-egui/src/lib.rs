@@ -12,6 +12,8 @@
 pub mod brand;
 /// News, courses and offers (`mon_news`), for the host to start.
 pub use mon_news;
+/// Gmail sign-in and install registration (`mon_account`), for the host to start.
+pub use mon_account;
 
 /// MonCad as craft-update knows it, with its 128 px icon and accent colour: the update
 /// prompt shows both, and an AppImage's menu entry gets the icon. Releases are only ever looked
@@ -380,6 +382,8 @@ pub struct CadApp {
     pub updates_rt: updates_ui::Runtime,
     /// News, courses and offers from the owner's feed; the desktop host starts it, tests never do.
     pub news: Option<mon_news::News>,
+    /// Gmail sign-in and install registration at monhydro.com; `None` in tests and the web build.
+    pub account: Option<mon_account::Account>,
 }
 
 impl CadApp {
@@ -438,6 +442,7 @@ impl CadApp {
             #[cfg(not(target_arch = "wasm32"))]
             updates_rt: updates_ui::Runtime::default(),
             news: None,
+            account: None,
             pending_pick: None,
         }
     }
@@ -883,6 +888,9 @@ impl CadApp {
         let language = self.language();
         if let Some(news) = self.news.as_mut() {
             news.show(ctx, language);
+        }
+        if let Some(account) = self.account.as_mut() {
+            account.show(ctx, language);
         }
         // Consume-based queues: each item is handled once, whichever callback delivers it. A
         // reply arriving during a later pass is never starved until the next frame.
