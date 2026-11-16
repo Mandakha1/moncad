@@ -1,0 +1,4 @@
+# MonBIM: this crate is a copy of MonCad's crates/mon-news (shared by MonCad, Mon3D and MonBIM), with one change: MonBIM's
+# egui 0.36 has no `Id::unique`, so its ids are `Id::NULL.with(...)`, which egui 0.36 and 0.37 both have (docs/monbim/FORK.md).
+# MonBIM's `cargo fmt` would reformat it to MonBIM's own width and the copies would drift further apart: leave it as it is.
+disable_all_formatting = true

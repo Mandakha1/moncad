@@ -376,7 +376,7 @@ impl News {
         let mut close = false;
         let mut mute = false;
         egui::Window::new(format!("{} · {}", kind_label(item.kind, lang), self.cfg.app_name))
-            .id(egui::Id::unique("mon_news_card"))
+            .id(egui::Id::NULL.with("mon_news_card"))
             .anchor(egui::Align2::RIGHT_BOTTOM, [-16.0, -44.0])
             .collapsible(false)
             .resizable(false)
@@ -419,7 +419,7 @@ impl News {
         let items: Vec<Item> = self.items().into_iter().cloned().collect();
         let mut open = true;
         let mut shown = !self.seen.muted;
-        egui::Window::new(t.news_title).id(egui::Id::unique("mon_news_list")).open(&mut open).default_width(420.0).show(ctx, |ui| {
+        egui::Window::new(t.news_title).id(egui::Id::NULL.with("mon_news_list")).open(&mut open).default_width(420.0).show(ctx, |ui| {
             if items.is_empty() {
                 ui.label(if self.rx.is_some() { t.loading } else if self.error.is_some() { t.offline } else { t.empty });
             }

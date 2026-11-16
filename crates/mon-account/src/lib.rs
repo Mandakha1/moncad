@@ -314,7 +314,7 @@ impl Account {
         let mut start = false;
         let mut retry = false;
         let mut later = false;
-        egui::Modal::new(egui::Id::unique("mon_account_gate")).show(ctx, |ui| {
+        egui::Modal::new(egui::Id::NULL.with("mon_account_gate")).show(ctx, |ui| {
             ui.set_width(400.0);
             ui.vertical_centered(|ui| {
                 ui.add_space(6.0);
@@ -387,7 +387,7 @@ impl Account {
         let t = |m: &'static str, e: &'static str| if mn { m } else { e };
         let mut open = self.panel_open;
         let mut sign_out = false;
-        egui::Window::new(t("Бүртгэл", "Account")).id(egui::Id::unique("mon_account_panel")).open(&mut open).collapsible(false).resizable(false).show(ctx, |ui| {
+        egui::Window::new(t("Бүртгэл", "Account")).id(egui::Id::NULL.with("mon_account_panel")).open(&mut open).collapsible(false).resizable(false).show(ctx, |ui| {
             egui::Grid::new("mon_account_grid").num_columns(2).spacing([16.0, 6.0]).show(ui, |ui| {
                 ui.label(t("Имэйл", "Email"));
                 ui.label(if self.state.email.is_empty() { t("нэвтрээгүй", "not signed in") } else { self.state.email.as_str() });
