@@ -2,7 +2,7 @@
   <img src="assets/app-icon/cadcraft-256.png" width="128" height="128" alt="MonCad icon: a drafted letter M with grips and a dimension line on a blue grid">
 </p>
 
-<h1 align="center">MonCad</h1>
+<h1 align="center">MonCad 2026</h1>
 
 <p align="center">
   <b>Монгол инженерүүдэд зориулсан үнэгүй, нээлттэй эхийн CAD програм.</b><br>
@@ -32,6 +32,7 @@ MonCad бол AutoCAD-тай төстэй 2D CAD програм: команды�
 | **Нэгж** | Шинэ зураг анхнаасаа метр систем (мм), ISO-25 хэмжээсийн хэв маягтай |
 | **AI** | MCP сервертэй: Claude Code, Claude Desktop, ChatGPT desktop, Codex — зурах, шалгах, PNG харах, DXF/PDF хадгалах |
 | **Файл** | DXF R12–2018 найдвартай; DWG туршилтын (алдагдал байвал анхааруулна); PDF, SVG, PNG экспорт |
+| **Мэдээ** | Шинэ мэдээ, сургалт, саналыг програм дотор болон Windows мэдэгдлээр хүргэнэ (унтрааж болно, хувийн мэдээлэл цуглуулахгүй) — [NEWS-mn.md](docs/moncad/NEWS-mn.md) |
 | **Үнэ** | Үнэгүй, нээлттэй эх (MIT OR Apache-2.0) |
 
 <p align="center">
@@ -88,7 +89,8 @@ What MonCad adds to CADCraft:
 - **metric by default** (millimetres, ISO-25), also in the headless MCP session;
 - `moncad-cli mcp --launch` opens the app on **Windows** and Linux too, not only macOS;
 - a per-user **Windows installer** (Mongolian/English) with a "MonCad (AI)" Start menu entry and ready-to-paste AI connection commands;
-- its own name, icon, settings folder and update channel, so it never collides with an installed CADCraft.
+- its own name with the release year (**MonCad 2026**), icon, settings folder and update channel, so it never collides with an installed CADCraft;
+- a news feed (`news/feed.json`) for courses and announcements, shown as in-app cards and Windows notifications (no tracking, can be turned off).
 
 Docs: [install (mn)](docs/moncad/INSTALL-mn.md) · [AI control (mn)](docs/moncad/AI-mn.md) ·
 [fork notes](docs/moncad/FORK.md) · [Mongolian glossary](docs/moncad/mn-glossary.md) ·

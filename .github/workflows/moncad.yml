@@ -68,17 +68,18 @@ jobs:
         shell: pwsh
         run: |
           $version = (Select-String -Path Cargo.toml -Pattern '^version = "(.*)"').Matches[0].Groups[1].Value
+          $year = (Select-String -Path crates\ui-egui\src\brand.rs -Pattern '^pub const YEAR: &str = "(.*)";').Matches[0].Groups[1].Value
           New-Item -ItemType Directory -Force dist | Out-Null
           $makensis = "C:\Program Files (x86)\NSIS\makensis.exe"
           if (-not (Test-Path $makensis)) { choco install nsis -y --no-progress; if ($LASTEXITCODE -ne 0) { throw "NSIS install failed" } }
-          & $makensis -V2 "-DROOT=$PWD" "-DVERSION=$version" "-DBINDIR=$PWD\target\release" "-DOUTFILE=$PWD\dist\moncad-$version-windows-x64-setup.exe" packaging\moncad\windows\moncad.nsi
+          & $makensis -V2 "-DROOT=$PWD" "-DVERSION=$version" "-DYEAR=$year" "-DBINDIR=$PWD\target\release" "-DOUTFILE=$PWD\dist\moncad-$year-$version-windows-x64-setup.exe" packaging\moncad\windows\moncad.nsi
           if ($LASTEXITCODE -ne 0) { throw "makensis failed" }
-          $stage = "target\moncad-$version-windows-x64-portable"
+          $stage = "target\moncad-$year-$version-windows-x64-portable"
           New-Item -ItemType Directory -Force $stage | Out-Null
           Copy-Item target\release\moncad.exe, target\release\moncad-cli.exe, LICENSE-APACHE, LICENSE-MIT, NOTICE $stage
           Copy-Item docs\moncad\INSTALL-mn.md "$stage\README-mn.md"
           Copy-Item docs\moncad\AI-mn.md "$stage\AI-guide-mn.md"
-          Compress-Archive -Path $stage -DestinationPath "dist\moncad-$version-windows-x64-portable.zip"
+          Compress-Archive -Path $stage -DestinationPath "dist\moncad-$year-$version-windows-x64-portable.zip"
           # Hash first, then write: Out-File would otherwise open the sums file while it is being hashed.
           $sums = Get-ChildItem dist\*.exe, dist\*.zip | Get-FileHash -Algorithm SHA256 | ForEach-Object { "$($_.Hash.ToLower())  $(Split-Path $_.Path -Leaf)" }
           $sums | Out-File -Encoding ascii dist\SHA256SUMS-windows.txt

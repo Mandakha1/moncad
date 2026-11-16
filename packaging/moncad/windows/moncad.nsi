@@ -18,8 +18,11 @@ RequestExecutionLevel user
 !ifndef BINDIR
   !error "pass -DBINDIR=<folder with moncad.exe and moncad-cli.exe>"
 !endif
+!ifndef YEAR
+  !define YEAR "2026"
+!endif
 !ifndef OUTFILE
-  !define OUTFILE "moncad-${VERSION}-windows-x64-setup.exe"
+  !define OUTFILE "moncad-${YEAR}-${VERSION}-windows-x64-setup.exe"
 !endif
 ; makensis works in the script's folder, so ROOT (the repository) is best passed as an absolute path.
 ; Path separator for compile-time paths: makensis on Windows needs "\" in File patterns, makensis on
@@ -33,15 +36,18 @@ RequestExecutionLevel user
   !define ROOT "${__FILEDIR__}${SEP}..${SEP}..${SEP}.."
 !endif
 !define UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\MonCad"
+; The id Windows notifications (news, courses, offers) are shown under; the app uses the same one.
+!define AUMID "MonHydro.MonCad"
+!define FULLNAME "MonCad ${YEAR}"
 
-Name "MonCad ${VERSION}"
+Name "${FULLNAME}"
 OutFile "${OUTFILE}"
 InstallDir "$LOCALAPPDATA\Programs\MonCad"
 InstallDirRegKey HKCU "Software\MonCad" "InstallDir"
-BrandingText "MonCad ${VERSION}"
+BrandingText "${FULLNAME} (${VERSION})"
 VIProductVersion "0.0.0.0"
-VIAddVersionKey /LANG=1033 "ProductName" "MonCad"
-VIAddVersionKey /LANG=1033 "FileDescription" "MonCad setup"
+VIAddVersionKey /LANG=1033 "ProductName" "${FULLNAME}"
+VIAddVersionKey /LANG=1033 "FileDescription" "${FULLNAME} setup"
 VIAddVersionKey /LANG=1033 "ProductVersion" "${VERSION}"
 VIAddVersionKey /LANG=1033 "FileVersion" "${VERSION}"
 VIAddVersionKey /LANG=1033 "LegalCopyright" "MonCad, based on CADCraft by the ArtCraft team. MIT OR Apache-2.0."
@@ -70,8 +76,8 @@ VIAddVersionKey /LANG=1033 "LegalCopyright" "MonCad, based on CADCraft by the Ar
 !insertmacro MUI_LANGUAGE "Mongolian"
 !insertmacro MUI_LANGUAGE "English"
 
-LangString SecApp ${LANG_MONGOLIAN} "MonCad програм"
-LangString SecApp ${LANG_ENGLISH} "MonCad application"
+LangString SecApp ${LANG_MONGOLIAN} "${FULLNAME} програм"
+LangString SecApp ${LANG_ENGLISH} "${FULLNAME} application"
 LangString SecDesktop ${LANG_MONGOLIAN} "Ширээний компьютер дээр товчлол"
 LangString SecDesktop ${LANG_ENGLISH} "Desktop shortcut"
 LangString ShowAiText ${LANG_MONGOLIAN} "Claude / ChatGPT-тэй холбох заавар харах"
@@ -91,6 +97,7 @@ Section "!$(SecApp)" SecMain
   SetOutPath "$INSTDIR"
   File "${BINDIR}${SEP}moncad.exe"
   File "${BINDIR}${SEP}moncad-cli.exe"
+  File /oname=moncad.ico "${ROOT}${SEP}assets${SEP}app-icon${SEP}cadcraft.ico"
   File "${ROOT}${SEP}LICENSE-APACHE"
   File "${ROOT}${SEP}LICENSE-MIT"
   File "${ROOT}${SEP}NOTICE"
@@ -99,7 +106,7 @@ Section "!$(SecApp)" SecMain
 
   ; Ready-to-paste commands with this install's real path.
   FileOpen $0 "$INSTDIR\AI-connect.txt" w
-  FileWrite $0 "MonCad - AI connection / AI холболт$\r$\n$\r$\n"
+  FileWrite $0 "${FULLNAME} - AI connection / AI холболт$\r$\n$\r$\n"
   FileWrite $0 "Claude Code (terminal):$\r$\n"
   FileWrite $0 '  claude mcp add moncad -- "$INSTDIR\moncad-cli.exe" mcp --connect 127.0.0.1:7979 --launch$\r$\n$\r$\n'
   FileWrite $0 "Claude Desktop (claude_desktop_config.json):$\r$\n"
@@ -112,14 +119,20 @@ Section "!$(SecApp)" SecMain
   FileWrite $0 "Without a window (headless, the AI draws and saves files): replace the arguments with just: mcp$\r$\n"
   FileClose $0
 
+  ; Shortcuts carry the year; an older year's shortcuts are replaced.
   CreateDirectory "$SMPROGRAMS\MonCad"
-  CreateShortcut "$SMPROGRAMS\MonCad\MonCad.lnk" "$INSTDIR\moncad.exe" "" "$INSTDIR\moncad.exe" 0
-  CreateShortcut "$SMPROGRAMS\MonCad\MonCad (AI).lnk" "$INSTDIR\moncad.exe" "--control 7979" "$INSTDIR\moncad.exe" 0
-  CreateShortcut "$SMPROGRAMS\MonCad\Uninstall MonCad.lnk" "$INSTDIR\uninstall.exe"
+  Delete "$SMPROGRAMS\MonCad\*.lnk"
+  CreateShortcut "$SMPROGRAMS\MonCad\${FULLNAME}.lnk" "$INSTDIR\moncad.exe" "" "$INSTDIR\moncad.exe" 0
+  CreateShortcut "$SMPROGRAMS\MonCad\${FULLNAME} (AI).lnk" "$INSTDIR\moncad.exe" "--control 7979" "$INSTDIR\moncad.exe" 0
+  CreateShortcut "$SMPROGRAMS\MonCad\Uninstall ${FULLNAME}.lnk" "$INSTDIR\uninstall.exe"
+
+  ; Windows notifications from MonCad show its name and icon (an unpackaged app registers its id).
+  WriteRegStr HKCU "Software\Classes\AppUserModelId\${AUMID}" "DisplayName" "${FULLNAME}"
+  WriteRegStr HKCU "Software\Classes\AppUserModelId\${AUMID}" "IconUri" "$INSTDIR\moncad.ico"
 
   WriteUninstaller "$INSTDIR\uninstall.exe"
   WriteRegStr HKCU "Software\MonCad" "InstallDir" "$INSTDIR"
-  WriteRegStr HKCU "${UNINST_KEY}" "DisplayName" "MonCad"
+  WriteRegStr HKCU "${UNINST_KEY}" "DisplayName" "${FULLNAME}"
   WriteRegStr HKCU "${UNINST_KEY}" "DisplayVersion" "${VERSION}"
   WriteRegStr HKCU "${UNINST_KEY}" "Publisher" "MonCad"
   WriteRegStr HKCU "${UNINST_KEY}" "DisplayIcon" "$INSTDIR\moncad.exe"
@@ -133,7 +146,7 @@ Section "!$(SecApp)" SecMain
 SectionEnd
 
 Section /o "$(SecDesktop)" SecDesk
-  CreateShortcut "$DESKTOP\MonCad.lnk" "$INSTDIR\moncad.exe" "" "$INSTDIR\moncad.exe" 0
+  CreateShortcut "$DESKTOP\${FULLNAME}.lnk" "$INSTDIR\moncad.exe" "" "$INSTDIR\moncad.exe" 0
 SectionEnd
 
 Function .onInstSuccess
@@ -141,12 +154,13 @@ Function .onInstSuccess
   ${GetParameters} $0
   ${GetOptions} $0 "/DESKTOP=" $1
   StrCmp $1 "1" 0 +2
-  CreateShortcut "$DESKTOP\MonCad.lnk" "$INSTDIR\moncad.exe" "" "$INSTDIR\moncad.exe" 0
+  CreateShortcut "$DESKTOP\${FULLNAME}.lnk" "$INSTDIR\moncad.exe" "" "$INSTDIR\moncad.exe" 0
 FunctionEnd
 
 Section "Uninstall"
   Delete "$INSTDIR\moncad.exe"
   Delete "$INSTDIR\moncad-cli.exe"
+  Delete "$INSTDIR\moncad.ico"
   Delete "$INSTDIR\LICENSE-APACHE"
   Delete "$INSTDIR\LICENSE-MIT"
   Delete "$INSTDIR\NOTICE"
@@ -155,11 +169,11 @@ Section "Uninstall"
   Delete "$INSTDIR\AI-connect.txt"
   Delete "$INSTDIR\uninstall.exe"
   RMDir "$INSTDIR"
-  Delete "$SMPROGRAMS\MonCad\MonCad.lnk"
-  Delete "$SMPROGRAMS\MonCad\MonCad (AI).lnk"
-  Delete "$SMPROGRAMS\MonCad\Uninstall MonCad.lnk"
+  Delete "$SMPROGRAMS\MonCad\*.lnk"
   RMDir "$SMPROGRAMS\MonCad"
   Delete "$DESKTOP\MonCad.lnk"
+  Delete "$DESKTOP\MonCad *.lnk"
+  DeleteRegKey HKCU "Software\Classes\AppUserModelId\${AUMID}"
   DeleteRegKey HKCU "${UNINST_KEY}"
   DeleteRegKey HKCU "Software\MonCad"
   ; Drawings and the settings folder (%APPDATA%\MonCad) are the user's and stay.

@@ -12,7 +12,7 @@ fn main() {
     if std::path::Path::new("../../assets/app-icon/cadcraft.ico").exists() {
         res.set_icon("../../assets/app-icon/cadcraft.ico");
     }
-    res.set("ProductName", "MonCad")
+    res.set("ProductName", "MonCad 2026")
         .set("FileDescription", "MonCad computer-aided design")
         .set("CompanyName", "MonCad")
         .set("LegalCopyright", "MonCad, based on CADCraft (c) 2026 ArtCraft Team and the CADCraft contributors. MIT OR Apache-2.0.")

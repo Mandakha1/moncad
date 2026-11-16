@@ -10,6 +10,8 @@
 
 /// MonCad's identity: the name, links and the release repository in one place (see `brand.rs`).
 pub mod brand;
+/// News, courses and offers (`mon_news`), for the host to start.
+pub use mon_news;
 
 /// MonCad as craft-update knows it, with its 128 px icon and accent colour: the update
 /// prompt shows both, and an AppImage's menu entry gets the icon. Releases are only ever looked
@@ -376,6 +378,8 @@ pub struct CadApp {
     /// The startup update check and its prompt (desktop; [`updates_ui`]).
     #[cfg(not(target_arch = "wasm32"))]
     pub updates_rt: updates_ui::Runtime,
+    /// News, courses and offers from the owner's feed; the desktop host starts it, tests never do.
+    pub news: Option<mon_news::News>,
 }
 
 impl CadApp {
@@ -433,6 +437,7 @@ impl CadApp {
             bedit: bedit::State::default(),
             #[cfg(not(target_arch = "wasm32"))]
             updates_rt: updates_ui::Runtime::default(),
+            news: None,
             pending_pick: None,
         }
     }
@@ -875,6 +880,10 @@ impl CadApp {
     /// pass index is zero. `current_pass_index() == 0` is therefore the frame guard: true on the
     /// first pass and every hidden tick, false on later passes.
     pub fn logic(&mut self, ctx: &egui::Context) {
+        let language = self.language();
+        if let Some(news) = self.news.as_mut() {
+            news.show(ctx, language);
+        }
         // Consume-based queues: each item is handled once, whichever callback delivers it. A
         // reply arriving during a later pass is never starved until the next frame.
         self.drain_control(ctx);

@@ -10,6 +10,7 @@ rust-version = "1.95"
 workspace = true
 
 [dependencies]
+mon-news = { path = "../mon-news" }
 craft-ui = { workspace = true }
 cadcraft-geom = { workspace = true }
 cadcraft-color = { workspace = true }

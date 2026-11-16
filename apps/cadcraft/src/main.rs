@@ -227,7 +227,7 @@ fn restores_window() -> bool {
 fn window_options(restoring: bool) -> eframe::NativeOptions {
     eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
-            .with_title("MonCad")
+            .with_title(cadcraft_ui_egui::brand::FULL_NAME)
             .with_inner_size([1600.0, 1000.0])
             .with_min_inner_size([900.0, 560.0])
             .with_drag_and_drop(true)
@@ -368,6 +368,7 @@ fn main() -> eframe::Result {
         options,
         Box::new(move |cc| {
             let mut app = CadApp::new(Session::empty(), services());
+            app.news = news();
             // File dialogs are sheets on macOS: a modal loop inside the event handler crashes the
             // app when the dialog is resized (#1527).
             #[cfg(target_os = "macos")]
@@ -512,4 +513,22 @@ mod tests {
         follow_desktop(&mut raw, None);
         assert_eq!(raw.system_theme, None);
     }
+}
+
+/// MonCad's news, courses and offers (`mon_news`): the owner's feed over the updater's HTTPS client
+/// (system certificates, HTTPS only). `MON_NEWS=0` turns it off.
+fn news() -> Option<cadcraft_ui_egui::mon_news::News> {
+    use cadcraft_ui_egui::{brand, mon_news};
+    let http = craft_update::http::Http::new("MonCad-news").ok()?;
+    let fetch: mon_news::Fetch = std::sync::Arc::new(move |url: &str| {
+        http.get_bytes(url, mon_news::MAX_FEED)?.ok_or_else(|| "the news feed was not found".to_string())
+    });
+    Some(mon_news::News::new(mon_news::Config {
+        product: "moncad",
+        app_name: brand::FULL_NAME,
+        aumid: brand::AUMID,
+        url: mon_news::FEED_URL.into(),
+        store_dir: cadcraft_engine::settings_dir::current(),
+        fetch: Some(fetch),
+    }))
 }

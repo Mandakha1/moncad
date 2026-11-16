@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "2026-11-welcome-course",
+      "products": ["moncad", "monsolid"],
+      "kind": "course",
+      "title": {
+        "mn": "AutoCAD, MonCad сургалт",
+        "en": "AutoCAD and MonCad course"
+      },
+      "body": {
+        "mn": "Инженерүүдэд зориулсан CAD сургалт: 2D зураг, хэмжээс, хэвлэлт, AI-аар зуруулах.",
+        "en": "CAD training for engineers: 2D drawings, dimensions, plotting and drawing with AI."
+      },
+      "link": "https://cad.monhydro.com",
+      "link_label": { "mn": "Сургалт үзэх", "en": "See the course" },
+      "start": "2026-11-16",
+      "toast": false
+    }
+  ]
+}

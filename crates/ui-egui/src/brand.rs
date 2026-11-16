@@ -4,8 +4,15 @@
 //! licensed for forks (docs/brand/LICENSE-brand.txt upstream), so MonCad uses its own name and icon
 //! and credits CADCraft in plain text only.
 
-/// The product name shown to people.
+/// The product name shown to people, without the year: folders, messages, the MCP server.
 pub const NAME: &str = "MonCad";
+/// The release year shown with the name. Next year change it, [`FULL_NAME`], and `ProductName`
+/// in apps/cadcraft/build.rs; folders and executables stay without the year, so settings carry over.
+pub const YEAR: &str = "2026";
+/// What the window title, the start page, About and the installer show.
+pub const FULL_NAME: &str = "MonCad 2026";
+/// The id Windows shows MonCad's notifications under; the installer registers it.
+pub const AUMID: &str = "MonHydro.MonCad";
 
 /// MonCad's website (About window, macOS app menu).
 pub const WEBSITE: &str = "https://cad.monhydro.com";
@@ -25,3 +32,11 @@ pub const SOURCE_LABEL: &str = "github.com/Mandakha1/moncad";
 /// Whether to look for a newer MonCad when the app starts. Off until [`RELEASE_REPO`] has its first
 /// published release; Help ▸ Check for Updates works either way.
 pub const UPDATES_AT_START: bool = false;
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn the_full_name_is_the_name_and_the_year() {
+        assert_eq!(super::FULL_NAME, format!("{} {}", super::NAME, super::YEAR));
+    }
+}

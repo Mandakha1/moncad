@@ -12,6 +12,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT"
 TARGET="${TARGET:-x86_64-pc-windows-gnu}"
 VERSION="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)"
+YEAR="$(sed -n 's/^pub const YEAR: &str = "\(.*\)";/\1/p' crates/ui-egui/src/brand.rs)"
 DIST="$ROOT/dist"
 # makensis crashes (std::bad_alloc) under the C locale on macOS, hence LC_ALL below.
 command -v makensis >/dev/null || { echo "error: makensis (NSIS) not found" >&2; exit 1; }
@@ -21,15 +22,15 @@ CADCRAFT_REQUIRE_WINRES=1 cargo build --release --locked -p cadcraft -p cadcraft
 BIN="$ROOT/target/$TARGET/release"
 mkdir -p "$DIST"
 
-SETUP="$DIST/moncad-$VERSION-windows-x64-setup.exe"
-LC_ALL=en_US.UTF-8 makensis -V2 -DROOT="$ROOT" -DVERSION="$VERSION" -DBINDIR="$BIN" -DOUTFILE="$SETUP" packaging/moncad/windows/moncad.nsi
+SETUP="$DIST/moncad-$YEAR-$VERSION-windows-x64-setup.exe"
+LC_ALL=en_US.UTF-8 makensis -V2 -DROOT="$ROOT" -DVERSION="$VERSION" -DYEAR="$YEAR" -DBINDIR="$BIN" -DOUTFILE="$SETUP" packaging/moncad/windows/moncad.nsi
 
-STAGE="$ROOT/target/moncad-portable/moncad-$VERSION-windows-x64-portable"
+STAGE="$ROOT/target/moncad-portable/moncad-$YEAR-$VERSION-windows-x64-portable"
 rm -rf "$STAGE" && mkdir -p "$STAGE"
 cp "$BIN/moncad.exe" "$BIN/moncad-cli.exe" LICENSE-APACHE LICENSE-MIT NOTICE "$STAGE/"
 cp docs/moncad/INSTALL-mn.md "$STAGE/README-mn.md"
 cp docs/moncad/AI-mn.md "$STAGE/AI-guide-mn.md"
-ZIP="$DIST/moncad-$VERSION-windows-x64-portable.zip"
+ZIP="$DIST/moncad-$YEAR-$VERSION-windows-x64-portable.zip"
 rm -f "$ZIP"
 (cd "$(dirname "$STAGE")" && zip -qr "$ZIP" "$(basename "$STAGE")")
 
