@@ -1,4 +1,4 @@
-//! News, courses and offers for MonCad and MonSolid.
+//! News, courses and offers for MonCad and Mon3D.
 //!
 //! The owner publishes one small JSON file (the feed, [`FEED_URL`]); every installed copy reads it
 //! when it starts and every few hours while it stays open, and shows what is new: a card in the
@@ -13,7 +13,7 @@
 //! ```json
 //! {"version": 1, "items": [{
 //!   "id": "2026-11-course",            // unique; shown once per id
-//!   "products": ["moncad", "monsolid"], // empty or absent: every product
+//!   "products": ["moncad", "mon3d"], // empty or absent: every product
 //!   "kind": "course",                   // news | course | ad | update
 //!   "title": {"mn": "…", "en": "…"},
 //!   "body": {"mn": "…", "en": "…"},
@@ -219,11 +219,11 @@ impl Seen {
 
 /// How an app uses the feed.
 pub struct Config {
-    /// `moncad` or `monsolid`: which items are for this app.
+    /// `moncad` or `mon3d`: which items are for this app.
     pub product: &'static str,
-    /// The name shown on cards ("MonSolid 2026").
+    /// The name shown on cards ("Mon3D 2026").
     pub app_name: &'static str,
-    /// The Windows notification id the installer registers (`MonHydro.MonSolid`).
+    /// The Windows notification id the installer registers (`MonHydro.Mon3D`).
     pub aumid: &'static str,
     pub url: String,
     /// The settings folder for [`Seen`]; `None` keeps it in memory only.
@@ -522,7 +522,7 @@ mod tests {
         {"id": "a", "products": ["moncad"], "kind": "course", "title": {"mn": "Сургалт", "en": "Course"},
          "link": "https://cad.monhydro.com", "start": "2026-11-01", "end": "2026-11-30", "toast": true},
         {"id": "b", "kind": "ad", "title": {"en": "Only English"}, "link": "http://insecure.example"},
-        {"id": "c", "products": ["monsolid"], "title": {"mn": "Зөвхөн MonSolid"}},
+        {"id": "c", "products": ["mon3d"], "title": {"mn": "Зөвхөн Mon3D"}},
         {"id": "", "title": {"mn": "id-гүй"}},
         {"id": "e", "title": {"mn": "Хугацаа буруу"}, "start": "16/11/2026"}
     ]}"#;
@@ -532,7 +532,7 @@ mod tests {
         let feed = Feed::parse(FEED.as_bytes()).unwrap();
         let ids = |p: &str, d: &str| feed.current(p, d).iter().map(|i| i.id.as_str()).collect::<Vec<_>>();
         assert_eq!(ids("moncad", "2026-11-16"), ["a", "b"]);
-        assert_eq!(ids("MonSolid", "2026-11-16"), ["b", "c"]);
+        assert_eq!(ids("Mon3D", "2026-11-16"), ["b", "c"]);
         assert_eq!(ids("moncad", "2026-12-01"), ["b"], "after its end date");
         assert_eq!(ids("moncad", "2026-10-31"), ["b"], "before its start date");
     }

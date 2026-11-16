@@ -3,7 +3,7 @@
   "items": [
     {
       "id": "2026-11-welcome-course",
-      "products": ["moncad", "monsolid"],
+      "products": ["moncad", "mon3d", "monsolid"],
       "kind": "course",
       "title": {
         "mn": "AutoCAD, MonCad сургалт",

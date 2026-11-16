@@ -1,6 +1,6 @@
-# Мэдээ, сургалт, зар илгээх (MonCad 2026, MonSolid 2026)
+# Мэдээ, сургалт, зар илгээх (MonCad 2026, Mon3D 2026)
 
-Суулгасан бүх MonCad болон MonSolid програм нэг файлыг уншдаг:
+Суулгасан бүх MonCad болон Mon3D програм нэг файлыг уншдаг:
 **`news/feed.json`** (энэ repo-ийн `main` салбар,
 <https://github.com/Mandakha1/moncad/blob/main/news/feed.json>).
 
@@ -23,7 +23,7 @@
 ```json
 {
   "id": "2026-12-shine-surgalt",
-  "products": ["moncad", "monsolid"],
+  "products": ["moncad", "mon3d"],
   "kind": "course",
   "title": { "mn": "12-р сарын шинэ сургалт", "en": "New course in December" },
   "body": { "mn": "Бүртгэл нээгдлээ, 20% хямдрал 12/10 хүртэл.", "en": "Registration is open, 20% off until 12/10." },
@@ -40,7 +40,7 @@
 | Талбар | Утга |
 |---|---|
 | `id` | Давтагдахгүй нэр (жишээ: огноо + сэдэв). Өөрчилбөл хүмүүст дахин гарна. |
-| `products` | `moncad`, `monsolid` эсвэл хоёулаа. Хоосон бол бүгдэд. |
+| `products` | `moncad`, `mon3d` эсвэл хоёулаа. Хоосон бол бүгдэд. Mon3D анх «MonSolid» нэрээр гарсан тул тэр хувилбарыг суулгасан хүмүүст хүргэхийн тулд `monsolid`-ийг ч нэмж болно. |
 | `kind` | `news` (мэдээ), `course` (сургалт), `ad` (зар — картан дээр «Зар» гэж тэмдэглэгдэнэ), `update` (шинэчлэл) |
 | `title`, `body` | `mn` ба `en`. Аль нэг нь хоосон бол нөгөөг нь харуулна. |
 | `link` | Зөвхөн `https://…` холбоос. |

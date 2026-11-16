@@ -1,6 +1,6 @@
 [package]
 name = "mon-news"
-description = "News, courses and offers for MonCad and MonSolid: a small JSON feed shown in the app and as Windows notifications"
+description = "News, courses and offers for MonCad and Mon3D: a small JSON feed shown in the app and as Windows notifications"
 version = "0.1.0"
 edition.workspace = true
 license.workspace = true
