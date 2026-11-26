@@ -13,6 +13,7 @@ upstream `main` at `7064a685` (2026-11-15, CADCraft 0.21.0-dev, after v0.20.1).
 | Settings folder | `%APPDATA%\MonCad`, `~/Library/Application Support/MonCad`, `~/.config/moncad` — never shared with an installed CADCraft | `crates/engine/src/settings_dir.rs` |
 | Updates | Only MonCad's own repo (`brand::RELEASE_REPO` = `Mandakha1/moncad`); startup check off until it has a published release (`brand::UPDATES_AT_START`) — upstream's updater would replace MonCad with CADCraft | `crates/ui-egui/src/{brand,lib}.rs`, `apps/cadcraft/src/main.rs` |
 | Mongolian UI | `mn` catalog (2,053 rows, nothing missing), registered in `i18n::LANGUAGES` | `crates/ui-egui/src/i18n.rs`, `crates/ui-egui/src/i18n/mn.tsv`, `docs/moncad/mn-glossary.md` |
+| Japanese UI | `ja` catalog (2,056 rows, nothing missing), registered in `i18n::LANGUAGES`; shown when a Japanese font is installed (`theme::can_show`); the sign-in window, Account window and news cards speak Japanese too | `crates/ui-egui/src/i18n.rs`, `crates/ui-egui/src/i18n/ja.tsv`, `crates/ui-egui/src/theme.rs`, `crates/mon-account`, `crates/mon-news`, `docs/moncad/ja-glossary.md`, `docs/ja-review.md` |
 | Mongolian keyboard | Commands typed with the Mongolian Cyrillic layout run (`лшиу` = LINE) | `crates/engine/src/keyboard.rs` |
 | Metric | MEASUREINIT defaults to metric (mm, ISO-25); the headless MCP session starts metric | `crates/engine/src/settings.rs`, `crates/mcp/src/backend.rs` |
 | Cyrillic text | Letters the stroke font lacks (Cyrillic) fall back to a proportional font (Arial, Segoe UI, DejaVu…) instead of a CJK face with full-width Cyrillic that doubled label widths | `crates/fonts/src/ttf.rs` (`CYRILLIC_FALLBACK`) |
@@ -34,10 +35,10 @@ git fetch upstream
 git merge upstream/main
 # conflicts are usually in the files listed above; keep MonCad's side for names, upstream's for logic
 cargo test -p cadcraft-ui-egui --lib i18n            # catalogs, fonts, live switching
-cargo test --workspace --lib -q -- --ignored --exact i18n::tests::translation_gaps --nocapture | grep -A50 '^mn:'
+cargo test --workspace --lib -q -- --ignored --exact i18n::tests::translation_gaps --nocapture | grep -A50 -E '^(mn|ja):'
 ```
 
-New upstream UI strings show in English in the Mongolian UI until rows are added to `mn.tsv`; the
+New upstream UI strings show in English in the Mongolian and Japanese UIs until rows are added to `mn.tsv` and `ja.tsv`; the
 gap report above lists them. Any new upstream string containing "CADCraft" should be rebranded in
 the source and in every catalog (`grep -rn CADCraft crates/ui-egui/src`).
 

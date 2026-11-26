@@ -13,6 +13,7 @@
   <a href="docs/moncad/INSTALL-mn.md">Суулгах</a> ·
   <a href="docs/moncad/AI-mn.md">AI-аар зуруулах</a> ·
   <a href="#english">English</a> ·
+  <a href="https://jp.monhydro.com">日本語</a> ·
   <a href="https://github.com/Mandakha1/moncad/releases">Татах</a> ·
   <a href="https://cad.monhydro.com">Сургалт</a>
 </p>
@@ -27,7 +28,7 @@ MonCad бол AutoCAD-тай төстэй 2D CAD програм: команды�
 
 | | |
 |---|---|
-| **Хэл** | Монгол (бүрэн орчуулга, 2,053 мөр) ба англи, програм дахин асаалгүй солино. Бусад 19 хэл ч бий. |
+| **Хэл** | Монгол (бүрэн орчуулга, 2,053 мөр), япон (日本語, бүрэн) ба англи, програм дахин асаалгүй солино. Бусад 19 хэл ч бий. |
 | **Монгол гар** | Гарын байрлал Монгол үед ч команд ажиллана: «лшиу» = `LINE`, «ёшжёлу» = `CIRCLE` |
 | **Нэгж** | Шинэ зураг анхнаасаа метр систем (мм), ISO-25 хэмжээсийн хэв маягтай |
 | **AI** | MCP сервертэй: Claude Code, Claude Desktop, ChatGPT desktop, Codex — зурах, шалгах, PNG харах, DXF/PDF хадгалах |
@@ -86,6 +87,7 @@ with the familiar AutoCAD-style command line, or let Claude or ChatGPT draw for 
 What MonCad adds to CADCraft:
 
 - a complete **Mongolian (Cyrillic)** interface (`mn`, 2,053 rows, nothing falls back to English), live switching with English;
+- a complete **Japanese** interface (`ja`, 2,056 rows, in the terms of the Japanese edition of AutoCAD; chosen automatically on a Japanese Windows), with a Japanese installer and download page at [jp.monhydro.com](https://jp.monhydro.com);
 - commands typed with the **Mongolian keyboard layout** are understood (`лшиу` = LINE);
 - **metric by default** (millimetres, ISO-25), also in the headless MCP session;
 - `moncad-cli mcp --launch` opens the app on **Windows** and Linux too, not only macOS;
@@ -93,7 +95,7 @@ What MonCad adds to CADCraft:
 - its own name with the release year (**MonCad 2026**), icon, settings folder and update channel, so it never collides with an installed CADCraft;
 - a news feed (`news/feed.json`) for courses and announcements, shown as in-app cards and Windows notifications (no tracking, can be turned off).
 
-Docs: [install (mn)](docs/moncad/INSTALL-mn.md) · [AI control (mn)](docs/moncad/AI-mn.md) ·
+Docs: [install (mn)](docs/moncad/INSTALL-mn.md) · [install (ja)](docs/moncad/INSTALL-ja.md) · [changelog](docs/moncad/CHANGELOG.md) · [AI control (mn)](docs/moncad/AI-mn.md) ·
 [fork notes](docs/moncad/FORK.md) · [Mongolian glossary](docs/moncad/mn-glossary.md) ·
 [upstream CADCraft README](docs/upstream/CADCraft-README.md) · [MCP reference](docs/mcp.md) ·
 [CLI](docs/cli.md) · [localization](docs/localization.md)

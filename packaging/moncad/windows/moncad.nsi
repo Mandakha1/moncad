@@ -75,6 +75,7 @@ VIAddVersionKey /LANG=1033 "LegalCopyright" "MonCad, based on CADCraft by the Ar
 
 !insertmacro MUI_LANGUAGE "Mongolian"
 !insertmacro MUI_LANGUAGE "English"
+!insertmacro MUI_LANGUAGE "Japanese"
 
 LangString SecApp ${LANG_MONGOLIAN} "${FULLNAME} програм"
 LangString SecApp ${LANG_ENGLISH} "${FULLNAME} application"
@@ -82,11 +83,14 @@ LangString SecDesktop ${LANG_MONGOLIAN} "Ширээний компьютер д�
 LangString SecDesktop ${LANG_ENGLISH} "Desktop shortcut"
 LangString ShowAiText ${LANG_MONGOLIAN} "Claude / ChatGPT-тэй холбох заавар харах"
 LangString ShowAiText ${LANG_ENGLISH} "Show how to connect Claude / ChatGPT"
+LangString SecApp ${LANG_JAPANESE} "${FULLNAME} アプリケーション"
+LangString SecDesktop ${LANG_JAPANESE} "デスクトップにショートカットを作成"
+LangString ShowAiText ${LANG_JAPANESE} "Claude / ChatGPT との接続方法を表示"
 
 Function .onInit
-  ; Ask for the installer language (Mongolian or English). A silent install never asks: the jump
-  ; goes to a label because MUI_LANGDLL_DISPLAY expands to many instructions (IfSilent +2 would
-  ; skip only the first, and /S would wait on the dialog forever).
+  ; Ask for the installer language (Mongolian, English or Japanese; the system's is preselected).
+  ; A silent install never asks: the jump goes to a label because MUI_LANGDLL_DISPLAY expands to
+  ; many instructions (IfSilent +2 would skip only the first, and /S would wait on the dialog forever).
   IfSilent skip_language
   !insertmacro MUI_LANGDLL_DISPLAY
   skip_language:
@@ -103,6 +107,7 @@ Section "!$(SecApp)" SecMain
   File "${ROOT}${SEP}NOTICE"
   File /oname=README-mn.md "${ROOT}${SEP}docs${SEP}moncad${SEP}INSTALL-mn.md"
   File /oname=AI-guide-mn.md "${ROOT}${SEP}docs${SEP}moncad${SEP}AI-mn.md"
+  File /oname=README-ja.md "${ROOT}${SEP}docs${SEP}moncad${SEP}INSTALL-ja.md"
 
   ; Ready-to-paste commands with this install's real path.
   FileOpen $0 "$INSTDIR\AI-connect.txt" w
@@ -166,6 +171,7 @@ Section "Uninstall"
   Delete "$INSTDIR\NOTICE"
   Delete "$INSTDIR\README-mn.md"
   Delete "$INSTDIR\AI-guide-mn.md"
+  Delete "$INSTDIR\README-ja.md"
   Delete "$INSTDIR\AI-connect.txt"
   Delete "$INSTDIR\uninstall.exe"
   RMDir "$INSTDIR"

@@ -37,6 +37,50 @@ pub const API: &str = "https://monhydro.com";
 pub const LOGIN_WAIT: Duration = Duration::from_secs(15 * 60);
 /// Where the privacy note lives.
 pub const PRIVACY_URL: &str = "https://monhydro.com/legal.html#apps";
+/// The privacy note in Japanese (APPI wording), for the Japanese interface.
+pub const PRIVACY_URL_JA: &str = "https://monhydro.com/jp/privacy.html";
+
+/// The languages the sign-in and Account windows are written in; any other interface language
+/// gets English.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+enum Lang {
+    Mn,
+    En,
+    Ja,
+}
+
+impl Lang {
+    fn of(lang: &str) -> Lang {
+        if lang.starts_with("mn") {
+            Lang::Mn
+        } else if lang.starts_with("ja") {
+            Lang::Ja
+        } else {
+            Lang::En
+        }
+    }
+
+    /// The `lang` the monhydro.com sign-in page is asked for.
+    fn code(self) -> &'static str {
+        match self {
+            Lang::Mn => "mn",
+            Lang::En => "en",
+            Lang::Ja => "ja",
+        }
+    }
+
+    fn pick(self, mn: &'static str, en: &'static str, ja: &'static str) -> &'static str {
+        match self {
+            Lang::Mn => mn,
+            Lang::En => en,
+            Lang::Ja => ja,
+        }
+    }
+
+    fn privacy_url(self) -> &'static str {
+        if self == Lang::Ja { PRIVACY_URL_JA } else { PRIVACY_URL }
+    }
+}
 
 /// An HTTPS GET returning the body, or why it failed (the app's own client, as for the news feed).
 pub type Fetch = Arc<dyn Fn(&str) -> Result<Vec<u8>, String> + Send + Sync>;
@@ -195,12 +239,12 @@ impl Account {
             self.ping(ctx, lang);
         }
         self.poll(ctx);
-        let mn = lang.starts_with("mn");
+        let l = Lang::of(lang);
         if self.blocks() {
-            self.gate(ctx, lang, mn);
+            self.gate(ctx, lang, l);
         }
         if self.panel_open {
-            self.panel(ctx, mn);
+            self.panel(ctx, l);
         }
     }
 
@@ -286,7 +330,8 @@ impl Account {
         self.error = None;
         let nonce = random_token();
         let cancel = Arc::new(AtomicBool::new(false));
-        match listen(nonce.clone(), lang.starts_with("mn"), self.cfg.app_name, cancel.clone(), ctx.clone()) {
+        let l = Lang::of(lang);
+        match listen(nonce.clone(), l, self.cfg.app_name, cancel.clone(), ctx.clone()) {
             Ok((port, rx)) => {
                 let url = format!(
                     "{}/apps/login?port={port}&state={}&product={}&install={}&v={}&lang={}",
@@ -295,7 +340,7 @@ impl Account {
                     enc(self.cfg.product),
                     enc(&self.state.install),
                     enc(self.cfg.version),
-                    enc(if lang.starts_with("mn") { "mn" } else { "en" })
+                    enc(l.code())
                 );
                 if std::env::var("MON_ACCOUNT_OPEN").map_or(true, |v| v != "0") {
                     ctx.open_url(egui::OpenUrl::new_tab(&url));
@@ -309,8 +354,8 @@ impl Account {
         }
     }
 
-    fn gate(&mut self, ctx: &egui::Context, lang: &str, mn: bool) {
-        let t = |m: &'static str, e: &'static str| if mn { m } else { e };
+    fn gate(&mut self, ctx: &egui::Context, lang: &str, l: Lang) {
+        let t = |m: &'static str, e: &'static str, j: &'static str| l.pick(m, e, j);
         let mut start = false;
         let mut retry = false;
         let mut later = false;
@@ -318,15 +363,20 @@ impl Account {
             ui.set_width(400.0);
             ui.vertical_centered(|ui| {
                 ui.add_space(6.0);
-                ui.heading(if mn { format!("{}-д тавтай морил", self.cfg.app_name) } else { format!("Welcome to {}", self.cfg.app_name) });
+                ui.heading(match l {
+                    Lang::Mn => format!("{}-д тавтай морил", self.cfg.app_name),
+                    Lang::En => format!("Welcome to {}", self.cfg.app_name),
+                    Lang::Ja => format!("{} へようこそ", self.cfg.app_name),
+                });
                 ui.add_space(8.0);
                 ui.label(t(
                     "Үргэлжлүүлэхийн тулд Gmail хаягаараа нэг удаа нэвтэрнэ үү. Програм үнэгүй, нэвтэрсний дараа интернэтгүй ч ажиллана.",
                     "Sign in once with your Gmail address to continue. The program is free and works offline after that.",
+                    "続行するには、Gmail アドレスで一度だけサインインしてください。このプログラムは無料で、サインイン後はオフラインでも使えます。",
                 ));
                 ui.add_space(14.0);
                 let waiting = self.login.is_some();
-                let label = if waiting { t("Дахин нээх", "Open again") } else { t("Gmail-ээр нэвтрэх", "Sign in with Gmail") };
+                let label = if waiting { t("Дахин нээх", "Open again", "もう一度開く") } else { t("Gmail-ээр нэвтрэх", "Sign in with Gmail", "Gmail でサインイン") };
                 let primary = egui::Button::new(egui::RichText::new(label).strong().color(egui::Color32::WHITE)).fill(ui.visuals().selection.bg_fill);
                 if ui.add_sized([260.0, 38.0], primary).clicked() {
                     start = true;
@@ -335,27 +385,32 @@ impl Account {
                     ui.add_space(8.0);
                     ui.horizontal(|ui| {
                         ui.spinner();
-                        ui.label(t("Хөтөч дээр Google хаягаа сонгоод энд буцаж ирнэ үү…", "Choose your Google account in the browser, then come back here…"));
+                        ui.label(t(
+                            "Хөтөч дээр Google хаягаа сонгоод энд буцаж ирнэ үү…",
+                            "Choose your Google account in the browser, then come back here…",
+                            "ブラウザで Google アカウントを選んでから、ここに戻ってください…",
+                        ));
                     });
-                    if ui.small_button(t("Хөтөч нээгдээгүй бол: холбоосыг хуулах", "Browser did not open? Copy the link")).clicked() {
+                    if ui.small_button(t("Хөтөч нээгдээгүй бол: холбоосыг хуулах", "Browser did not open? Copy the link", "ブラウザが開かない場合: リンクをコピー")).clicked() {
                         ui.ctx().copy_text(wait.url.clone());
                     }
                 }
                 if let Some(e) = &self.error {
                     ui.add_space(6.0);
-                    ui.colored_label(ui.visuals().error_fg_color, format!("{} {e}", t("Нэвтэрч чадсангүй:", "Sign-in failed:")));
+                    ui.colored_label(ui.visuals().error_fg_color, format!("{} {e}", t("Нэвтэрч чадсангүй:", "Sign-in failed:", "サインインできませんでした:")));
                 }
                 if let Server::Unreachable(n) = self.server {
                     ui.add_space(8.0);
                     ui.colored_label(ui.visuals().warn_fg_color, t(
                         "monhydro.com-д холбогдож чадсангүй. Интернэтээ шалгаад дахин оролдоно уу.",
                         "Could not reach monhydro.com. Check the internet connection and try again.",
+                        "monhydro.com に接続できませんでした。インターネット接続を確認して、もう一度お試しください。",
                     ));
                     ui.horizontal(|ui| {
-                        if ui.button(t("Дахин оролдох", "Try again")).clicked() {
+                        if ui.button(t("Дахин оролдох", "Try again", "再試行")).clicked() {
                             retry = true;
                         }
-                        if n >= 2 && ui.button(t("Дараа нэвтрэх", "Sign in later")).clicked() {
+                        if n >= 2 && ui.button(t("Дараа нэвтрэх", "Sign in later", "後でサインイン")).clicked() {
                             later = true;
                         }
                     });
@@ -365,10 +420,11 @@ impl Account {
                 ui.small(t(
                     "Бид таны имэйл, нэр, програмын хувилбар, Windows ба компьютерийн загварыг хадгална. Таны файл, зураг хэзээ ч илгээгдэхгүй.",
                     "We keep your email, name, the program version, Windows and the computer model. Your files and drawings are never sent.",
+                    "メールアドレス、名前、プログラムのバージョン、Windows とコンピュータの機種を記録します。ファイルや図面が送信されることはありません。",
                 ));
                 ui.horizontal(|ui| {
-                    ui.hyperlink_to(egui::RichText::new(t("Нууцлалын бодлого", "Privacy")).small(), PRIVACY_URL);
-                    ui.small(format!("· {} {}", t("Суулгалтын код:", "Install code:"), self.state.install));
+                    ui.hyperlink_to(egui::RichText::new(t("Нууцлалын бодлого", "Privacy", "プライバシー")).small(), l.privacy_url());
+                    ui.small(format!("· {} {}", t("Суулгалтын код:", "Install code:", "インストール コード:"), self.state.install));
                 });
             });
         });
@@ -383,24 +439,24 @@ impl Account {
         }
     }
 
-    fn panel(&mut self, ctx: &egui::Context, mn: bool) {
-        let t = |m: &'static str, e: &'static str| if mn { m } else { e };
+    fn panel(&mut self, ctx: &egui::Context, l: Lang) {
+        let t = |m: &'static str, e: &'static str, j: &'static str| l.pick(m, e, j);
         let mut open = self.panel_open;
         let mut sign_out = false;
-        egui::Window::new(t("Бүртгэл", "Account")).id(egui::Id::NULL.with("mon_account_panel")).open(&mut open).collapsible(false).resizable(false).show(ctx, |ui| {
+        egui::Window::new(t("Бүртгэл", "Account", "アカウント")).id(egui::Id::NULL.with("mon_account_panel")).open(&mut open).collapsible(false).resizable(false).show(ctx, |ui| {
             egui::Grid::new("mon_account_grid").num_columns(2).spacing([16.0, 6.0]).show(ui, |ui| {
-                ui.label(t("Имэйл", "Email"));
-                ui.label(if self.state.email.is_empty() { t("нэвтрээгүй", "not signed in") } else { self.state.email.as_str() });
+                ui.label(t("Имэйл", "Email", "メール"));
+                ui.label(if self.state.email.is_empty() { t("нэвтрээгүй", "not signed in", "未サインイン") } else { self.state.email.as_str() });
                 ui.end_row();
                 if !self.state.name.is_empty() {
-                    ui.label(t("Нэр", "Name"));
+                    ui.label(t("Нэр", "Name", "名前"));
                     ui.label(&self.state.name);
                     ui.end_row();
                 }
-                ui.label(t("Суулгалтын код", "Install code"));
+                ui.label(t("Суулгалтын код", "Install code", "インストール コード"));
                 ui.horizontal(|ui| {
                     ui.monospace(&self.state.install);
-                    if ui.small_button(t("Хуулах", "Copy")).clicked() {
+                    if ui.small_button(t("Хуулах", "Copy", "コピー")).clicked() {
                         ui.ctx().copy_text(self.state.install.clone());
                     }
                 });
@@ -408,10 +464,10 @@ impl Account {
             });
             ui.add_space(8.0);
             ui.horizontal(|ui| {
-                if self.signed_in() && ui.button(t("Гарах", "Sign out")).clicked() {
+                if self.signed_in() && ui.button(t("Гарах", "Sign out", "サインアウト")).clicked() {
                     sign_out = true;
                 }
-                ui.hyperlink_to(t("Нууцлалын бодлого", "Privacy"), PRIVACY_URL);
+                ui.hyperlink_to(t("Нууцлалын бодлого", "Privacy", "プライバシー"), l.privacy_url());
             });
         });
         if sign_out {
@@ -422,7 +478,7 @@ impl Account {
 }
 
 /// Waits on 127.0.0.1 for the page's redirect: `GET /cb?state=…&token=…&email=…&name=…`.
-fn listen(nonce: String, mn: bool, app: &'static str, cancel: Arc<AtomicBool>, ctx: egui::Context) -> Result<(u16, mpsc::Receiver<Result<Callback, String>>), String> {
+fn listen(nonce: String, lang: Lang, app: &'static str, cancel: Arc<AtomicBool>, ctx: egui::Context) -> Result<(u16, mpsc::Receiver<Result<Callback, String>>), String> {
     let listener = TcpListener::bind(("127.0.0.1", 0)).map_err(|e| e.to_string())?;
     let port = listener.local_addr().map_err(|e| e.to_string())?.port();
     listener.set_nonblocking(true).map_err(|e| e.to_string())?;
@@ -435,12 +491,12 @@ fn listen(nonce: String, mn: bool, app: &'static str, cancel: Arc<AtomicBool>, c
                 match listener.accept() {
                     Ok((mut stream, _)) => match read_callback(&mut stream, &nonce) {
                         Some(Ok(cb)) => {
-                            respond(&mut stream, 200, &done_page(mn, app, true));
+                            respond(&mut stream, 200, &done_page(lang, app, true));
                             let _ = tx.send(Ok(cb));
                             ctx.request_repaint();
                             return;
                         }
-                        Some(Err(e)) => respond(&mut stream, 400, &done_page(mn, app, false).replace("{e}", &html_escape(&e))),
+                        Some(Err(e)) => respond(&mut stream, 400, &done_page(lang, app, false).replace("{e}", &html_escape(&e))),
                         None => respond(&mut stream, 404, ""),
                     },
                     Err(e) if e.kind() == std::io::ErrorKind::WouldBlock => std::thread::sleep(Duration::from_millis(150)),
@@ -452,7 +508,7 @@ fn listen(nonce: String, mn: bool, app: &'static str, cancel: Arc<AtomicBool>, c
                 }
             }
             if !cancel.load(Ordering::Relaxed) {
-                let _ = tx.send(Err(if mn { "хугацаа дууссан, дахин оролдоно уу".into() } else { "timed out, please try again".into() }));
+                let _ = tx.send(Err(lang.pick("хугацаа дууссан, дахин оролдоно уу", "timed out, please try again", "時間切れです。もう一度お試しください").into()));
                 ctx.request_repaint();
             }
         })
@@ -509,20 +565,23 @@ fn respond(stream: &mut TcpStream, status: u16, body: &str) {
     let _ = stream.flush();
 }
 
-fn done_page(mn: bool, app: &str, ok: bool) -> String {
-    let (title, text) = match (ok, mn) {
-        (true, true) => ("Нэвтэрлээ", format!("{app} руугаа буцна уу. Энэ хуудсыг хааж болно.")),
-        (true, false) => ("Signed in", format!("Go back to {app}. You can close this page.")),
-        (false, true) => ("Нэвтэрч чадсангүй", "Програм дээрээ «Gmail-ээр нэвтрэх»-ийг дахин дарна уу. ({e})".into()),
-        (false, false) => ("Sign-in failed", "Press «Sign in with Gmail» in the program again. ({e})".into()),
+fn done_page(lang: Lang, app: &str, ok: bool) -> String {
+    let (title, text) = match (ok, lang) {
+        (true, Lang::Mn) => ("Нэвтэрлээ", format!("{app} руугаа буцна уу. Энэ хуудсыг хааж болно.")),
+        (true, Lang::En) => ("Signed in", format!("Go back to {app}. You can close this page.")),
+        (true, Lang::Ja) => ("サインインしました", format!("{app} に戻ってください。このページは閉じてかまいません。")),
+        (false, Lang::Mn) => ("Нэвтэрч чадсангүй", "Програм дээрээ «Gmail-ээр нэвтрэх»-ийг дахин дарна уу. ({e})".into()),
+        (false, Lang::En) => ("Sign-in failed", "Press «Sign in with Gmail» in the program again. ({e})".into()),
+        (false, Lang::Ja) => ("サインインできませんでした", "プログラムで「Gmail でサインイン」をもう一度押してください。({e})".into()),
     };
     let mark = if ok { "✓" } else { "!" };
     format!(
-        "<!doctype html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>{title}</title>\
+        "<!doctype html><html lang=\"{}\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>{title}</title>\
 <style>body{{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f3f0e8;font-family:'Segoe UI',system-ui,sans-serif;color:#17191e}}\
 .c{{background:#faf8f3;border:1px solid rgba(23,25,30,.3);border-radius:2px;padding:36px 32px;max-width:380px;text-align:center}}\
 .m{{font-size:40px;line-height:1}}h1{{font-size:22px;margin:14px 0 8px}}p{{margin:0;color:#40444c;line-height:1.5}}</style></head>\
 <body><div class=\"c\"><div class=\"m\">{mark}</div><h1>{title}</h1><p>{}</p></div></body></html>",
+        lang.code(),
         html_escape(&text)
     )
 }
@@ -696,6 +755,20 @@ mod tests {
         let again = State::load(Some(&dir), "moncad");
         assert_eq!(first.install, again.install);
         let _ = std::fs::remove_dir_all(&dir);
+    }
+
+    #[test]
+    fn japanese_gets_its_own_texts_page_and_privacy_note() {
+        assert_eq!(Lang::of("ja"), Lang::Ja);
+        assert_eq!(Lang::of("mn"), Lang::Mn);
+        assert_eq!(Lang::of("de"), Lang::En);
+        assert_eq!(Lang::Ja.code(), "ja");
+        assert_eq!(Lang::Ja.pick("м", "e", "日"), "日");
+        assert_eq!(Lang::Ja.privacy_url(), PRIVACY_URL_JA);
+        assert_eq!(Lang::En.privacy_url(), PRIVACY_URL);
+        let page = done_page(Lang::Ja, "MonCad 2026", true);
+        assert!(page.contains("lang=\"ja\"") && page.contains("サインインしました"), "{page}");
+        assert!(done_page(Lang::Mn, "MonCad 2026", false).contains("{e}"));
     }
 
     #[test]
