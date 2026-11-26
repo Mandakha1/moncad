@@ -49,6 +49,7 @@ fn prompts_with_options_leave_or_to_the_command_line() {
     assert_eq!(format!("{}{}", tr("zh", "Enter delta length"), tr("zh", " or [")), "输入增量长度 或 [");
     assert_eq!(format!("{}{}", tr("vi", "Select polyline"), tr("vi", " or [")), "Chọn polyline hoặc [");
     assert_eq!(format!("{}{}", tr("vi", "Specify base radius"), tr("vi", " or [")), "Chỉ định bán kính đáy hoặc [");
+    assert_eq!(format!("{}{}", tr("ja", "Specify next point"), tr("ja", " or [")), "次の点を指定 または [");
 }
 
 /// What each language shows in English for now. Missing translations never fail a build:
@@ -227,6 +228,7 @@ fn assert_additional_locale_aliases() {
         ("el", &["el", "el-GR", "el_GR.UTF-8", "EL-cy"]),
         ("ka", &["ka", "ka-GE", "ka_GE.UTF-8", "KA-ge", " ka-GE "]),
         ("zh", &["zh", "zh-CN"]),
+        ("ja", &["ja", "ja-JP", "ja_JP.UTF-8", "JA-jp", " ja-JP ", "ja_JP@euro"]),
     ] {
         for tag in tags {
             assert_eq!(locale_language(tag), Some(code), "{tag}");
@@ -237,7 +239,10 @@ fn assert_additional_locale_aliases() {
 fn assert_unrecognized_locale_tags() {
     // Look-alike codes, three-letter codes and endonyms pick nothing: `se` is Northern Sami.
     let look_alikes = ["ua", "ukulele", "nl-NL", "", "garbage", "💙", "ptolemy", "cz", "csharp", "csomething", "italic"];
-    let others = ["kr", "korean", "kotlin", "se", "swe", "svenska", "hun", "magyar", "tur", "türkçe", "elvish", "kat", "geo", "kab", "kartuli"];
+    let others = [
+        "kr", "korean", "kotlin", "se", "swe", "svenska", "hun", "magyar", "tur", "türkçe", "elvish", "kat", "geo", "kab", "kartuli", "jp", "jpn",
+        "japanese", "jav",
+    ];
     for tag in look_alikes.into_iter().chain(others) {
         assert_eq!(locale_language(tag), None, "{tag}");
     }
@@ -508,7 +513,7 @@ fn dialogs_render_in_every_language_and_keep_their_source_ids() {
 #[test]
 fn interface_fonts_cover_every_letter_in_each_catalog() {
     for language in translated() {
-        let extra_font = ["ko", "zh", "ar", "vi", "ka"].contains(&language.code);
+        let extra_font = ["ko", "zh", "ar", "vi", "ka", "ja"].contains(&language.code);
         if extra_font && !crate::theme::can_show(language.code) {
             continue;
         }
@@ -686,4 +691,72 @@ fn polish_plural_forms() {
     {
         assert_eq!(plural_pl(n), expected, "n={n}");
     }
+}
+
+/// MonCad's Japanese interface: Auto picks it on a Japanese system, it shows only with a font
+/// that has kana and kanji (Yu Gothic on every Windows 10/11), and every character of the catalog,
+/// punctuation such as 「」。、？・ included, is in both interface families. Without a font it
+/// stays English and says why, like Chinese.
+#[test]
+fn japanese_follows_a_japanese_system_and_needs_a_japanese_font() {
+    assert_eq!(locale_language("ja-JP"), Some("ja"));
+    assert_eq!(Preference::Auto.resolve(&["ja-JP".into(), "en-US".into()]), "ja");
+    assert_eq!(Preference::Auto.resolve(&["en-US".into(), "ja-JP".into()]), "en");
+    assert_eq!(Preference::parse("ja"), Some(Preference::Japanese));
+    assert_eq!(Preference::Japanese.native_name(), "日本語");
+    let ja = LANGUAGES.iter().find(|l| l.code == "ja").unwrap();
+    assert_eq!(ja.plural_forms, 1);
+    with_language("ja", || {
+        assert_eq!(t("Line"), "線分");
+        assert_eq!(t("Layer"), "画層");
+        assert_eq!(menu("Draw"), "作成");
+        assert_eq!(menu("Window"), "ウィンドウ");
+        assert_eq!(t("Window"), "窓", "View ▸ Zoom ▸ Window is not the Window menu");
+        assert_eq!(count(3, "{n} commit", "{n} commits"), "3 件のコミット");
+    });
+    // The catalog is complete: nothing it shares with the Mongolian catalog falls back to English.
+    let (ja_rows, _) = parse(ja.source);
+    let mn = LANGUAGES.iter().find(|l| l.code == "mn").unwrap();
+    let (mn_rows, _) = parse(mn.source);
+    let missing: Vec<_> = mn_rows.keys().filter(|k| !ja_rows.contains_key(*k)).collect();
+    assert!(missing.is_empty(), "rows missing from ja.tsv: {missing:?}");
+    assert_eq!(missing_commands_menus_tools_and_snap_labels("ja"), Vec::<String>::new());
+    assert!(missing_marked_ui_literals("ja").is_empty(), "{:?}", missing_marked_ui_literals("ja"));
+
+    let mut app = CadApp::new(Session::new(), Services::default());
+    let r = app.run("ui.language", json!({"lang": "ja"})).unwrap();
+    let shown = crate::theme::can_show("ja");
+    assert_eq!(r["shown"], if shown { "ja" } else { "en" });
+    assert_eq!(app.ui.interface_language, Preference::Japanese);
+    if !shown {
+        assert!(app.status.as_ref().is_some_and(|(s, _)| s.contains("No Japanese font")));
+        assert_eq!(Preference::Japanese.name(), "Japanese");
+        return;
+    }
+    let ctx = egui::Context::default();
+    crate::theme::install_fonts(&ctx, "ja");
+    let mut output = ctx.run_ui(Default::default(), |_| {});
+    output.textures_delta.clear();
+    let chars: BTreeSet<char> = ja
+        .source
+        .lines()
+        .filter(|line| !line.starts_with('#'))
+        .filter_map(|line| line.split('\t').nth(2))
+        .flat_map(str::chars)
+        .chain("「」。、？！・ー日本語".chars())
+        .filter(|c| !c.is_ascii())
+        .collect();
+    let missing = ctx.fonts_mut(|view| {
+        let mut missing = Vec::new();
+        for family in [egui::FontFamily::Proportional, egui::FontFamily::Monospace] {
+            let map = view.characters(&family);
+            for c in &chars {
+                if !map.contains_key(c) {
+                    missing.push(format!("{family:?}: {c} (U+{:04X})", u32::from(*c)));
+                }
+            }
+        }
+        missing
+    });
+    assert!(missing.is_empty(), "ja: missing glyphs: {}", missing.join(", "));
 }

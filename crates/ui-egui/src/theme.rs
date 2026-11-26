@@ -492,6 +492,10 @@ fn embedded_ui_faces<'a>(faces: &[&'a cadcraft_fonts::CraftFont], language: &str
     if language.starts_with("zh") {
         out.sort_by_key(|f| !f.scripts.contains(&"Hans"));
     }
+    // A Japanese interface takes a Japanese face first, so shared ideographs get Japanese forms.
+    if language == "ja" {
+        out.sort_by_key(|f| !f.scripts.contains(&"Jpan"));
+    }
     out.extend(faces.iter().copied().filter(|f| f.style == "Regular" && f.scripts.contains(&"Geor")));
     if language == "ar" {
         out.extend(faces.iter().copied().filter(|f| f.style == "Regular" && f.scripts.contains(&"Arab")));
@@ -592,7 +596,9 @@ pub fn arabic_font() -> Option<&'static std::path::Path> {
     None
 }
 
-/// An installed Japanese font, for Japanese names in a non-Chinese interface. Checked once.
+/// An installed Japanese font, for the Japanese interface and for Japanese names in any other
+/// non-Chinese one. Windows 10 and 11 ship Yu Gothic in every edition, macOS ships Hiragino.
+/// Checked once.
 #[cfg_attr(target_arch = "wasm32", allow(dead_code))]
 fn japanese_font() -> Option<&'static std::path::Path> {
     #[cfg(not(target_arch = "wasm32"))]
@@ -610,6 +616,10 @@ fn japanese_font() -> Option<&'static std::path::Path> {
                         "/usr/share/fonts/truetype/fonts-japanese-gothic.ttf",
                         "/usr/share/fonts/ipa-pgothic/ipagp.ttf",
                         "/usr/share/fonts/vl-gothic/VL-PGothic-Regular.ttf",
+                        // Noto Sans CJK collections start with their Japanese face.
+                        "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+                        "/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc",
+                        "/usr/share/fonts/google-noto-cjk/NotoSansCJK-Regular.ttc",
                     ]
                 };
                 candidates.iter().map(std::path::PathBuf::from).find(|p| p.is_file())
@@ -732,13 +742,14 @@ pub fn shows_hangul(language: &str) -> bool {
 /// with its glyphs (installed, or the CJK face this build embedded from craft-fonts), Korean a
 /// font with Hangul, العربية an installed Arabic font or the embedded Arabic face, Tiếng Việt a
 /// system interface font with its tone-marked letters ([`vietnamese_font`]), ქართული the
-/// embedded Georgian face.
+/// embedded Georgian face, 日本語 an installed Japanese font or the embedded `Jpan` face.
 pub fn can_show(language: &str) -> bool {
     match language {
         "ko" => shows_hangul("ko"),
         "vi" => vietnamese_font().is_some(),
         "ar" => arabic_font().is_some() || embedded_script("Arab"),
         "ka" => embedded_script("Geor"),
+        "ja" => japanese_font().is_some() || embedded_script("Jpan"),
         l if l.starts_with("zh") => cjk_font().is_some() || embedded_script("Hans") || embedded_script("Hant"),
         _ => true,
     }
@@ -858,6 +869,9 @@ mod tests {
         // العربية adds the Arabic face, after the CJK ones egui's bundled faces have no glyphs for.
         assert_eq!(families(&super::embedded_ui_faces(&faces, "ar")), ["BIZ UDPGothic", "Han Test Face", "Noto Sans Georgian", "Noto Sans Arabic"]);
         assert_eq!(families(&super::embedded_ui_faces(&faces, "ka")), ["BIZ UDPGothic", "Han Test Face", "Noto Sans Georgian"]);
+        // A Japanese interface takes the Japanese face first, whatever order the manifest gives.
+        let faces_han_first = [&chinese, &japanese, &georgian];
+        assert_eq!(families(&super::embedded_ui_faces(&faces_han_first, "ja")), ["BIZ UDPGothic", "Han Test Face", "Noto Sans Georgian"]);
         // Another weight is a style of a face, not an interface face of its own.
         let bold = CraftFont { family: "BIZ UDPGothic", style: "Bold", scripts: &["Jpan"], bytes: &[] };
         assert!(super::embedded_ui_faces(&[&bold], "en").is_empty());

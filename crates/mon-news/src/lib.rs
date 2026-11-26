@@ -23,6 +23,9 @@
 //!   "toast": true                       // also a Windows notification
 //! }]}
 //! ```
+//!
+//! Every text may also carry `"ja"` (Japanese). The Japanese interface shows only the items whose
+//! title has a `ja` text, so a Mongolian course is never offered to a Japanese user in English.
 
 use std::collections::BTreeSet;
 use std::path::PathBuf;
@@ -51,24 +54,31 @@ pub const MAX_ITEMS: usize = 30;
 /// proxies work as in the rest of the app.
 pub type Fetch = Arc<dyn Fn(&str) -> Result<Vec<u8>, String> + Send + Sync>;
 
-/// A text in Mongolian and English; either may be missing.
+/// A text in Mongolian, English and (optionally) Japanese; any may be missing.
 #[derive(Clone, Debug, Default, Deserialize, Serialize, PartialEq, Eq)]
 pub struct Text {
     #[serde(default)]
     pub mn: String,
     #[serde(default)]
     pub en: String,
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub ja: String,
 }
 
 impl Text {
-    /// The text in `lang` (`mn` or anything else for English), else in the other language.
+    /// The text in `lang` (`mn`, `ja`, or anything else for English); a missing one falls back to
+    /// English, then Mongolian.
     pub fn get(&self, lang: &str) -> &str {
-        let (first, second) = if lang == "mn" { (&self.mn, &self.en) } else { (&self.en, &self.mn) };
-        if first.trim().is_empty() { second.trim() } else { first.trim() }
+        let order: [&String; 3] = match lang {
+            "mn" => [&self.mn, &self.en, &self.ja],
+            "ja" => [&self.ja, &self.en, &self.mn],
+            _ => [&self.en, &self.mn, &self.ja],
+        };
+        order.into_iter().map(|s| s.trim()).find(|s| !s.is_empty()).unwrap_or("")
     }
 
     fn is_empty(&self) -> bool {
-        self.mn.trim().is_empty() && self.en.trim().is_empty()
+        self.mn.trim().is_empty() && self.en.trim().is_empty() && self.ja.trim().is_empty()
     }
 }
 
@@ -242,19 +252,25 @@ pub struct News {
     error: Option<String>,
     /// The News window (all current items) is open.
     pub list_open: bool,
+    /// The interface is Japanese: only items with a Japanese title are shown.
+    japanese: bool,
 }
 
 impl News {
     pub fn new(cfg: Config) -> News {
         let enabled = (cfg.fetch.is_some() || preview_file().is_some()) && std::env::var("MON_NEWS").map_or(true, |v| v != "0");
         let seen = Seen::load(cfg.store_dir.as_ref());
-        News { cfg, enabled, seen, feed: None, rx: None, created: Instant::now(), next_fetch: None, error: None, list_open: false }
+        News { cfg, enabled, seen, feed: None, rx: None, created: Instant::now(), next_fetch: None, error: None, list_open: false, japanese: false }
     }
 
     /// Current items, for a menu that shows how many there are.
     pub fn items(&self) -> Vec<&Item> {
         let today = today();
-        self.feed.as_ref().map(|f| f.current(self.cfg.product, &today)).unwrap_or_default()
+        let mut items = self.feed.as_ref().map(|f| f.current(self.cfg.product, &today)).unwrap_or_default();
+        if self.japanese {
+            items.retain(|i| !i.title.ja.trim().is_empty());
+        }
+        items
     }
 
     /// Items whose card has not been closed yet.
@@ -275,6 +291,7 @@ impl News {
         if !self.enabled {
             return;
         }
+        self.japanese = lang == "ja";
         self.poll(ctx);
         self.fetch_if_due(ctx);
         self.notify(lang);
@@ -456,7 +473,7 @@ fn item_body(ui: &mut egui::Ui, item: &Item, lang: &str) {
     }
 }
 
-/// The few words the feature needs, in its own two languages.
+/// The few words the feature needs, in its own three languages.
 struct Words {
     news_title: &'static str,
     more: &'static str,
@@ -471,6 +488,20 @@ struct Words {
 }
 
 fn words(lang: &str) -> Words {
+    if lang == "ja" {
+        return Words {
+            news_title: "お知らせと講座",
+            more: "詳しく見る",
+            close: "閉じる",
+            mute: "今後表示しない",
+            mute_tip: "お知らせのカードと Windows 通知をオフにします。ヘルプ メニューの「お知らせと講座」から再びオンにできます。",
+            show_switch: "新しいお知らせや講座をカードと Windows 通知で表示する",
+            privacy: "お知らせのファイルを読み込むだけで、あなたに関する情報は送信されません。",
+            loading: "読み込み中…",
+            offline: "お知らせを読み込めませんでした (インターネット接続を確認してください)。",
+            empty: "現在、お知らせはありません。",
+        };
+    }
     if lang == "mn" {
         Words {
             news_title: "Мэдээ, сургалт, санал",
@@ -502,6 +533,14 @@ fn words(lang: &str) -> Words {
 
 /// The label that says what an item is; an ad is always labelled as one.
 pub fn kind_label(kind: Kind, lang: &str) -> &'static str {
+    if lang == "ja" {
+        return match kind {
+            Kind::News => "お知らせ",
+            Kind::Course => "講座",
+            Kind::Ad => "広告",
+            Kind::Update => "アップデート",
+        };
+    }
     match (kind, lang == "mn") {
         (Kind::News, true) => "Мэдээ",
         (Kind::Course, true) => "Сургалт",
@@ -543,6 +582,11 @@ mod tests {
         assert_eq!(feed.items[0].title.get("mn"), "Сургалт");
         assert_eq!(feed.items[0].title.get("en"), "Course");
         assert_eq!(feed.items[1].title.get("mn"), "Only English");
+        // Japanese falls back to English, then Mongolian.
+        assert_eq!(feed.items[0].title.get("ja"), "Course");
+        assert_eq!(feed.items[2].title.get("ja"), "Зөвхөн Mon3D");
+        let ja: Text = serde_json::from_str(r#"{"mn": "Сургалт", "en": "Course", "ja": "講座"}"#).unwrap();
+        assert_eq!((ja.get("ja"), ja.get("en"), ja.get("mn")), ("講座", "Course", "Сургалт"));
         assert_eq!(feed.items[0].safe_link(), Some("https://cad.monhydro.com"));
         assert_eq!(feed.items[1].safe_link(), None);
         assert!(!is_safe_link("https://a b") && !is_safe_link("https://") && !is_safe_link("javascript:alert(1)"));
@@ -580,5 +624,23 @@ mod tests {
     fn ads_are_labelled_as_ads() {
         assert_eq!(kind_label(Kind::Ad, "mn"), "Зар");
         assert_eq!(kind_label(Kind::Ad, "en"), "Ad");
+    }
+
+    /// The Japanese interface shows only items written for it; the others keep every item.
+    #[test]
+    fn the_japanese_interface_shows_only_items_with_a_japanese_title() {
+        let json = r#"{"version": 1, "items": [
+            {"id": "mn-course", "title": {"mn": "Сургалт", "en": "Course"}},
+            {"id": "ja-news", "title": {"en": "Japanese edition", "ja": "日本語版"}}
+        ]}"#;
+        let feed = Feed::parse(json.as_bytes()).unwrap();
+        let mut news = News::new(Config { product: "moncad", app_name: "MonCad", aumid: "", url: String::new(), store_dir: None, fetch: None });
+        news.feed = Some(feed);
+        let ids = |n: &News| n.items().iter().map(|i| i.id.clone()).collect::<Vec<_>>();
+        assert_eq!(ids(&news), ["mn-course", "ja-news"]);
+        news.japanese = true;
+        assert_eq!(ids(&news), ["ja-news"]);
+        assert_eq!(kind_label(Kind::Course, "ja"), "講座");
+        assert_eq!(words("ja").close, "閉じる");
     }
 }
